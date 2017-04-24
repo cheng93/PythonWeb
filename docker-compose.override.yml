@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    build: .
+    volumes: 
+      - /src
+    ports:
+      - "8000:80"
+    environment:
+      DEBUG: "true"
+  redis:
+    volumes: 
+      - /data
