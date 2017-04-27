@@ -10,4 +10,4 @@ EXPOSE 80
 
 ENV NAME World
 
-CMD ["python", "src/app.py"]
+CMD ["python", "src/run.py"]
