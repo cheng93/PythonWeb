@@ -23,6 +23,13 @@ services:
         constraints: [node.role == manager]
     networks:
       - webnet
+  postgres:
+    image: postgres:latest
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
 networks:
   webnet:
 
