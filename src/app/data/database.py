@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from app.config import DVDRENTAL_CONNECTION_STRING
 
-engine = create_engine('postgresql://derek@localhost:5432/dvdrental',
+
+engine = create_engine(DVDRENTAL_CONNECTION_STRING,
                        convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
