@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Package') {
             steps {
+                print "Environment will be : ${env.BRANCH_NAME}"
                 sh 'echo Package docker'
             }
         }
