@@ -33,3 +33,11 @@ class GetFilmsModel():
         self.language_id = film.language.name
         self.length = film.length
         self.rating = film.rating
+
+
+def get_films():
+    films = (Film.query
+             .all())
+
+    films = [GetFilmsModel(f) for f in films]
+    return films
