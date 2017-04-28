@@ -2,9 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'echo Hello World'
+                sh 'echo No tests yet'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'echo Package docker'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploy docker image'
             }
         }
     }
