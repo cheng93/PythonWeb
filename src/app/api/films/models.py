@@ -1,7 +1,4 @@
-from app.data import Film
-
-
-class GetFilmModel():
+class GetFilmModel:
     def __init__(self, film):
         self.film_id = film.film_id
         self.title = film.title
@@ -16,16 +13,7 @@ class GetFilmModel():
         self.special_features = film.special_features
 
 
-def get_film(film_id):
-    film = (Film.query
-            .filter_by(film_id=film_id)
-            .first())
-
-    film = GetFilmModel(film)
-    return film
-
-
-class GetFilmsModel():
+class GetFilmsModel:
     def __init__(self, film):
         self.film_id = film.film_id
         self.title = film.title
@@ -35,9 +23,22 @@ class GetFilmsModel():
         self.rating = film.rating
 
 
-def get_films():
-    films = (Film.query
-             .all())
+class Command:
+    def __init__(self, film):
+        self.film = film
 
-    films = [GetFilmsModel(f) for f in films]
-    return films
+    def get_film(self, film_id):
+        film = (self.film.query
+                .filter_by(film_id=film_id)
+                .first())
+
+        film = GetFilmModel(film)
+        return film
+
+    def get_films(self):
+        films = (self.film.query
+                 .order_by(self.film.film_id)
+                 .all())
+
+        films = [GetFilmsModel(f) for f in films]
+        return films
