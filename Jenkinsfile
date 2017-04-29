@@ -18,7 +18,7 @@ pipeline {
           if (env.BRANCH_NAME.startsWith('feature/')) {
             tag = 'test'
           }
-          docker.withDockerRegistry('https://hub.docker.com/', 'docker-credentials') {
+          docker.withRegistry('https://hub.docker.com/', 'docker-credentials') {
             docker.build('cheng93/python-web').push(tag)
           }
         }
