@@ -19,7 +19,7 @@ pipeline {
             tag = 'test'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
-            docker.build('cheng93/python-web').push(tag)
+            // docker.build('cheng93/python-web').push(tag)
           }
         }
       }
