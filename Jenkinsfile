@@ -20,7 +20,7 @@ pipeline {
           def tag
           if (env.BRANCH_NAME.startsWith('feature/')) {
             tag = 'test'
-            env.ENVIRONMENT = 'UAT'
+            ENVIRONMENT = 'UAT'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
             // docker.build('cheng93/python-web').push(tag)
