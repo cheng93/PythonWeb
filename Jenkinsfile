@@ -1,12 +1,5 @@
 pipeline {
   agent any
-  environment {
-    IS_MASTER = env.BRANCH_NAME == 'master'
-    IS_DEVELOPMENT = env.BRANCH_NAME == 'development'
-    IS_RELEASE = env.BRANCH_NAME.startsWith('release/')
-    IS_FEATURE = env.BRANCH_NAME.startsWith('feature')
-    DO_PACKAGE = env.IS_FEATURE
-  }
   stages {
     stage('Test') {
       steps {
@@ -15,7 +8,9 @@ pipeline {
     }
     stage('Package') {
       when {
-        environment name: 'DO_PACKAGE', value: True
+        expression {
+          return env.BRANCH_NAME.startsWith('feature/')
+        }
       }
       steps {
         print 'Packaging'
