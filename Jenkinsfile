@@ -36,9 +36,9 @@ pipeline {
           if (env.BRANCH_NAME.startsWith('feature/')) {
             env_name = 'uat'
           }
-          sh "docker-machine ls"
-          sh "docker-machine scp docker-compose.yml ${env_name}:~"
-          sh "docker-machine scp docker-compose.${env_name}.yml ${env_name}:~"
+          sh "cp docker-compose.${env_name}.yml docker-compose.override.yml"
+          sh "docker-compose config > deploy.yml"
+          sh "docker-machine scp deploy.yml ${env_name}:~"
         }
       }
     }
