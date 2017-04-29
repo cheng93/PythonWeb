@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    ENVIRONMENT = 'hello world'
-  }
   stages {
     stage('Test') {
       steps {
@@ -20,7 +17,6 @@ pipeline {
           def tag
           if (env.BRANCH_NAME.startsWith('feature/')) {
             tag = 'test'
-            ENVIRONMENT = 'UAT'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
             // docker.build('cheng93/python-web').push(tag)
@@ -36,8 +32,13 @@ pipeline {
       }
       steps {
         script {
+          def env_name
+          if (env.BRANCH_NAME.startsWith('feature/')) {
+            env_name = 'UAT'
+          }
           sh 'docker-machine ls'
-          sh 'echo $ENVIRONMENT'
+          sh 'docker-machine scp docker-compose.yml ${env_name}:~'
+          sh 'docker-machine scp docker-compose.${env_name}.yml ${env_name}:~'
         }
       }
     }
