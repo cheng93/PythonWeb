@@ -9,7 +9,7 @@ pipeline {
     stage('Package') {
       when {
         expression {
-          return env.BRANCH_NAME.startsWith('feature/')
+          return env.BRANCH_NAME.startsWith('features/')
         }
       }
       steps {
