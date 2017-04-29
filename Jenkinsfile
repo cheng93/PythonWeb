@@ -1,6 +1,12 @@
 pipeline {
   agent any
-
+  environment {
+    IS_MASTER = env.BRANCH_NAME == 'master'
+    IS_DEVELOPMENT = env.BRANCH_NAME == 'development'
+    IS_RELEASE = env.BRANCH_NAME.startsWith('release/')
+    IS_FEATURE = env.BRANCH_NAME.startsWith('feature')
+    DO_PACKAGE = env.IS_FEATURE
+  }
   stages {
     stage('Test') {
       steps {
@@ -8,18 +14,11 @@ pipeline {
       }
     }
     stage('Package') {
-      if (env.BRANCH_NAME == 'master') {
-        steps {
-          print 'This is master'
-        }
-      } else if (env.BRANCH_NAME == 'development') {
-        steps {
-          print 'This is a development'
-        }
-      } else if (env.BRANCH_NAME.startsWith('feature/')) {
-        steps {
-          print 'This is a feature branch'
-        }
+      when {
+        environment name: 'DO_PACKAGE', value: True
+      }
+      steps {
+        print 'Packaging'
       }
     }
     stage('Deploy') {
