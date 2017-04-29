@@ -37,7 +37,7 @@ pipeline {
       steps {
         script {
           sh 'docker-machine ls'
-          print '${env.ENVIRONMENT}'
+          sh 'printenv'
         }
       }
     }
