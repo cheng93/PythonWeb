@@ -38,7 +38,7 @@ pipeline {
           }
           sh "docker-machine ls"
           sh "docker-machine scp docker-compose.yml $env_name:~"
-          sh "docker-machine scp docker-compose.$env_name.yml $env_name:~""
+          sh "docker-machine scp docker-compose.$env_name.yml $env_name:~"
         }
       }
     }
