@@ -36,12 +36,9 @@ pipeline {
           if (env.BRANCH_NAME.startsWith('feature/')) {
             env_name = 'uat'
           }
-          sh "docker-machine scp docker-compose.yml ${env_name}:~"
-          sh "docker-machine scp docker-compose.${env_name}.yml ${env_name}:~"
-          sh "docker-machine ssh ${env_name} \"cp docker-compose.${env_name}.yml docker-compose.override.yml\""
-          sh "eval \"\$(docker-machine env ${env_name})\""
-          sh "docker-compose config > deploy.yml"
-          sh "docker stack deploy -c deploy.yml python-web"
+          sh "merge-yaml -i docker-compose.yml docker-compose.uat.yml -o deploy.yml"
+          sh "docker-machine scp deploy.yml ${env_name}:~"
+          sh "docker-machine ssh ${env_name} \"cp docker stack deploy -c deploy.yml python-web\""
         }
       }
     }
