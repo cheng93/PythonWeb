@@ -8,12 +8,16 @@ pipeline {
       }
     }
     stage('Package') {
-      steps {
-        if (env.BRANCH_NAME == 'master') {
-
-        } else if (env.BRANCH_NAME == 'development') {
-
-        } else if (env.BRANCH_NAME.startsWith('feature/')) {
+      if (env.BRANCH_NAME == 'master') {
+        steps {
+          print 'This is master'
+        }
+      } else if (env.BRANCH_NAME == 'development') {
+        steps {
+          print 'This is a development'
+        }
+      } else if (env.BRANCH_NAME.startsWith('feature/')) {
+        steps {
           print 'This is a feature branch'
         }
       }
