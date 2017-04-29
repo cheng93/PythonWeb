@@ -37,7 +37,7 @@ pipeline {
             env_name = 'uat'
           }
           sh "cp docker-compose.${env_name}.yml docker-compose.override.yml"
-          sh "eval \"$(docker-machine env ${env_name})\""
+          sh "eval \"\$(docker-machine env ${env_name})\""
           sh "docker-compose config > deploy.yml"
           sh "docker stack deploy -c deploy.yml python-web"
         }
