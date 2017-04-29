@@ -9,14 +9,26 @@ pipeline {
     stage('Package') {
       when {
         expression {
-          return env.BRANCH_NAME.startsWith('features/')
+          return env.BRANCH_NAME.startsWith('feature/')
         }
       }
       steps {
-        print 'Packaging'
+        script {
+          def tag
+          if (env.BRANCH_NAME.startsWith('feature/')) {
+            tag = 'test'
+          }
+          def image = docker.image('cheng93/python-web')
+          docker.build(image).push(tag)
+        }
       }
     }
     stage('Deploy') {
+      when {
+        expression {
+          return env.BRANCH_NAME.startsWith('feature/')
+        }
+      }
       steps {
         sh 'echo Deploy docker image'
       }
