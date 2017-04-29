@@ -18,8 +18,7 @@ pipeline {
           if (env.BRANCH_NAME.startsWith('feature/')) {
             tag = 'test'
           }
-          def image = docker.image('cheng93/python-web')
-          docker.build(image).push(tag)
+          docker.build('cheng93/python-web').push(tag)
         }
       }
     }
