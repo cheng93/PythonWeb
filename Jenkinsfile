@@ -34,7 +34,7 @@ pipeline {
         script {
           def env_name
           if (env.BRANCH_NAME.startsWith('feature/')) {
-            env_name = 'UAT'
+            env_name = 'uat'
           }
           sh "docker-machine ls"
           sh "docker-machine scp docker-compose.yml $env_name:~"
