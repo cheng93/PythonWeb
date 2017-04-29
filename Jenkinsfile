@@ -31,7 +31,7 @@ pipeline {
         }
       }
       steps {
-        sh 'echo Deploy docker image'
+        sh 'docker-machine ls'
       }
     }
   }
