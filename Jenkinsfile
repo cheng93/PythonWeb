@@ -38,7 +38,7 @@ pipeline {
           }
           sh "merge-yaml -i docker-compose.yml docker-compose.uat.yml -o deploy.yml"
           sh "docker-machine scp deploy.yml ${env_name}:~"
-          sh "docker-machine ssh ${env_name} \"cp docker stack deploy -c deploy.yml python-web\""
+          sh "docker-machine ssh ${env_name} \"docker stack deploy -c deploy.yml python-web\""
         }
       }
     }
