@@ -16,10 +16,10 @@ pipeline {
         script {
           def tag
           if (env.BRANCH_NAME.startsWith('feature/')) {
-            tag = 'test'
+            tag = 'uat'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
-            // docker.build('cheng93/python-web').push(tag)
+            docker.build('cheng93/python-web').push(tag)
           }
         }
       }
@@ -33,12 +33,15 @@ pipeline {
       steps {
         script {
           def env_name
+          def env_path
           if (env.BRANCH_NAME.startsWith('feature/')) {
             env_name = 'uat'
+            env_path = env.PYTHON_WEB_ENV_PATH_UAT
           }
-          sh "merge-yaml -i docker-compose.yml docker-compose.uat.yml -o deploy.yml"
-          sh "docker-machine scp deploy.yml ${env_name}:~"
-          sh "docker-machine ssh ${env_name} \"docker stack deploy -c deploy.yml python-web\""
+          sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
+          sh "sudo mv deploy.yml ${env_path}"
+          sh "sudo cd ${env_path}"
+          sh "docker stack deploy -c deploy.yml python-web-${env_name}"
         }
       }
     }
