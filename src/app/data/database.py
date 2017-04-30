@@ -17,3 +17,7 @@ metadata = Base.metadata
 def init_db():
     import app.data
     Base.metadata.create_all(bind=engine)
+
+
+def teardown_db():
+    db_session.remove()

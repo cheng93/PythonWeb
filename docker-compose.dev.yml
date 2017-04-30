@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    image: cheng93/python-web:dev
+    ports:
+      - "8001:80"
+    environment:
+      DEBUG: "true"
+      DVDRENTAL_CONNECTION_STRING: "postgresql://postgres@postgres:5432/dvdrental"
+  visualizer:
+    ports:
+      - "8081:8080"
+  postgres:
+    ports:
+      - "5433:5432"
+    volumes:
+      - "./data/postgres:/var/lib/postgresql/data"
