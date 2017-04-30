@@ -9,13 +9,13 @@ pipeline {
     stage('Package') {
       when {
         expression {
-          return env.BRANCH_NAME == 'development'
+          return env.BRANCH_NAME == 'develop'
         }
       }
       steps {
         script {
           def tag
-          if (env.BRANCH_NAME == 'development') {
+          if (env.BRANCH_NAME == 'develop') {
             tag = 'dev'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
@@ -27,14 +27,14 @@ pipeline {
     stage('Deploy') {
       when {
         expression {
-          return env.BRANCH_NAME == 'development'
+          return env.BRANCH_NAME == 'develop'
         }
       }
       steps {
         script {
           def env_name
           def env_path
-          if (env.BRANCH_NAME == 'development') {
+          if (env.BRANCH_NAME == 'develop') {
             env_name = 'dev'
             env_path = env.PYTHON_WEB_ENV_PATH_UAT
           }
