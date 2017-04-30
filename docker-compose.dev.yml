@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: cheng93/python-web:uat
+    image: cheng93/python-web:dev
     ports:
       - "8001:80"
     environment:

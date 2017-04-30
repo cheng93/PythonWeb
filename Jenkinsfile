@@ -9,17 +9,17 @@ pipeline {
     stage('Package') {
       when {
         expression {
-          return env.BRANCH_NAME.startsWith('feature/')
+          return env.BRANCH_NAME == 'development'
         }
       }
       steps {
         script {
           def tag
-          if (env.BRANCH_NAME.startsWith('feature/')) {
-            tag = 'uat'
+          if (env.BRANCH_NAME == 'development') {
+            tag = 'dev'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
-            //docker.build('cheng93/python-web').push(tag)
+            docker.build('cheng93/python-web').push(tag)
           }
         }
       }
@@ -27,15 +27,15 @@ pipeline {
     stage('Deploy') {
       when {
         expression {
-          return env.BRANCH_NAME.startsWith('feature/')
+          return env.BRANCH_NAME == 'development'
         }
       }
       steps {
         script {
           def env_name
           def env_path
-          if (env.BRANCH_NAME.startsWith('feature/')) {
-            env_name = 'uat'
+          if (env.BRANCH_NAME == 'development') {
+            env_name = 'dev'
             env_path = env.PYTHON_WEB_ENV_PATH_UAT
           }
           sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
