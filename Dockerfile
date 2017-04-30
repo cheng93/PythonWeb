@@ -8,6 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 80
 
-ENV NAME World
-
-CMD ["python", "src/run.py"]
+CMD ["python", "run.py"]
