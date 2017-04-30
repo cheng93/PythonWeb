@@ -4,7 +4,6 @@ import sys
 from flask import url_for
 from flask_script import Manager
 
-sys.path.insert(0, '../src')
 from app import app   # noqa
 
 manager = Manager(app)
