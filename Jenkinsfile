@@ -19,7 +19,7 @@ pipeline {
             tag = 'uat'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
-            docker.build('cheng93/python-web').push(tag)
+            //docker.build('cheng93/python-web').push(tag)
           }
         }
       }
@@ -39,8 +39,8 @@ pipeline {
             env_path = env.PYTHON_WEB_ENV_PATH_UAT
           }
           sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
-          sh "sudo mv deploy.yml ${env_path}"
-          sh "sudo cd ${env_path}"
+          sh "mv deploy.yml ${env_path}"
+          sh "cd ${env_path}"
           sh "docker stack deploy -c deploy.yml python-web-${env_name}"
         }
       }
