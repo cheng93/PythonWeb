@@ -40,8 +40,9 @@ pipeline {
           }
           sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
           sh "mv deploy.yml ${env_path}"
-          sh "cd ${env_path}"
-          sh "docker stack deploy -c deploy.yml python-web-${env_name}"
+          dir(env_path) {
+            sh "docker stack deploy -c deploy.yml python-web-${env_name}"
+          }
         }
       }
     }
