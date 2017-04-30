@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: cheng93/python-web:test
+    image: cheng93/python-web:latest
     deploy:
       replicas: 3
       resources:

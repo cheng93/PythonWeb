@@ -1,9 +1,7 @@
 version: "3"
 services:
   web:
-    build: .
-    volumes: 
-      - /src
+    image: cheng93/python-web:uat
     ports:
       - "8001:80"
     environment:
