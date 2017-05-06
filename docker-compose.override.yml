@@ -9,8 +9,11 @@ services:
     environment:
       DEBUG: "true"
       DVDRENTAL_CONNECTION_STRING: "postgresql://postgres@postgres:5432/dvdrental"
+  visualizer:
+    ports:
+      - "8080:8080"
   postgres:
     ports:
       - "2345:5432"
     volumes:
-      - "./data/postgres:/var/lib/postgresql/data"
+      - "~/.code/python-web/data/postgres:/var/lib/postgresql/data"
