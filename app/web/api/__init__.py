@@ -1,2 +1,2 @@
-def api_include(config):
-    config.include('.films.films_include', route_prefix='/api')
+def includeme(config):
+    config.include('.films', route_prefix='/api')

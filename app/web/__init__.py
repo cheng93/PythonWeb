@@ -1,2 +1,2 @@
-def web_include(config):
-    config.include('.api.api_include')
+def includeme(config):
+    config.include('.api')

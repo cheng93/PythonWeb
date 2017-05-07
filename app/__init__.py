@@ -11,6 +11,6 @@ def main(global_config, **settings):
     engine = engine_from_config(settings, 'sqlalchemy.')
     initialize_db(engine)
     config.include('pyramid_chameleon')
-    config.include('.web.web_include')
+    config.include('.web')
 
     return config.make_wsgi_app()

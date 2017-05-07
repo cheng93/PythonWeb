@@ -1,3 +1,3 @@
-def films_include(config):
+def includeme(config):
     config.add_route(name='films', pattern='/films')
     config.scan('.views')
