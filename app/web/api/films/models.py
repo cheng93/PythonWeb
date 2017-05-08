@@ -40,6 +40,7 @@ class Command:
 
     def get_films(self):
         films = (self.db.query(Film)
+                 .order_by(Film.film_id)
                  .all())
 
         films = [GetFilmsModel(f) for f in films]
