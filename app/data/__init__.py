@@ -24,7 +24,7 @@ def get_tm_session(session_factory, transaction_manager):
 def includeme(config):
     settings = config.get_settings()
 
-    config.include('pyramid_tm')
+    config.include(pyramid_tm)
 
     engine = engine_from_config(settings, 'sqlalchemy.')
     session_factory = get_session_factory(engine)
