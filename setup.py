@@ -6,7 +6,8 @@ requires = [
     'pyramid_chameleon',
     'sqlalchemy',
     'pyramid_tm',
-    'zope.sqlalchemy'
+    'zope.sqlalchemy',
+    'psycopg2'
 ]
 
 setup(name='app',
