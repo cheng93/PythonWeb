@@ -1,6 +1,6 @@
-from sqlalchemy import Column, DateTime, Integer, String, text
+from app.data import Base
 
-from app.data.database import Base
+from sqlalchemy import Column, DateTime, Integer, String, text
 
 
 class Country(Base):

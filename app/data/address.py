@@ -1,7 +1,7 @@
+from app.data import Base
+
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, text
 from sqlalchemy.orm import relationship
-
-from app.data.database import Base
 
 
 class Address(Base):

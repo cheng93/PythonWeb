@@ -1,18 +1,24 @@
+import app.data
+import app.web
+
 import os
-import sys
 
-from app.data.database import init_db, teardown_db
-from flask import Flask, blueprints
-
-app = Flask(__name__)
-app.config.from_object('app.config')
-init_db()
-
-from app.api.films.controllers import films  # noqa
-
-app.register_blueprint(films)
+import pyramid_chameleon
+from pyramid.config import Configurator
 
 
-@app.teardown_appcontext
-def shutdown_session(exception=None):
-    teardown_db()
+def expandvars_dict(settings):
+    """Expands all environment variables in a settings dictionary."""
+    return dict((key, os.path.expandvars(value)) for
+                key, value in settings.items())
+
+
+def main(global_config, **settings):
+    settings = expandvars_dict(settings)
+    config = Configurator(settings=settings)
+    config.scan(app.data)
+    config.include(pyramid_chameleon)
+    config.include(app.data)
+    config.include(app.web)
+
+    return config.make_wsgi_app()
