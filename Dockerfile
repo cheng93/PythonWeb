@@ -4,8 +4,8 @@ WORKDIR /app
 
 ADD . /app
 
-RUN pip install -r requirements.txt
+RUN pip install -e .
 
 EXPOSE 80
 
-CMD ["python", "run.py"]
+CMD ["pserve", "production.ini"]
