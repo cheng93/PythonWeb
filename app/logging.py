@@ -1,7 +1,6 @@
 import structlog
 from structlog.processors import JSONRenderer
-from structlog.stdlib import add_log_level
-from structlog.threadlocal import wrap_dict
+from structlog.stdlib import add_log_level, LoggerFactory
 
 
 class __SafeDict(dict):
@@ -20,11 +19,26 @@ structlog.configure(
             __populate_template,
             JSONRenderer(indent=2)
         ],
-        context_class=wrap_dict(dict))
+        context_class=dict,
+        logger_factory=LoggerFactory())
+
+
+def logger_factory(request):
+    logger = structlog.get_logger()
+    logger.bind(
+        http_user_agent=request.headers.environ['HTTP_USER_AGENT'],
+        server_protocol=request.environ['SERVER_PROTOCOL'],
+        request_method=request.method,
+        request_url=request.url,
+        request_host=request.host,
+        request_path=request.path,
+        request_query_string=request.query_string,
+        referer=request.referer)
+    return logger
 
 
 def includeme(config):
     config.add_request_method(
-        lambda r: structlog.get_logger(),
+        logger_factory,
         'logger',
         reify=True)
