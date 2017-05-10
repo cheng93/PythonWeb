@@ -1,21 +1,17 @@
 import structlog
 from structlog.processors import JSONRenderer
+from structlog.threadlocal import wrap_dict
 
 
-logger = structlog.get_logger()
-
-
-def get_logger():
-    return structlog.wrap_logger(
-        logger,
+structlog.configure(
         processors=[
             JSONRenderer(indent=2)
-        ]
-    )
+        ],
+        context_class=wrap_dict(dict))
 
 
 def includeme(config):
     config.add_request_method(
-        lambda r: get_logger(),
+        lambda r: structlog.get_logger(),
         'logger',
         reify=True)
