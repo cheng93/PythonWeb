@@ -1,5 +1,6 @@
 from timeit import default_timer
 
+MESSAGE_TEMPLATE = 'HTTP {request_method} {request_path} responded {status_code} in {elapsed} ms'
 
 class logging_tween_factory(object):
     def __init__(self, handler, registry):
@@ -7,12 +8,27 @@ class logging_tween_factory(object):
         self.registry = registry
 
     def __call__(self, request):
+        request.logger.bind(
+            template=MESSAGE_TEMPLATE,
+            request_method=request.method,
+            http_user_agent=request.headers.environ['HTTP_USER_AGENT'],
+            request_url=request.url,
+            request_host=request.host,
+            request_path=request.path,
+            request_query_string=request.query_string,
+            server_protocol=request.environ['SERVER_PROTOCOL'])
+
         start_time = default_timer()
 
         response = self.handler(request)
 
         end_time = 1000*(default_timer() - start_time)
 
-        request.logger.log(f"{end_time}ms")
+        request.logger.bind(
+            elapsed='{:.4f}'.format(end_time),
+            status_code=response.status_int,
+            content_type=response.content_type)
+
+        request.logger.info(MESSAGE_TEMPLATE)
 
         return response
