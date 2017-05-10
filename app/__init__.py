@@ -1,4 +1,5 @@
 import app.data
+import app.logging
 import app.web
 
 import os
@@ -18,6 +19,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.scan(app.data)
     config.include(pyramid_chameleon)
+    config.include(app.logging)
     config.include(app.data)
     config.include(app.web)
 
