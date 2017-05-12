@@ -1,7 +1,5 @@
 from timeit import default_timer
 
-from traceback import format_exception
-
 MESSAGE_TEMPLATE = 'HTTP {request_method} {request_path} responded {status_code} in {elapsed} ms'
 
 class logging_tween_factory(object):
@@ -35,10 +33,9 @@ class logging_tween_factory(object):
             matched_route_pattern=request.matched_route.pattern if request.matched_route is not None else None)
 
         if request.exception:
-            etype, value, tb = request.exc_info
             logger.error(
                 MESSAGE_TEMPLATE,
-                exc_info=format_exception(etype, value, tb))
+                exc_info=request.exc_info)
         else:
             logger.info(MESSAGE_TEMPLATE)
 

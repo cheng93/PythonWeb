@@ -1,5 +1,5 @@
 import structlog
-from structlog.processors import JSONRenderer
+from structlog.processors import JSONRenderer, format_exc_info
 from structlog.stdlib import add_log_level, LoggerFactory
 
 
@@ -16,6 +16,7 @@ def __populate_template(_, __, event_dict):
 structlog.configure(
     processors=[
         add_log_level,
+        format_exc_info,
         __populate_template,
         JSONRenderer(indent=2)
     ],
