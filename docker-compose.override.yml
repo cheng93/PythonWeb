@@ -3,7 +3,8 @@ services:
   web:
     build: .
     volumes: 
-      - /src
+      - web:/src
+      - log:/var/log/python-web
     ports:
       - "8000:80"
     environment:
@@ -29,3 +30,15 @@ services:
   kibana:
     ports:
       - "5602:5601"
+  logstash:
+    volumes:
+      - "./logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
+      - log:/var/log/python-web
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USER=elastic
+      - ELASTICSEARCH_PASSWORD=changeme
+
+volumes:
+  web:
+  log:

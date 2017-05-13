@@ -46,6 +46,13 @@ services:
         constraints: [node.role == manager]
     networks:
       - webnet
+  logstash:
+    image: docker.elastic.co/logstash/logstash:5.4.0
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
 networks:
   webnet:
 
