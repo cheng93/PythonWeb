@@ -2,6 +2,9 @@ version: "3"
 services:
   web:
     image: cheng93/python-web:latest
+    volumes:
+      - web:/app
+      - log:/var/log/python-web
     deploy:
       replicas: 3
       resources:
@@ -10,6 +13,8 @@ services:
           memory: 50M
       restart_policy:
         condition: on-failure
+    environment:
+      LOGGING_DIRECTORY: "/var/log/python-web/"
     networks:
       - webnet
   visualizer:
@@ -39,6 +44,9 @@ services:
         hard: -1
     networks:
       - webnet
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
   kibana:
     image: docker.elastic.co/kibana/kibana:5.4.0
     deploy:
@@ -48,11 +56,18 @@ services:
       - webnet
   logstash:
     image: docker.elastic.co/logstash/logstash:5.4.0
+    volumes:
+      - web:/app
+      - log:/var/log/python-web
     deploy:
       placement:
         constraints: [node.role == manager]
     networks:
       - webnet
+    environment:
+      - path.config=/app/logstash.conf
 networks:
   webnet:
-
+volumes:
+  web:
+  log:

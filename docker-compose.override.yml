@@ -2,15 +2,11 @@ version: "3"
 services:
   web:
     build: .
-    volumes: 
-      - web:/app
-      - log:/var/log/python-web
     ports:
       - "8000:80"
     environment:
       DEBUG: "true"
       DVDRENTAL_CONNECTION_STRING: "postgresql://postgres@postgres:5432/dvdrental"
-      LOGGING_DIRECTORY: "/var/log/python-web/"
   visualizer:
     ports:
       - "8080:8080"
@@ -24,23 +20,12 @@ services:
       - "9200"
     volumes:
       - "~/.code/python-web/data/elasticsearch:/usr/share/elasticsearch/data"
-    environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
   kibana:
     ports:
       - "5602:5601"
   logstash:
-    volumes:
-      - web:/app
-      - log:/var/log/python-web
     environment:
       - ELASTICSEARCH_URL=elasticsearch:9200
       - ELASTICSEARCH_USER=elastic
       - ELASTICSEARCH_PASSWORD=changeme
       - xpack.monitoring.elasticsearch.username=elastic
-      - path.config=/app/logstash.conf
-
-volumes:
-  web:
-  log:
