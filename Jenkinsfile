@@ -36,7 +36,7 @@ pipeline {
           def env_path
           if (env.BRANCH_NAME == 'develop') {
             env_name = 'dev'
-            env_path = env.PYTHON_WEB_ENV_PATH_UAT
+            env_path = env.PYTHON_WEB_ENV_PATH_DEV
           }
           sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
           sh "mv deploy.yml ${env_path}"
