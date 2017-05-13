@@ -3,7 +3,7 @@ services:
   web:
     build: .
     volumes: 
-      - web:/src
+      - web:/app
       - log:/var/log/python-web
     ports:
       - "8000:80"
@@ -32,12 +32,14 @@ services:
       - "5602:5601"
   logstash:
     volumes:
-      - "./logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
+      - web:/app
       - log:/var/log/python-web
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=elasticsearch:9200
       - ELASTICSEARCH_USER=elastic
       - ELASTICSEARCH_PASSWORD=changeme
+      - xpack.monitoring.elasticsearch.username=elastic
+      - path.config=/app/logstash.conf
 
 volumes:
   web:
