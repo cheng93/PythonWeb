@@ -7,6 +7,7 @@ services:
     environment:
       DEBUG: "true"
       DVDRENTAL_CONNECTION_STRING: "postgresql://postgres@postgres:5432/dvdrental"
+      LOGGING_DIRECTORY: "/var/log/python-web/"
   visualizer:
     ports:
       - "8081:8080"

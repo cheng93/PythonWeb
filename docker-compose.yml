@@ -13,7 +13,7 @@ services:
     networks:
       - webnet
   visualizer:
-    image: dockersamples/visualizer:stable
+    image: dockersamples/visualizer:latest
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     deploy:
@@ -22,7 +22,25 @@ services:
     networks:
       - webnet
   postgres:
-    image: postgres:latest
+    image: postgres:9.6.2
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - webnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.4.0
     deploy:
       placement:
         constraints: [node.role == manager]
