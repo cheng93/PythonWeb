@@ -18,7 +18,7 @@ def __populate_template(_, __, event_dict):
     return event_dict
 
 
-def logger_factory(directory):
+def logger_factory(request, directory):
     fullpath = path.join(directory, f'{date.today()}.log')
     file = open(fullpath, mode='a')
     logger = wrap_logger(
@@ -32,11 +32,12 @@ def logger_factory(directory):
         ],
         context_class=dict
     )
+    logger = logger.bind(request_id=str(request.id))
     return logger
 
 
 def includeme(config):
     config.add_request_method(
-        lambda r: logger_factory(config.get_settings()['logging.directory']),
+        lambda r: logger_factory(r, config.get_settings()['logging.directory']),
         'logger',
         reify=True)
