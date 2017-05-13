@@ -1,7 +1,5 @@
 from timeit import default_timer
 
-from traceback import format_exception
-
 MESSAGE_TEMPLATE = 'HTTP {request_method} {request_path} responded {status_code} in {elapsed} ms'
 
 class logging_tween_factory(object):
@@ -23,23 +21,25 @@ class logging_tween_factory(object):
             referer=request.referer)
         start_time = default_timer()
 
-        response = self.handler(request)
+        try:
+            response = self.handler(request)
+        finally:
+            end_time = 1000*(default_timer() - start_time)
 
-        end_time = 1000*(default_timer() - start_time)
+            logger = logger.bind(
+                elapsed='{:.4f}'.format(end_time),
+                matched_route_name=request.matched_route.name if request.matched_route is not None else None,
+                matched_route_pattern=request.matched_route.pattern if request.matched_route is not None else None)
 
-        logger = logger.bind(
-            elapsed='{:.4f}'.format(end_time),
-            status_code=response.status_int,
-            content_type=response.content_type,
-            matched_route_name=request.matched_route.name if request.matched_route is not None else None,
-            matched_route_pattern=request.matched_route.pattern if request.matched_route is not None else None)
-
-        if request.exception:
-            etype, value, tb = request.exc_info
-            logger.error(
-                MESSAGE_TEMPLATE,
-                exc_info=format_exception(etype, value, tb))
-        else:
-            logger.info(MESSAGE_TEMPLATE)
+            if request.exception:
+                logger.error(
+                    MESSAGE_TEMPLATE,
+                    exc_info=request.exc_info,
+                    status_code=500)
+            else:
+                logger.info(
+                    MESSAGE_TEMPLATE,
+                    status_code=response.status_int,
+                    content_type=response.content_type)
 
         return response

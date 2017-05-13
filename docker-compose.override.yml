@@ -2,8 +2,6 @@ version: "3"
 services:
   web:
     build: .
-    volumes: 
-      - /src
     ports:
       - "8000:80"
     environment:
@@ -17,3 +15,17 @@ services:
       - "2345:5432"
     volumes:
       - "~/.code/python-web/data/postgres:/var/lib/postgresql/data"
+  elasticsearch:
+    ports:
+      - "9200"
+    volumes:
+      - "~/.code/python-web/data/elasticsearch:/usr/share/elasticsearch/data"
+  kibana:
+    ports:
+      - "5602:5601"
+  logstash:
+    environment:
+      - ELASTICSEARCH_URL=elasticsearch:9200
+      - ELASTICSEARCH_USER=elastic
+      - ELASTICSEARCH_PASSWORD=changeme
+      - xpack.monitoring.elasticsearch.username=elastic
