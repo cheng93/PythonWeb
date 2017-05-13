@@ -18,3 +18,14 @@ services:
       - "2345:5432"
     volumes:
       - "~/.code/python-web/data/postgres:/var/lib/postgresql/data"
+  elasticsearch:
+    ports:
+      - "9200"
+    volumes:
+      - "~/.code/python-web/data/elasticsearch:/usr/share/elasticsearch/data"
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+  kibana:
+    ports:
+      - "5602:5601"
