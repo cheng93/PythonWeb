@@ -25,7 +25,7 @@ def logger_factory(directory):
         PrintLogger(file=file),
         processors=[
             add_log_level,
-            TimeStamper(fmt='iso'),
+            TimeStamper(fmt='%s'),
             format_exc_info,
             __populate_template,
             JSONRenderer()
