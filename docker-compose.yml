@@ -45,8 +45,8 @@ services:
     networks:
       - webnet
     environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
+      cluster.name: "docker-cluster"
+      bootstrap.memory_lock: "true"
   kibana:
     image: docker.elastic.co/kibana/kibana:5.4.0
     deploy:
@@ -65,7 +65,7 @@ services:
     networks:
       - webnet
     environment:
-      - path.config=/app/logstash.conf
+      path.config: "/app/logstash.conf"
 networks:
   webnet:
 volumes:

@@ -25,7 +25,7 @@ services:
       - "5602:5601"
   logstash:
     environment:
-      - ELASTICSEARCH_URL=elasticsearch:9200
-      - ELASTICSEARCH_USER=elastic
-      - ELASTICSEARCH_PASSWORD=changeme
-      - xpack.monitoring.elasticsearch.username=elastic
+      ELASTICSEARCH_URL: "elasticsearch:9200"
+      ELASTICSEARCH_USER: "elastic"
+      ELASTICSEARCH_PASSWORD: "changeme"
+      xpack.monitoring.elasticsearch.username: "elastic"
