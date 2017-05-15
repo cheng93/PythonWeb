@@ -21,13 +21,14 @@ services:
     volumes:
       - "./data/elasticsearch:/usr/share/elasticsearch/data"
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ES_JAVA_OPTS: "Xms512m -Xmx512m"
+      bootstrap.memory_lock: "false"
   kibana:
     ports:
       - "5602:5601"
   logstash:
     environment:
-      - ELASTICSEARCH_URL=elasticsearch:9200
-      - ELASTICSEARCH_USER=elastic
-      - ELASTICSEARCH_PASSWORD=changeme
-      - xpack.monitoring.elasticsearch.username=elastic
+      ELASTICSEARCH_URL: "elasticsearch:9200"
+      ELASTICSEARCH_USER: "elastic"
+      ELASTICSEARCH_PASSWORD: "changeme"
+      xpack.monitoring.elasticsearch.username: "elastic"
