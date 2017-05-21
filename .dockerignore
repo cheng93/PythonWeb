@@ -1,0 +1,9 @@
+.git
+*.egg-info/
+node_modules/
+
+.cache
+.vscode
+.idea
+
+.gitignore
