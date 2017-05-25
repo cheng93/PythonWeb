@@ -1,6 +1,7 @@
 .git
 *.egg-info/
 node_modules/
+webpack/
 
 .cache
 .vscode
