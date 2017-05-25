@@ -1,18 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
 
-var root = './app/web/assets/';
+var root = './app/web/';
+var assets = root + './assets/';
+var static = root + './static/';
+
 var exclusionRegex = [/node_modules/];
 
 module.exports = {
   entry: {
-    'vendor': root + 'vendor.js',
-    'app': root + 'main.jsx'
+    'vendor': assets + 'vendor.js',
+    'app': assets + 'main.jsx'
   },
 
   output: {
-    path: path.resolve(__dirname, '../static/'),
-    filename: './js/[name].js'
+    path: path.resolve(__dirname, '../' + static),
+    filename: './[name].js'
   },
 
   resolve: {
