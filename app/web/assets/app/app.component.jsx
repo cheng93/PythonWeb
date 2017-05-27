@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import { createBrowserHistory } from 'history';
 
-//import { appReducers } from './app.reducers';
+import { appReducers } from './app.reducers';
 import { AppRouter } from './app.router';
 
 
@@ -19,7 +19,7 @@ export function App() {
   });
 
   let store = createStore(
-    //appReducers,
+    appReducers,
     applyMiddleware(
       thunkMiddleware,
       routerMiddleware(history)
