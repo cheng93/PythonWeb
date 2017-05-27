@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { ConnectedRouter } from 'react-router-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import { App } from './app.component';
+import { Home } from '../home/home.component';
 
 
-export function AppRouter() {
+export function AppRouter(props) {
   return (
-    <div>
-      <Route exact path="/" component={App} />
-    </div>
+    <ConnectedRouter history={props.history}>
+      <Route exact path="/" component={Home}/>
+    </ConnectedRouter>
   );
 }
