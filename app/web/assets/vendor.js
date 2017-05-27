@@ -6,3 +6,5 @@ import 'react-router-dom';
 import 'react-router-redux';
 import 'redux-thunk';
 import 'history';
+
+import 'axios';
