@@ -8,3 +8,6 @@ import 'redux-thunk';
 import 'history';
 
 import 'axios';
+
+import 'react-toolbox/lib/layout';
+import 'react-toolbox/lib/progress_bar';
