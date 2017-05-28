@@ -5,14 +5,16 @@ import {
 
 const DEFAULT_STATE = {
     isLoading: false,
-    items: []
+    items: [],
+    loadingValue: 0
 };
 
 export function FilmsTableReducer(state = DEFAULT_STATE, action) {
     switch(action.type) {
         case FILMS_TABLE_LOADING:
             return Object.assign({}, state, {
-                isLoading: true
+                isLoading: true,
+                loadingValue: action.progress
             });
         case FILMS_TABLE_RECEIVED:
             return Object.assign({}, state, {
