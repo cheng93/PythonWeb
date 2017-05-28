@@ -29,7 +29,7 @@ export function fetchFilmsTable() {
             }
         };
         dispatch(loadingFilmsTable(0));
-        return axios.get(endpoint)
+        return axios.get(endpoint, config)
             .then(films => dispatch(receivedFilmsTable(films.data)));
     };
 }
