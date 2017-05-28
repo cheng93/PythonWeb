@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var root = './app/web/';
 var assets = root + './assets/';
@@ -19,7 +20,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css']
   },
 
   module: {
@@ -28,6 +29,27 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
         exclude: exclusionRegex
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  config: {
+                    path: path.resolve(__dirname, './postcss.config.js'),
+                  }
+                }
+              }
+            ]
+        })
       }
     ]
   },
@@ -37,6 +59,9 @@ module.exports = {
       names: ['vendor'],
       chunks: ['app', 'vendor'],
       minChunks: Infinity
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css'
     })
   ]
 };
