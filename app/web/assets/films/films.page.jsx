@@ -40,7 +40,7 @@ export class FilmsPage extends Component {
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         { this.props.isLoading
                             ? <Loading value={this.props.loadingValue} />
-                            : 'Loaded'
+                            : <FilmsTable films={this.props.films} />
                         }
                     </div>
                 </Panel>
