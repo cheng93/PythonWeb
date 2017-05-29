@@ -10,6 +10,7 @@
     <div class="container body-content">
         <div id="app"></div>
     </div>
+    <script src="${request.static_url('app.web:static/polyfill.js')}"></script>
     <script src="${request.static_url('app.web:static/vendor.js')}"></script>
     <script src="${request.static_url('app.web:static/app.js')}"></script>
 </body>

@@ -9,6 +9,10 @@ module.exports = webpackMerge(commonConfig, {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: true,
+      sourceMap: true
     })
   ]
 });
