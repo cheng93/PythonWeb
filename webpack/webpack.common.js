@@ -10,6 +10,7 @@ var exclusionRegex = [/node_modules/];
 
 module.exports = {
   entry: {
+    'polyfill': assets + 'polyfill.js',
     'vendor': assets + 'vendor.js',
     'app': assets + 'main.jsx'
   },
