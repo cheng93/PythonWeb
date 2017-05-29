@@ -3,10 +3,17 @@
 node_modules/
 webpack/
 
+app/web/assets
+
 .cache
 .vscode
 .idea
 
 .gitignore
 
+.babelrc
+Jenkinsfile
+jsconfig.json
+logstash.conf
 package.json
+webpack.config.js
