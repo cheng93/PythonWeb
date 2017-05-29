@@ -7,7 +7,7 @@ class GetFilmModel:
         self.title = film.title
         self.description = film.description
         self.release_year = film.release_year
-        self.language_id = film.language.name
+        self.language = film.language.name
         self.rental_duration = film.rental_duration
         self.rental_rate = float(film.rental_rate)
         self.length = film.length
@@ -21,7 +21,7 @@ class GetFilmsModel:
         self.film_id = film.film_id
         self.title = film.title
         self.release_year = film.release_year
-        self.language_id = film.language.name
+        self.language = film.language.name
         self.length = film.length
         self.rating = film.rating
 

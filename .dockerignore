@@ -1,0 +1,12 @@
+.git
+*.egg-info/
+node_modules/
+webpack/
+
+.cache
+.vscode
+.idea
+
+.gitignore
+
+package.json
