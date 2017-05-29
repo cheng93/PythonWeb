@@ -3,7 +3,6 @@ services:
   web:
     image: cheng93/python-web:latest
     volumes:
-      - web:/app
       - log:/var/log/python-web
     deploy:
       replicas: 3
@@ -57,7 +56,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:5.4.0
     volumes:
-      - web:/app
+      - ./:/app
       - log:/var/log/python-web
     deploy:
       placement:
@@ -69,5 +68,4 @@ services:
 networks:
   webnet:
 volumes:
-  web:
   log:
