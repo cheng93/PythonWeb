@@ -14,6 +14,8 @@ pipeline {
       }
       steps {
         script {
+          sh "npm install"
+          sh "npm run build"
           def tag
           if (env.BRANCH_NAME == 'develop') {
             tag = 'dev'
@@ -41,6 +43,8 @@ pipeline {
           sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
           sh "mv deploy.yml ${env_path}"
           dir(env_path) {
+            sh "docker stack rm python-web-${env_name}"
+            sh "docker volume rm python-web-${env_name}_web python-web-${env_name}_log"
             sh "docker stack deploy -c deploy.yml python-web-${env_name}"
           }
         }
