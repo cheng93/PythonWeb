@@ -18,6 +18,10 @@ export function receivedFilmsTable(films) {
     };
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export function fetchFilmsTable() {
     const endpoint = 'api/films';
 
@@ -29,7 +33,10 @@ export function fetchFilmsTable() {
             }
         };
         dispatch(loadingFilmsTable(0));
-        return axios.get(endpoint)
-            .then(films => dispatch(receivedFilmsTable(films.data)));
+        return axios.get(endpoint, config)
+            .then(async films => {
+                await sleep(1000);
+                dispatch(receivedFilmsTable(films.data))
+            });
     };
 }
