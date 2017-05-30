@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 pipeline {
   agent any
   stages {
@@ -7,11 +8,6 @@ pipeline {
       }
     }
     stage('Package') {
-      when {
-        expression {
-          return env.BRANCH_NAME == 'develop'
-        }
-      }
       steps {
         script {
           sh "npm install"
@@ -21,17 +17,15 @@ pipeline {
             tag = 'dev'
           }
           docker.withRegistry(env.DOCKER_REGISTRY, 'docker-credentials') {
-            docker.build('cheng93/python-web').push(tag)
+            def container = docker.build('cheng93/python-web')
+            if (tag != null) {
+              container.push(tag)
+            }
           }
         }
       }
     }
     stage('Deploy') {
-      when {
-        expression {
-          return env.BRANCH_NAME == 'develop'
-        }
-      }
       steps {
         script {
           def env_name
@@ -40,11 +34,13 @@ pipeline {
             env_name = 'dev'
             env_path = env.PYTHON_WEB_ENV_PATH_DEV
           }
-          sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
-          sh "mv deploy.yml ${env_path}"
-          sh "cp logstash.conf ${env_path}"
-          dir(env_path) {
-            sh "docker stack deploy -c deploy.yml python-web-${env_name}"
+          if (env_name != null) {
+            sh "merge-yaml -i docker-compose.yml docker-compose.${env_name}.yml -o deploy.yml"
+            sh "mv deploy.yml ${env_path}"
+            sh "cp logstash.conf ${env_path}"
+            dir(env_path) {
+              sh "docker stack deploy -c deploy.yml python-web-${env_name}"
+            }
           }
         }
       }
