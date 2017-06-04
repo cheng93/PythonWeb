@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-import { Card, CardTitle, CardText } from 'react-toolbox/lib/card';
-
+import { CardComponent } from '../../common/components/card.component';
 
 export class FilmCards extends Component {
     constructor(props) {
@@ -11,18 +10,28 @@ export class FilmCards extends Component {
     cards() {
         return this.props.films
             .map(film => {
+                let supportingText = (
+                    <div>
+                        {`${film.length} minutes`}<br />
+                        {film.rating}<br />
+                        {film.language}
+                    </div>
+                );
+
                 return (
-                    <Card key={film.film_id} raised={true}>
-                        <CardTitle title={film.title} />
-                        <CardText>{film.release_year}</CardText>
-                    </Card>
+                    <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
+                        <CardComponent key={film.film_id}
+                            title={film.title}
+                            subtitle={film.release_year}
+                            supportingText={supportingText} />
+                    </div>
                 )
             });
     }
 
     render() {
-        return(
-            <div>
+        return (
+            <div className='mdc-layout-grid'>
                 {this.cards()}
             </div>
         );
