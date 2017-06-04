@@ -11,4 +11,5 @@ import 'axios';
 
 import 'react-toolbox/lib/layout';
 import 'react-toolbox/lib/progress_bar';
+import 'react-toolbox/lib/card';
 import 'react-toolbox/lib/table';
