@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@material/card": "^0.2.2",
+    "@material/layout-grid": "^0.1.2",
     "axios": "^0.16.1",
     "babel-polyfill": "^6.23.0",
     "history": "^4.6.1",
