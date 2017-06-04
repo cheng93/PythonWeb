@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { CardComponent } from '../../common/components/card.component';
 
 export class FilmCards extends Component {
     constructor(props) {
@@ -9,16 +10,25 @@ export class FilmCards extends Component {
     cards() {
         return this.props.films
             .map(film => {
-                return (
-                    <div key={film.film_id}>
-                        {film.title}
+                let supportingText = (
+                    <div>
+                        {`${film.length} minutes`}<br />
+                        {film.rating}<br />
+                        {film.language}
                     </div>
+                );
+
+                return (
+                    <CardComponent key={film.film_id}
+                        title={film.title}
+                        subtitle={film.release_year}
+                        supportingText={supportingText} />
                 )
             });
     }
 
     render() {
-        return(
+        return (
             <div>
                 {this.cards()}
             </div>
