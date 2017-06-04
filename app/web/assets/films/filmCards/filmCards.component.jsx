@@ -19,17 +19,19 @@ export class FilmCards extends Component {
                 );
 
                 return (
-                    <CardComponent key={film.film_id}
-                        title={film.title}
-                        subtitle={film.release_year}
-                        supportingText={supportingText} />
+                    <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
+                        <CardComponent key={film.film_id}
+                            title={film.title}
+                            subtitle={film.release_year}
+                            supportingText={supportingText} />
+                    </div>
                 )
             });
     }
 
     render() {
         return (
-            <div>
+            <div className='mdc-layout-grid'>
                 {this.cards()}
             </div>
         );
