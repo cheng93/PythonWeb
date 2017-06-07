@@ -19,8 +19,8 @@ export class FilmCards extends Component {
                 );
 
                 return (
-                    <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
-                        <Card key={film.film_id}>
+                    <div key={film.film_id} className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
+                        <Card>
                             <CardTitle title={film.title}
                                 subtitle={film.release_year} />
                             <CardText>{supportingText}</CardText>
