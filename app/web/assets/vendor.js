@@ -9,6 +9,5 @@ import 'history';
 
 import 'axios';
 
-import 'react-toolbox/lib/layout';
-import 'react-toolbox/lib/progress_bar';
-import 'react-toolbox/lib/table';
+import '@material/card/dist/mdc.card.css';
+import '@material/layout-grid/dist/mdc.layout-grid.css';

@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Layout, Panel } from 'react-toolbox/lib/layout';
-
-import { Loading } from '../common/loading.component';
-
-import { fetchFilmsTable } from './filmsTable/filmsTable.actions';
-import { FilmsTable } from './filmsTable/filmsTable.component';
+import { fetchFilmCards } from './filmCards/filmCards.actions';
+import { FilmCards } from './filmCards/filmCards.component';
 
 
 function mapStateToProps(state) {
     return {
-        films: state.FilmsTableReducer.items,
-        isLoading: state.FilmsTableReducer.isLoading,
-        loadingValue: state.FilmsTableReducer.loadingValue
+        films: state.FilmCardsReducer.items,
+        isLoading: state.FilmCardsReducer.isLoading,
+        loadingValue: state.FilmCardsReducer.loadingValue
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onLoad: () => dispatch(fetchFilmsTable())
+        onLoad: () => dispatch(fetchFilmCards())
     }
 }
 
@@ -35,16 +31,9 @@ export class FilmsPage extends Component {
 
     render() {
         return (
-            <Layout>
-                <Panel>
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        { this.props.isLoading
-                            ? <Loading value={this.props.loadingValue} />
-                            : <FilmsTable films={this.props.films} />
-                        }
-                    </div>
-                </Panel>
-            </Layout>
+            <div>
+                <FilmCards films={this.props.films} />
+            </div>
         );
     }
 }

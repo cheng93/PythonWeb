@@ -36,18 +36,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [
               {
-                loader: 'css-loader',
-                options: {
-                  modules: true
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  config: {
-                    path: path.resolve(__dirname, './postcss.config.js'),
-                  }
-                }
+                loader: 'css-loader'
               }
             ]
         })
