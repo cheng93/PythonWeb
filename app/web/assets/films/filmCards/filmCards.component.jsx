@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { CardComponent } from '../../common/components/card.component';
+import { Card, CardTitle, CardText } from '../../common/components/card';
 
 export class FilmCards extends Component {
     constructor(props) {
@@ -20,10 +20,11 @@ export class FilmCards extends Component {
 
                 return (
                     <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
-                        <CardComponent key={film.film_id}
-                            title={film.title}
-                            subtitle={film.release_year}
-                            supportingText={supportingText} />
+                        <Card key={film.film_id}>
+                            <CardTitle title={film.title}
+                                subtitle={film.release_year} />
+                            <CardText>{supportingText}</CardText>
+                        </Card>
                     </div>
                 )
             });
