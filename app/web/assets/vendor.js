@@ -11,3 +11,4 @@ import 'axios';
 
 import '@material/card/dist/mdc.card.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
+import '@material/toolbar/dist/mdc.toolbar.css';
