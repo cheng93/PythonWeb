@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Page } from '../common/components/page';
+
 import { fetchFilmCards } from './filmCards/filmCards.actions';
 import { FilmCards } from './filmCards/filmCards.component';
 
@@ -29,11 +31,15 @@ export class FilmsPage extends Component {
         this.props.onLoad();
     }
 
+    body() {
+        return (
+            <FilmCards films={this.props.films} />
+        );
+    }
+
     render() {
         return (
-            <div>
-                <FilmCards films={this.props.films} />
-            </div>
+            <Page body={this.body()} />
         );
     }
 }
