@@ -8,7 +8,8 @@ requires = [
     'pyramid_tm',
     'zope.sqlalchemy',
     'psycopg2',
-    'structlog'
+    'structlog',
+    'alembic'
 ]
 
 setup(name='app',
