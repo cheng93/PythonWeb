@@ -23,8 +23,7 @@ def upgrade():
 
 
 def downgrade():
-    if context.get_x_argument(as_dictionary=True).get('seed', None):
-        data_downgrades()
+    data_downgrades()
     schema_downgrades()
 
 
