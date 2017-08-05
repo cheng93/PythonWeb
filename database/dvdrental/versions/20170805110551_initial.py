@@ -1,22 +1,34 @@
-"""Initial
+"""initial
 
-Revision ID: cd83d9596dce
-Revises:
-Create Date: 2017-08-05 02:14:51.952541
+Revision ID: b6f53822bbd6
+Revises: 
+Create Date: 2017-08-05 11:05:51.340398
 
 """
-from alembic import op
+from alembic import op, context
 import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'cd83d9596dce'
+revision = 'b6f53822bbd6'
 down_revision = None
 branch_labels = None
 depends_on = None
 
 
 def upgrade():
+    schema_upgrades()
+    if context.get_x_argument(as_dictionary=True).get('seed', None):
+        data_upgrades()
+
+
+def downgrade():
+    if context.get_x_argument(as_dictionary=True).get('seed', None):
+        data_downgrades()
+    schema_downgrades()
+
+
+def schema_upgrades():
     op.execute("""
             create sequence customer_customer_id_seq
             ;
@@ -505,7 +517,7 @@ def upgrade():
         """)
 
 
-def downgrade():
+def schema_downgrades():
     op.execute("""
             DROP INDEX idx_unq_manager_staff_id;
 
@@ -620,3 +632,13 @@ def downgrade():
 
             DROP SEQUENCE customer_customer_id_seq;
         """)
+
+
+def data_upgrades():
+    """Add any optional data upgrade migrations here!"""
+    pass
+
+
+def data_downgrades():
+    """Add any optional data downgrade migrations here!"""
+    pass
