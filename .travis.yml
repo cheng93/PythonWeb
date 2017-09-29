@@ -15,5 +15,6 @@ script:
   - npm run build
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" https://registry.hub.docker.com;
+    docker tag python-web cheng93/pyton-web:$TRAVIS_BRANCH;
     docker push cheng93/python-web:$TRAVIS_BRANCH;
