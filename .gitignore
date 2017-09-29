@@ -94,3 +94,6 @@ ENV/
 # editors
 .vscode
 .idea
+
+# data stores
+.data
