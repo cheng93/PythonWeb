@@ -1,4 +1,6 @@
 language: python
+notifications: false
+
 
 install:
   - npm install
