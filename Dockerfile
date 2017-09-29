@@ -5,7 +5,6 @@ WORKDIR /app
 ADD . /app
 
 RUN pip install -e .
-RUN mkdir /var/log/python-web/
 
 EXPOSE 80
 
