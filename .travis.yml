@@ -17,7 +17,7 @@ script:
 after_success:
   - docker build -t python-web .
   - if [ "$TRAVIS_BRANCH" == "feature/travis" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" https://registry.hub.docker.com;
-    docker tag python-web cheng93/python-web:test;
-    docker push cheng93/python-web:test;
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY
+    docker tag python-web $DOCKER_REPO/python-web:test;
+    docker push $DOCKER_REPO/python-web:test;
     fi
