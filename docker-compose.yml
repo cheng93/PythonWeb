@@ -1,31 +1,5 @@
 version: "3"
 services:
-  web:
-    image: cheng93/python-web:latest
-    deploy:
-      replicas: 3
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-      restart_policy:
-        condition: on-failure
-    environment:
-      DEBUG: "true"
-      DVDRENTAL_CONNECTION_STRING: "postgresql://postgres@postgres:5432/dvdrental"
-    networks:
-      - webnet
-  visualizer:
-    image: dockersamples/visualizer:latest
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - webnet
-    ports:
-      - "8080:8080"
   postgres:
     image: postgres:9.6.2
     deploy:
@@ -34,9 +8,9 @@ services:
     networks:
       - webnet
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
-      - "./data/postgres:/var/lib/postgresql/data"
+      - "./.data/postgres:/var/lib/postgresql/data"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
     deploy:
@@ -54,7 +28,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - "./data/elasticsearch:/usr/share/elasticsearch/data"
+      - "./.data/elasticsearch:/usr/share/elasticsearch/data"
   kibana:
     image: docker.elastic.co/kibana/kibana:5.4.0
     deploy:
@@ -64,23 +38,21 @@ services:
       - webnet
     ports:
       - "5602:5601"
-  logstash:
-    image: docker.elastic.co/logstash/logstash:5.4.0
-    volumes:
-      - ./:/app
-      - log:/var/log/python-web
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - webnet
-    environment:
-      path.config: "/app/logstash.conf"
-      ELASTICSEARCH_URL: "elasticsearch:9200"
-      ELASTICSEARCH_USER: "elastic"
-      ELASTICSEARCH_PASSWORD: "changeme"
-      xpack.monitoring.elasticsearch.username: "elastic"
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:5.4.0
+  #   volumes:
+  #     - ./:/app
+  #     - log:/var/log/python-web
+  #   deploy:
+  #     placement:
+  #       constraints: [node.role == manager]
+  #   networks:
+  #     - webnet
+  #   environment:
+  #     path.config: "/app/logstash.conf"
+  #     ELASTICSEARCH_URL: "elasticsearch:9200"
+  #     ELASTICSEARCH_USER: "elastic"
+  #     ELASTICSEARCH_PASSWORD: "changeme"
+  #     xpack.monitoring.elasticsearch.username: "elastic"
 networks:
   webnet:
-volumes:
-  log:
