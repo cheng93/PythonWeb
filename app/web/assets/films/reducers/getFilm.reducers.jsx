@@ -1,25 +1,22 @@
-import {
-    FILM_CARDS_LOADING,
-    FILM_CARDS_RECEIVED
-} from './filmCards.actions';
+import { GET_FILM_LOADING, GET_FILM_RECEIVED } from '../actions/getFilm.actions';
 
 const DEFAULT_STATE = {
     isLoading: false,
-    items: [],
+    item: {},
     loadingValue: 0
 };
 
-export function FilmCardsReducer(state = DEFAULT_STATE, action) {
+export function GetFilmReducer(state = DEFAULT_STATE, action) {
     switch(action.type) {
-        case FILM_CARDS_LOADING:
+        case GET_FILM_LOADING:
             return Object.assign({}, state, {
                 isLoading: true,
                 loadingValue: action.progress
             });
-        case FILM_CARDS_RECEIVED:
+        case GET_FILM_RECEIVED:
             return Object.assign({}, state, {
                 isLoading: false,
-                items: action.films
+                item: action.film
             });
         default:
             return state;

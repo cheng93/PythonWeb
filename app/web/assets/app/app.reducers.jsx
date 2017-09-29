@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { FilmCardsReducer } from '../films/filmCards/filmCards.reducer';
+import { FilmReducer, FilmListReducer } from '../films/reducers';
 
 export const appReducers = combineReducers({
-    FilmCardsReducer
+    FilmReducer,
+    FilmListReducer
 });
