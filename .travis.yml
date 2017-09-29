@@ -1,18 +1,21 @@
 language: python
+python:
+  - "3.6"
+
 notifications: false
 sudo: required
 
 services:
   - docker
 
-before_install:
-  - docker build -t python-web .
-
 install:
   - npm install
 
 script:
   - npm run build
+
+after_script:
+  - docker build -t python-web .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "feature/travis" ]; then
