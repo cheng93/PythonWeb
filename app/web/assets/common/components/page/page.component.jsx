@@ -9,7 +9,7 @@ export class PageComponent extends Component {
     }
 
     render() {
-        const { body, title } = this.props;
+        const { children, title } = this.props;
 
         let toolbarTitle = title ? title : "DvdRental";
         
@@ -23,7 +23,7 @@ export class PageComponent extends Component {
                     </ToolbarRow>
                 </Toolbar>
                 <main className="mdc-toolbar-fixed-adjust">
-                    {body}
+                    {children}
                 </main>
             </div>
         );

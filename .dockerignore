@@ -1,6 +1,8 @@
 .git
 *.egg-info/
+database/
 node_modules/
+python_modules/
 webpack/
 
 app/web/assets
@@ -12,6 +14,7 @@ app/web/assets
 .gitignore
 
 .babelrc
+alembic.ini
 Jenkinsfile
 jsconfig.json
 logstash.conf

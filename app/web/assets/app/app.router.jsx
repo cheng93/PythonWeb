@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ConnectedRouter } from 'react-router-redux'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import { FilmsPage } from '../films/films.page';
+import { FilmList, Router as FilmsRouter } from '../films';
 
 
 export function AppRouter(props) {
   return (
     <ConnectedRouter history={props.history}>
-      <Route exact path="/" component={FilmsPage} />
+        <Switch>
+            <Route exact path="/" component={FilmList} />
+            <Route path="/films" component={FilmsRouter} />
+        </Switch>
     </ConnectedRouter>
   );
 }
