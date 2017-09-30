@@ -38,21 +38,21 @@ services:
       - webnet
     ports:
       - "5602:5601"
-  # logstash:
-  #   image: docker.elastic.co/logstash/logstash:5.4.0
-  #   volumes:
-  #     - ./:/app
-  #     - log:/var/log/python-web
-  #   deploy:
-  #     placement:
-  #       constraints: [node.role == manager]
-  #   networks:
-  #     - webnet
-  #   environment:
-  #     path.config: "/app/logstash.conf"
-  #     ELASTICSEARCH_URL: "elasticsearch:9200"
-  #     ELASTICSEARCH_USER: "elastic"
-  #     ELASTICSEARCH_PASSWORD: "changeme"
-  #     xpack.monitoring.elasticsearch.username: "elastic"
+  logstash:
+    image: docker.elastic.co/logstash/logstash:5.6.2
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+    ports:
+      - "31311:8080"
+    environment:
+      ELASTICSEARCH_URL: "elasticsearch:9200"
+      ELASTICSEARCH_USER: "elastic"
+      ELASTICSEARCH_PASSWORD: "changeme"
+      xpack.monitoring.elasticsearch.username: "elastic"
 networks:
   webnet:
