@@ -1,3 +1,5 @@
+import sys
+
 from timeit import default_timer
 
 MESSAGE_TEMPLATE = 'HTTP {request_method} {request_path} responded {status_code} in {elapsed} ms'
@@ -23,7 +25,7 @@ class logging_tween_factory(object):
 
         try:
             response = self.handler(request)
-        finally:
+        except:
             end_time = 1000*(default_timer() - start_time)
 
             logger = logger.bind(
@@ -31,15 +33,21 @@ class logging_tween_factory(object):
                 matched_route_name=request.matched_route.name if request.matched_route is not None else None,
                 matched_route_pattern=request.matched_route.pattern if request.matched_route is not None else None)
 
-            if request.exception:
-                logger.error(
-                    MESSAGE_TEMPLATE,
-                    exc_info=request.exc_info,
-                    status_code=500)
-            else:
-                logger.info(
-                    MESSAGE_TEMPLATE,
-                    status_code=response.status_int,
-                    content_type=response.content_type)
+            logger.error(
+                MESSAGE_TEMPLATE,
+                exc_info=sys.exc_info(),
+                status_code=500)
+            raise
+        else:
+            end_time = 1000*(default_timer() - start_time)
 
-        return response
+            logger = logger.bind(
+                elapsed='{:.4f}'.format(end_time),
+                matched_route_name=request.matched_route.name if request.matched_route is not None else None,
+                matched_route_pattern=request.matched_route.pattern if request.matched_route is not None else None)
+
+            logger.info(
+                MESSAGE_TEMPLATE,
+                status_code=response.status_int,
+                content_type=response.content_type)
+            return response
