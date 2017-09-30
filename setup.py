@@ -9,7 +9,8 @@ requires = [
     'zope.sqlalchemy',
     'psycopg2',
     'structlog',
-    'alembic'
+    'alembic',
+    'requests'
 ]
 
 setup(name='app',
