@@ -19,6 +19,7 @@ services:
     environment:
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
       bootstrap.memory_lock: "false"
+      xpack.security.enabled: "false"
     networks:
       - webnet
     ports:
@@ -53,6 +54,5 @@ services:
       ELASTICSEARCH_URL: "elasticsearch:9200"
       ELASTICSEARCH_USER: "elastic"
       ELASTICSEARCH_PASSWORD: "changeme"
-      xpack.monitoring.elasticsearch.username: "elastic"
 networks:
   webnet:
