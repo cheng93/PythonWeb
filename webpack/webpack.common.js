@@ -40,6 +40,19 @@ module.exports = {
               }
             ]
         })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'sass-loader'
+              }
+            ]
+        })
       }
     ]
   },
