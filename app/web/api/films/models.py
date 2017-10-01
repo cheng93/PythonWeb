@@ -11,7 +11,7 @@ class GetFilmModel:
         self.rental_duration = film.rental_duration
         self.rental_rate = float(film.rental_rate)
         self.length = film.length
-        self.relacement_cost = float(film.replacement_cost)
+        self.replacement_cost = float(film.replacement_cost)
         self.rating = film.rating
         self.special_features = film.special_features
 
