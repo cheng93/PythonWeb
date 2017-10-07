@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Card, CardTitle, CardText } from '../../common/components/card';
 
@@ -18,10 +19,12 @@ export class FilmCards extends Component {
                     </div>
                 );
 
+                let title = <Link to={`/films/${film.film_id}`}>{film.title}</Link>
+
                 return (
                     <div key={film.film_id} className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
                         <Card>
-                            <CardTitle title={film.title}
+                            <CardTitle title={title}
                                 subtitle={film.release_year} />
                             <CardText>{supportingText}</CardText>
                         </Card>

@@ -9,7 +9,7 @@ import { fetchFilm } from './actions/getFilm.actions';
 function mapStateToProps(state) {
     return {
         film: state.FilmReducer.item,
-        isLoading: state.FilmReducer.isLoading,
+        isLoading: state.FilmReducer.isLoading || !state.FilmReducer.item,
         loadingValue: state.FilmReducer.loadingValue
     };
 }
@@ -26,7 +26,7 @@ export class FilmPage extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.onLoad(this.props.match.params.id);
     }
 
@@ -40,7 +40,8 @@ export class FilmPage extends Component {
             { key: 'Rental Duration', value: this.props.film.rental_duration},
             { key: 'Replacement Cost', value: this.props.film.replacement_cost}
         ];
-        return descriptions.map(description => {
+
+        let descriptionsRender = descriptions.map(description => {
             return (
                 <p>
                     <span className="mdc-typography--body2">
@@ -53,17 +54,46 @@ export class FilmPage extends Component {
                 </p>
             )
         });
+
+        descriptionsRender.push(
+            <p>
+                <span className="mdc-typography--body2">
+                    {'Special Feature:'}
+                </span>
+                <ul>
+                    {
+                        this.props.film.special_features.map((feature, index) => {
+                            return (
+                                <li key={index} className="mdc-typography--body1">
+                                    {feature}
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </p>
+        );
+
+        return descriptionsRender
     }
     render() {
         return (
-            <Page>
-                <h2 className="mdc-typography--title">
-                    {this.props.film.title}
-                </h2>
-                <h3 className="mdc-typography--subheading1">
-                    {this.props.film.description}
-                </h3>
-                {this.getDescription()}
+            <Page> 
+            {
+                !this.props.isLoading &&
+                <div>
+                    <h2 className="mdc-typography--title">
+                        {this.props.film.title}
+                    </h2>
+                    <h3 className="mdc-typography--subheading1">
+                        {this.props.film.description}
+                    </h3>
+                    {this.getDescription()}
+                </div>
+            }
+            {
+                this.props.isLoading && <p>Loading...</p>
+            }
             </Page>
         );
     }

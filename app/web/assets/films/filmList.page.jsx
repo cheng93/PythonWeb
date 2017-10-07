@@ -10,7 +10,7 @@ import { FilmCards } from './component/filmCards.component';
 function mapStateToProps(state) {
     return {
         films: state.FilmListReducer.items,
-        isLoading: state.FilmListReducer.isLoading,
+        isLoading: state.FilmListReducer.isLoading || !state.FilmListReducer.items,
         loadingValue: state.FilmListReducer.loadingValue
     };
 }
@@ -27,14 +27,20 @@ export class FilmListPage extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.onLoad();
     }
 
     render() {
         return (
             <Page>
-                <FilmCards films={this.props.films} />
+                {
+                    !this.props.isLoading &&
+                    <FilmCards films={this.props.films} />
+                }
+                {
+                    this.props.isLoading && <p>Loading...</p>
+                }
             </Page>
         );
     }

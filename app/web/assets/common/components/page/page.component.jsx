@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { Toolbar, ToolbarRow, ToolbarSection } from '../toolbar';
 
-import './page.scss';
-
 export class PageComponent extends Component {
     constructor(props) {
         super(props);
