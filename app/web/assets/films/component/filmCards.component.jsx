@@ -36,7 +36,9 @@ export class FilmCards extends Component {
     render() {
         return (
             <div className='mdc-layout-grid'>
-                {this.cards()}
+                <div className='mdc-layout-grid__inner'>
+                    {this.cards()}
+                </div>
             </div>
         );
     }
