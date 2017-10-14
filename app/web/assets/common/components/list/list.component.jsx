@@ -19,9 +19,11 @@ export class ListComponent extends Component {
     }
 
     render() {
+        const { dense } = this.props;
+        let className = `mdc-list ${dense ? 'mdc-list--dense' : ''}`
         return (
-            <ul className='mdc-list'>
-                {this.item()}
+            <ul className={className}>
+                {this.items()}
             </ul>
         );
     }
