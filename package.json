@@ -6,6 +6,7 @@
   "dependencies": {
     "@material/card": "^0.2.10",
     "@material/layout-grid": "^0.4.4",
+    "@material/list": "^0.2.20",
     "@material/toolbar": "^0.4.11",
     "@material/typography": "^0.3.0",
     "axios": "^0.16.2",
