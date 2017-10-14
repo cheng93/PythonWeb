@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-export const GET_FILM_LIST_LOADING = 'GET_FILM_LOADING';
-export const GET_FILM_LIST_RECEIVED = 'GET_FILM_RECEIVED';
+export const GET_FILM_LIST_LOADING = 'GET_FILM_LIST_LOADING';
+export const GET_FILM_LIST_RECEIVED = 'GET_FILM_LIST_RECEIVED';
 
 export function loadingFilms(progress) {
     return {
