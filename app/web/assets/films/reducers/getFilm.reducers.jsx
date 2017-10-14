@@ -1,4 +1,4 @@
-import { GET_FILM_LOADING, GET_FILM_RECEIVED } from '../actions/getFilm.actions';
+import { GET_FILM_LOADING, GET_FILM_RECEIVED } from '../actions';
 
 const DEFAULT_STATE = {
     isLoading: false,
