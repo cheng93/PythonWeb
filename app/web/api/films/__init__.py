@@ -3,6 +3,8 @@ from app.web.api.films.models import Command
 def includeme(config):
     config.add_route(name='get_films', pattern='/films')
     config.add_route(name='get_film', pattern='/films/{film_id}')
+    config.add_route(name='get_film_actors', pattern='/films/{film_id}/actors')
+
     config.scan('.views')
 
     get_tm_session = config.registry.get('get_tm_session')

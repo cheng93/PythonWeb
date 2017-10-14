@@ -18,3 +18,9 @@ class FilmsView:
         film = self.request.film_command.get_film(film_id)
         return film.__dict__
 
+    @view_config(route_name='get_film_actors')
+    def get_film_actors(self):
+        film_id = self.request.matchdict['film_id']
+        actors = self.request.film_command.get_film_actors(film_id)
+        actors = [a.__dict__ for a in actors]
+        return actors
