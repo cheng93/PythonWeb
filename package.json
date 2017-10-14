@@ -6,6 +6,7 @@
   "dependencies": {
     "@material/card": "^0.2.10",
     "@material/layout-grid": "^0.4.4",
+    "@material/list": "^0.2.20",
     "@material/toolbar": "^0.4.11",
     "@material/typography": "^0.3.0",
     "axios": "^0.16.2",
@@ -21,7 +22,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.22",
+    "@types/node": "^8.0.34",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -35,7 +36,7 @@
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.7.0",
+    "webpack": "^3.7.1",
     "webpack-merge": "^4.1.0"
   },
   "scripts": {

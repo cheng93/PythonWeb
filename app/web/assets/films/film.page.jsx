@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { List } from '../common/components/list';
 import { Page } from '../common/components/page';
 
-import { fetchFilm } from './actions/getFilm.actions';
+import { fetchFilm, fetchFilmActors } from './actions';
 
 
 function mapStateToProps(state) {
+    const { FilmReducer, FilmActorListReducer } = state;
     return {
-        film: state.FilmReducer.item,
-        isLoading: state.FilmReducer.isLoading || !state.FilmReducer.item,
-        loadingValue: state.FilmReducer.loadingValue
+        film: FilmReducer.item,
+        isFilmLoading: FilmReducer.isLoading || !FilmReducer.item,
+        filmActorList: FilmActorListReducer.items,
+        isFilmActorListLoading: FilmActorListReducer.isLoading || !FilmActorListReducer.items
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onLoad: (id) => dispatch(fetchFilm(id))
+        onLoad: (id) => {
+            dispatch(fetchFilm(id));
+            dispatch(fetchFilmActors(id));
+        }
     }
 }
 
@@ -60,28 +66,25 @@ export class FilmPage extends Component {
                 <span className="mdc-typography--body2">
                     {'Special Feature:'}
                 </span>
-                <ul>
-                    {
-                        this.props.film.special_features.map((feature, index) => {
-                            return (
-                                <li key={index} className="mdc-typography--body1">
-                                    {feature}
-                                </li>
-                            );
-                        })
-                    }
-                </ul>
+                <List dense items={this.props.film.special_features}>
+                </List>
             </p>
         );
 
         return descriptionsRender
     }
+
+    getActorList() {
+        return this.props.filmActorList
+            .map(actor => actor.name);
+    }
+
     render() {
         return (
             <Page> 
             {
-                !this.props.isLoading &&
-                <div>
+                !this.props.isFilmLoading &&
+                <section>
                     <h2 className="mdc-typography--title">
                         {this.props.film.title}
                     </h2>
@@ -89,10 +92,20 @@ export class FilmPage extends Component {
                         {this.props.film.description}
                     </h3>
                     {this.getDescription()}
-                </div>
+                </section>
             }
             {
-                this.props.isLoading && <p>Loading...</p>
+                !this.props.isFilmActorListLoading &&
+                <section>
+                    <h4 className='mdc-typography--subheading2'>
+                        Actors
+                    </h4>
+                    <List dense items={this.getActorList()}>
+                    </List>
+                </section>
+            }
+            {
+                this.props.isFilmLoading && <p>Loading...</p>
             }
             </Page>
         );
