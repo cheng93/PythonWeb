@@ -19,7 +19,7 @@ export function receivedActor(actor) {
 }
 
 export function fetchActor(id) {
-    const endpoint = `/api/actor/${id}`;
+    const endpoint = `/api/actors/${id}`;
 
     return (dispatch) => {
         let config = {
