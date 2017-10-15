@@ -1,6 +1,6 @@
 export {
     GET_ACTOR_LOADING,
-    GET_ACTOR_LIST_RECEIVED,
+    GET_ACTOR_RECEIVED,
     fetchActor
 } from './getActor.actions';
 
