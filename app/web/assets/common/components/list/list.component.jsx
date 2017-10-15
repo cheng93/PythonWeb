@@ -8,11 +8,13 @@ export class ListComponent extends Component {
     }
 
     items() {
-        return this.props.items
+        const { items, keyFunc, valueFunc } = this.props;
+
+        return items
             .map((item, index) => {
                 return (
-                    <ListItemComponent key={index}>
-                        {item}
+                    <ListItemComponent key={keyFunc ? keyFunc(item): index}>
+                        {valueFunc ? valueFunc(item) : item}
                     </ListItemComponent>
                 )
             });
