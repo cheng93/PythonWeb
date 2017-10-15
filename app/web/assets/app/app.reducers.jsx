@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {
+    ActorReducer,
     ActorListReducer
 } from '../actors/reducers';
 
@@ -12,6 +13,7 @@ import {
 
 
 export const appReducers = combineReducers({
+    ActorReducer,
     ActorListReducer,
     FilmReducer,
     FilmActorListReducer,
