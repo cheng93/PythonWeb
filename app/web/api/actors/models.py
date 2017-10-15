@@ -13,7 +13,7 @@ class Command:
 
     def get_actors(self):
         actors = (self.db.query(Actor)
-                    .order_by(Actor.actor_id)
+                    .order_by(Actor.first_name)
                     .all())
 
         actors = [GetActorsModel(a) for a in actors]
