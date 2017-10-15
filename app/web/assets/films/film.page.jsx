@@ -74,9 +74,12 @@ export class FilmPage extends Component {
         return descriptionsRender
     }
 
-    getActorList() {
-        return this.props.filmActorList
-            .map(actor => actor.name);
+    getActorKeyFunc() {
+        return (actor) => actor.actor_id;
+    }
+
+    getActorValueFunc() {
+        return (actor) => actor.name;
     }
 
     render() {
@@ -100,7 +103,9 @@ export class FilmPage extends Component {
                     <h4 className='mdc-typography--subheading2'>
                         Actors
                     </h4>
-                    <List dense items={this.getActorList()}>
+                    <List dense items={this.props.filmActorList}
+                        keyFunc={this.getActorKeyFunc()}
+                        valueFunc={this.getActorValueFunc()}>
                     </List>
                 </section>
             }
