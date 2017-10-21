@@ -15,7 +15,7 @@ import { AppRouter } from './app.router';
 
 export function App() {
   let history = createBrowserHistory({
-    basename: '/'
+    basename: '/dvdrental'
   });
 
   let store = createStore(
