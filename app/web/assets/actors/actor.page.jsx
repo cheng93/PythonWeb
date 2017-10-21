@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { List } from '../common/components/list';
 import { Page } from '../common/components/page';
@@ -41,7 +42,11 @@ export class ActorPage extends Component {
     }
 
     getFilmValueFunc() {
-        return (film) => film.title;
+        return (film) => (
+            <Link to={`/films/${film.film_id}`}>
+                {film.title}
+            </Link>
+        );
     }
 
     render() {
