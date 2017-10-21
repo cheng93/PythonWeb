@@ -48,9 +48,9 @@ export class FilmPage extends Component {
             { key: 'Replacement Cost', value: this.props.film.replacement_cost}
         ];
 
-        let descriptionsRender = descriptions.map(description => {
+        let descriptionsRender = descriptions.map((description, index) => {
             return (
-                <p>
+                <p key={index}>
                     <span className="mdc-typography--body2">
                         {description.key}:
                     </span>
@@ -63,13 +63,13 @@ export class FilmPage extends Component {
         });
 
         descriptionsRender.push(
-            <p>
+            <div key={descriptionsRender.length}>
                 <span className="mdc-typography--body2">
                     {'Special Feature:'}
                 </span>
                 <List dense items={this.props.film.special_features}>
                 </List>
-            </p>
+            </div>
         );
 
         return descriptionsRender
