@@ -10,6 +10,7 @@ import 'history';
 import 'axios';
 
 import '@material/card/dist/mdc.card.css';
+import '@material/grid-list/dist/mdc.grid-list.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
 import '@material/list/dist/mdc.list.css';
 import '@material/toolbar/dist/mdc.toolbar.css';
