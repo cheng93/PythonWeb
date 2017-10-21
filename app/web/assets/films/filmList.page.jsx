@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Page } from '../common/components/page';
 
-import { fetchFilms } from './actions/getFilmList.actions';
+import { fetchFilms } from './actions';
 import { FilmCards } from './component/filmCards.component';
 
 
