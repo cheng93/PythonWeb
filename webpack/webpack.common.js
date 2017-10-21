@@ -15,7 +15,8 @@ module.exports = {
     'dvdrental.polyfill': dvdrental + 'polyfill.js',
     'dvdrental.vendor': dvdrental + 'vendor.js',
     'dvdrental.app': dvdrental + 'main.jsx',
-    'vendor': assets + 'vendor.scss'
+    'vendor': assets + 'vendor.scss',
+    'app': assets + 'app.scss'
   },
 
   output: {
