@@ -2,4 +2,9 @@ main {
     margin: auto;
     width: 1160px;
     padding-top: 80px;
+
+    a {
+        color:inherit;
+        text-decoration: inherit;
+    }
 }
