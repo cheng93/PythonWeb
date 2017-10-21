@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@material/card": "^0.2.10",
+    "@material/grid-list": "^0.2.13",
     "@material/layout-grid": "^0.4.4",
     "@material/list": "^0.2.20",
     "@material/toolbar": "^0.4.11",
