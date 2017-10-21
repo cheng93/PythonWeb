@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Card, CardTitle, CardText } from '../../common/components/card';
 
-export class FilmCards extends Component {
+import { Card, CardTitle, CardText } from '../../common/components/card';
+import { 
+    GridList,
+    GridTile,
+    GridTileContent,
+    GridTileSupportText,
+    GridTileTitle 
+} from '../../common/components/gridList';
+
+export class FilmGridListComponent extends Component {
     constructor(props) {
         super(props);
     }
 
-    cards() {
+    getTiles() {
         return this.props.films
             .map(film => {
                 let supportingText = (
@@ -22,24 +30,22 @@ export class FilmCards extends Component {
                 let title = <Link to={`/films/${film.film_id}`}>{film.title}</Link>
 
                 return (
-                    <div key={film.film_id} className='mdc-layout-grid__cell mdc-layout-grid__cell--span-3'>
-                        <Card>
-                            <CardTitle title={title}
-                                subtitle={film.release_year} />
-                            <CardText>{supportingText}</CardText>
-                        </Card>
-                    </div>
+                    <GridTile key={film.film_id}>
+                    <Card key={film.film_id}>
+                        <CardTitle title={title}
+                            subtitle={film.release_year} />
+                        <CardText>{supportingText}</CardText>
+                    </Card>
+                    </GridTile>
                 )
             });
     }
 
     render() {
         return (
-            <div className='mdc-layout-grid'>
-                <div className='mdc-layout-grid__inner'>
-                    {this.cards()}
-                </div>
-            </div>
+            <GridList>
+                {this.getTiles()}
+            </GridList>
         );
     }
 }

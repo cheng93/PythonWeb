@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 
 import { Page } from '../common/components/page';
 
-import { fetchFilms } from './actions/getFilmList.actions';
-import { FilmCards } from './component/filmCards.component';
-
+import { fetchFilms } from './actions';
+import { FilmGridList } from './component';
 
 function mapStateToProps(state) {
     return {
@@ -36,7 +35,7 @@ export class FilmListPage extends Component {
             <Page>
                 {
                     !this.props.isLoading &&
-                    <FilmCards films={this.props.films} />
+                    <FilmGridList films={this.props.films} />
                 }
                 {
                     this.props.isLoading && <p>Loading...</p>
