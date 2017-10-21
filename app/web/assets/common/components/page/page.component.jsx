@@ -22,7 +22,9 @@ export class PageComponent extends Component {
                     </ToolbarRow>
                 </Toolbar>
                 <main className="mdc-toolbar-fixed-adjust">
-                    {children}
+                    <div className='row'>
+                        {children}
+                    </div>
                 </main>
             </div>
         );
