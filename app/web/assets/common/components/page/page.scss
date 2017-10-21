@@ -1,5 +1,8 @@
 main {
-    padding-top: 80px;
+    padding-top: 36px;
+    @media screen and (max-width: 800px) {
+        padding-top: 14px;
+    }
 
     a {
         color:inherit;
