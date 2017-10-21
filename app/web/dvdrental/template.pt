@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="${request.static_url('app.web:static/vendor.css')}" />
-    <link rel="stylesheet" href="${request.static_url('app.web:static/app.css')}" />
+    <link rel="stylesheet" href="${request.static_url('app.web:static/dvdrental.app.css')}" />
     <title>DvdRental</title>
 </head>
 <body>
     <div class="container body-content">
         <div id="app"></div>
     </div>
-    <script src="${request.static_url('app.web:static/polyfill.js')}"></script>
-    <script src="${request.static_url('app.web:static/vendor.js')}"></script>
-    <script src="${request.static_url('app.web:static/app.js')}"></script>
+    <script src="${request.static_url('app.web:static/dvdrental.polyfill.js')}"></script>
+    <script src="${request.static_url('app.web:static/dvdrental.vendor.js')}"></script>
+    <script src="${request.static_url('app.web:static/dvdrental.app.js')}"></script>
 </body>
 </html>

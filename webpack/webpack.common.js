@@ -6,13 +6,16 @@ var root = './app/web/';
 var assets = root + './assets/';
 var static = root + './static/';
 
+var dvdrental = assets + './dvdrental/';
+
 var exclusionRegex = [/node_modules/];
 
 module.exports = {
   entry: {
-    'polyfill': assets + 'polyfill.js',
-    'vendor': assets + 'vendor.js',
-    'app': assets + 'main.jsx'
+    'dvdrental.polyfill': dvdrental + 'polyfill.js',
+    'dvdrental.vendor': dvdrental + 'vendor.js',
+    'dvdrental.app': dvdrental + 'main.jsx',
+    'vendor': assets + 'vendor.scss'
   },
 
   output: {
@@ -59,8 +62,8 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor'],
-      chunks: ['app', 'vendor'],
+      names: ['dvdrental.vendor'],
+      chunks: ['dvdrental.app', 'dvdrental.vendor'],
       minChunks: Infinity
     }),
     new ExtractTextPlugin({

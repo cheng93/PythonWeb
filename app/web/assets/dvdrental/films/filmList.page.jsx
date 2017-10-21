@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { List } from '../common/components/list';
 import { Page } from '../common/components/page';
 
-import { fetchActors } from './actions';
-
+import { fetchFilms } from './actions';
+import { FilmGridList } from './component';
 
 function mapStateToProps(state) {
     return {
-        actors: state.ActorListReducer.items,
-        isLoading: state.ActorListReducer.isLoading || !state.ActorListReducer.items,
-        loadingValue: state.ActorListReducer.loadingValue
+        films: state.FilmListReducer.items,
+        isLoading: state.FilmListReducer.isLoading || !state.FilmListReducer.items,
+        loadingValue: state.FilmListReducer.loadingValue
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onLoad: () => dispatch(fetchActors())
+        onLoad: () => dispatch(fetchFilms())
     }
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-export class ActorListPage extends Component {
+export class FilmListPage extends Component {
     constructor(props) {
         super(props);
     }
@@ -31,17 +30,15 @@ export class ActorListPage extends Component {
         this.props.onLoad();
     }
 
-    getActors() {
-        return this.props.actors
-            .map(actor => actor.name);
-    }
-
     render() {
         return (
             <Page>
+                <h2 className="mdc-typography--title">
+                    Films
+                </h2>
                 {
                     !this.props.isLoading &&
-                    <List items={this.getActors()} />
+                    <FilmGridList films={this.props.films} />
                 }
                 {
                     this.props.isLoading && <p>Loading...</p>
