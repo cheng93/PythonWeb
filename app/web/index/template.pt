@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="${request.static_url('app.web:static/vendor.css')}" />
+    <link rel="stylesheet" href="${request.static_url('app.web:static/app.css')}" />
     <title>Home</title>
 </head>
 <body class="mdc-typography">
@@ -27,7 +28,9 @@
                             <p class="mdc-typography--body1">This site is for me to experiment with various stacks and technologies.</p>
                             <p class="mdc-typography--body1">Currently this site is powered by <span class="mdc-typography--body2">Python</span> with a <span class="mdc-typography--body2">Pyramid</span> web framework and it tries to respect Google's <span class="mdc-typography--body2">Material Design.</span></p>
 
-                            <h2 class="mdc-typography--title">DvdRental</h2>
+                            <h2 class="mdc-typography--title">
+                                <a href='/dvdrental/'>DvdRental</a>
+                            </h2>
                             <p class="mdc-typography--body1">This is a subsection of my website.</p>
                             <p class="mdc-typography--body1">It is powered by: </p>
                             <ul>
