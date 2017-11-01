@@ -1,4 +1,4 @@
-from app.data import Base
+from app.data.dvdrental import Base
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, text
 from sqlalchemy.orm import relationship

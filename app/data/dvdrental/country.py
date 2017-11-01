@@ -1,4 +1,4 @@
-from app.data import Base
+from app.data.dvdrental import Base
 
 from sqlalchemy import Column, DateTime, Integer, String, text
 

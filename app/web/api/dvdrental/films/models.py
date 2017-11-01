@@ -1,5 +1,5 @@
-from app.data.film import Film
-from app.data.film_actor import FilmActor
+from app.data.dvdrental.film import Film
+from app.data.dvdrental.film_actor import FilmActor
 
 
 class GetFilmModel:
