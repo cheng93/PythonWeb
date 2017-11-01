@@ -1,5 +1,5 @@
-from app.data.actor import Actor
-from app.data.film_actor import FilmActor
+from app.data.dvdrental.actor import Actor
+from app.data.dvdrental.film_actor import FilmActor
 
 
 class GetActorsModel:

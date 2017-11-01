@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 
+import { BASE_API_PATH } from '../../common/constants';
+
 export const GET_ACTOR_LOADING = 'GET_ACTOR_LOADING';
 export const GET_ACTOR_RECEIVED = 'GET_ACTOR_RECEIVED';
 
@@ -19,7 +21,7 @@ export function receivedActor(actor) {
 }
 
 export function fetchActor(id) {
-    const endpoint = `/api/actors/${id}`;
+    const endpoint = `${BASE_API_PATH}/actors/${id}`;
 
     return (dispatch) => {
         let config = {
