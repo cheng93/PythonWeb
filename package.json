@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/node": "^8.0.34",
     "babel-core": "^6.24.1",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -32,9 +33,13 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
     "extract-text-webpack-plugin": "^3.0.1",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "react-test-renderer": "^16.1.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "webpack": "^3.7.1",
@@ -44,7 +49,18 @@
     "clean": "rimraf ./app/web/static/*",
     "build": "npm run clean && webpack --env=prod",
     "build:dev": "npm run clean && webpack --env=dev",
-    "watch": "webpack --watch --progress --env=dev"
+    "watch": "webpack --watch --progress --env=dev",
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/app/web/assets/tests/setup.jsx"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testRegex": "app/web/assets/tests/.*\\.test\\.jsx?$",
+    "verbose": true
   },
   "repository": {
     "type": "git",
