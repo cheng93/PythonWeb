@@ -53,13 +53,13 @@
     "test": "jest"
   },
   "jest": {
+    "rootDir": "app/web/assets/tests",
     "setupFiles": [
-      "<rootDir>/app/web/assets/tests/setup.jsx"
+      "<rootDir>/setup.jsx"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules/"
+    "testMatch": [
+      "<rootDir>/**/*.test.jsx"
     ],
-    "testRegex": "app/web/assets/tests/.*\\.test\\.jsx?$",
     "verbose": true
   },
   "repository": {
