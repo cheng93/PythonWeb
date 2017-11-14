@@ -12,7 +12,7 @@ describe('Toolbar', () => {
     test('should have mdc-toolbar class', () => {
         const wrapper = shallow(<Toolbar />);
 
-        expect(wrapper.find("header").hasClass("md-toolbar")).toBe(true);
+        expect(wrapper.find("header").hasClass("mdc-toolbar")).toBe(true);
     });
 
     test('should render children', () => {

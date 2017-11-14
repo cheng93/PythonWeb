@@ -59,8 +59,7 @@
     ],
     "testMatch": [
       "<rootDir>/**/*.test.jsx"
-    ],
-    "verbose": true
+    ]
   },
   "repository": {
     "type": "git",
