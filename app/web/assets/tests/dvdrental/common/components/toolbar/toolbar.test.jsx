@@ -1,26 +1,32 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Toolbar } from '../../../../../src/dvdrental/common/components/toolbar';
 
 describe('Toolbar', () => {
-    test('should render <header> with mdc-toolbar class', () => {
-        const wrapper = mount(<Toolbar />);
+    test('should render <header>', () => {
+        const wrapper = shallow(<Toolbar />);
 
         expect(wrapper.find("header")).toHaveLength(1);
+    });
 
-        expect(wrapper.find("header").hasClass("mdc-toolbar")).toBeTruthy();
+    test('should have mdc-toolbar class', () => {
+        const wrapper = shallow(<Toolbar />);
+
+        expect(wrapper.find("header").hasClass("mdc-toolbar")).toBe(true);
     });
 
     test('should render children', () => {
-        const wrapper = mount(<Toolbar><div/></Toolbar>);
-        expect(wrapper.first().children()).toEqual(wrapper.children());
+        var text = "Hello World";
+        const wrapper = shallow(<Toolbar>{text}</Toolbar>);
+
+        expect(wrapper.contains(text)).toBe(true);
     });
 
-    describe('when toolbar has fixed prop', () => {
-        test('it should add mdc-toolbar--fixed class', () => {
-            const wrapper = mount(<Toolbar fixed />);
+    describe('has fixed prop', () => {
+        test('should have mdc-toolbar--fixed class', () => {
+            const wrapper = shallow(<Toolbar fixed />);
 
-            expect(wrapper.find("header").hasClass("mdc-toolbar--fixed")).toBeTruthy();
+            expect(wrapper.find("header").hasClass("mdc-toolbar--fixed")).toBe(true);
         });
     });
 });
