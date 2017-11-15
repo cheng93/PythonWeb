@@ -7,22 +7,20 @@ export class ToolbarSectionComponent extends Component {
     }
 
     render() {
-        const { children, title, align } = this.props;
-
-        let content = title
-            ? (
-                <span className="mdc-toolbar__title">{children}</span>
-            )
-            : {children};
+        const { children, align } = this.props;
 
         let className = "mdc-toolbar__section";
-        if (align) {
+        let aligns = [
+            "start",
+            "end"
+        ]
+        if (aligns.some(a => a === align)) {
             className += ` mdc-toolbar__section--align-${align}`
         }
 
         return (
             <section className={className}>
-                {content}
+                {children}
             </section>
         );
     }

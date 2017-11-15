@@ -4,27 +4,28 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@material/card": "^0.2.10",
-    "@material/grid-list": "^0.2.13",
-    "@material/layout-grid": "^0.4.4",
-    "@material/list": "^0.2.20",
-    "@material/toolbar": "^0.4.11",
-    "@material/typography": "^0.3.0",
-    "axios": "^0.16.2",
+    "@material/card": "latest",
+    "@material/grid-list": "latest",
+    "@material/layout-grid": "latest",
+    "@material/list": "latest",
+    "@material/toolbar": "latest",
+    "@material/typography": "latest",
+    "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "history": "^4.7.2",
     "normalize.css": "^7.0.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.6",
+    "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.34",
+    "@types/node": "^8.0.52",
     "babel-core": "^6.24.1",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -32,19 +33,33 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
-    "extract-text-webpack-plugin": "^3.0.1",
-    "node-sass": "^4.5.3",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "jest": "^21.2.1",
+    "node-sass": "^4.6.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "react-test-renderer": "^16.1.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.7.1",
-    "webpack-merge": "^4.1.0"
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.1"
   },
   "scripts": {
     "clean": "rimraf ./app/web/static/*",
     "build": "npm run clean && webpack --env=prod",
     "build:dev": "npm run clean && webpack --env=dev",
-    "watch": "webpack --watch --progress --env=dev"
+    "watch": "webpack --watch --progress --env=dev",
+    "test": "jest"
+  },
+  "jest": {
+    "rootDir": "app/web/assets/tests",
+    "setupFiles": [
+      "<rootDir>/setup.jsx"
+    ],
+    "testMatch": [
+      "<rootDir>/**/*.test.jsx"
+    ]
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var root = './app/web/';
-var assets = root + './assets/';
+var assets = root + './assets/src/';
 var static = root + './static/';
 
 var dvdrental = assets + './dvdrental/';

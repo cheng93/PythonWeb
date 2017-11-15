@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
 import { Grid, GridCell } from '../grid';
-import { Toolbar, ToolbarRow, ToolbarSection } from '../toolbar';
+import { 
+    Toolbar,
+    ToolbarRow,
+    ToolbarSection,
+    ToolbarTitle
+} from '../toolbar';
 
 export class PageComponent extends Component {
     constructor(props) {
@@ -17,8 +22,8 @@ export class PageComponent extends Component {
             <div>
                 <Toolbar fixed>
                     <ToolbarRow>
-                        <ToolbarSection title align="start">
-                            {toolbarTitle}
+                        <ToolbarSection align="start">
+                            <ToolbarTitle>{toolbarTitle}</ToolbarTitle>
                         </ToolbarSection>
                     </ToolbarRow>
                 </Toolbar>
