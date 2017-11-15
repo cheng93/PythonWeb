@@ -10,9 +10,9 @@ export class ToolbarTitleComponent extends Component {
         const { children } = this.props;
 
         return (
-            <header className='mdc-toolbar__title'>
+            <span className='mdc-toolbar__title'>
                 {children}
-            </header>
+            </span>
         );
     }
 }
