@@ -10,7 +10,11 @@ export class ToolbarSectionComponent extends Component {
         const { children, align } = this.props;
 
         let className = "mdc-toolbar__section";
-        if (align) {
+        let aligns = [
+            "start",
+            "end"
+        ]
+        if (aligns.some(a => a === align)) {
             className += ` mdc-toolbar__section--align-${align}`
         }
 
