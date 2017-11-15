@@ -6,21 +6,28 @@ export class GridCellComponent extends Component {
         super(props);
     }
 
+    isValidSpan(span) {
+        let number = Number.parseInt(span);
+        return !Number.isNaN(number)
+            && number >= 1
+            && number <= 12;
+    }
+ 
     getClass() {
         const { columns, desktop, tablet, mobile } = this.props;
 
         let className = 'mdc-layout-grid__cell';
 
-        if (columns) {
+        if (this.isValidSpan(columns)) {
             className += ` mdc-layout-grid__cell--span-${columns}`;
         }
-        if (desktop) {
+        if (this.isValidSpan(desktop)) {
             className += ` mdc-layout-grid__cell--span-${desktop}-desktop`;
         }
-        if (tablet) {
+        if (this.isValidSpan(tablet)) {
             className += ` mdc-layout-grid__cell--span-${tablet}-tablet`;
         }
-        if (mobile) {
+        if (this.isValidSpan(mobile)) {
             className += ` mdc-layout-grid__cell--span-${mobile}-mobile`;
         }
 
