@@ -6,7 +6,7 @@ describe('ToolbarSection', () => {
     test('should render <section>', () => {
         const wrapper = shallow(<ToolbarSection />);
 
-        expect(wrapper.find("section")).toHaveLength(1);
+        expect(wrapper.type()).toBe('section');
     });
 
     test('should have mdc-toolbar__section class', () => {

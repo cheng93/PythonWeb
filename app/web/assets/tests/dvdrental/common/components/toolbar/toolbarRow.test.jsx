@@ -6,7 +6,7 @@ describe('ToolbarRow', () => {
     test('should render <div>', () => {
         const wrapper = shallow(<ToolbarRow />);
 
-        expect(wrapper.find("div")).toHaveLength(1);
+        expect(wrapper.type()).toBe('div');
     });
 
     test('should have mdc-toolbar__row class', () => {
