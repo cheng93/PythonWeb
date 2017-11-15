@@ -6,7 +6,7 @@ describe('Toolbar', () => {
     test('should render <header>', () => {
         const wrapper = shallow(<Toolbar />);
 
-        expect(wrapper.find("header")).toHaveLength(1);
+        expect(wrapper.type()).toBe('header');
     });
 
     test('should have mdc-toolbar class', () => {

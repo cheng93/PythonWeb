@@ -6,7 +6,7 @@ describe('ToolbarTitle', () => {
     test('should render <span>', () => {
         const wrapper = shallow(<ToolbarTitle />);
 
-        expect(wrapper.find("span")).toHaveLength(1);
+        expect(wrapper.type()).toBe('span');
     });
 
     test('should have mdc-toolbar__title class', () => {
