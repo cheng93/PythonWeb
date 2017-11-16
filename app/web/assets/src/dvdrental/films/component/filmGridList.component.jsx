@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 import { Card, CardTitle, CardText } from '../../common/components/card';
-import { 
-    GridList,
-    GridTile,
-    GridTileContent,
-    GridTileSupportText,
-    GridTileTitle 
-} from '../../common/components/gridList';
+import { GridList, GridTile } from '../../common/components/gridList';
 
 export class FilmGridListComponent extends Component {
     constructor(props) {
@@ -31,11 +25,11 @@ export class FilmGridListComponent extends Component {
 
                 return (
                     <GridTile key={film.film_id}>
-                    <Card key={film.film_id}>
-                        <CardTitle title={title}
-                            subtitle={film.release_year} />
-                        <CardText>{supportingText}</CardText>
-                    </Card>
+                        <Card key={film.film_id}>
+                            <CardTitle title={title}
+                                subtitle={film.release_year} />
+                            <CardText>{supportingText}</CardText>
+                        </Card>
                     </GridTile>
                 )
             });
