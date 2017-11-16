@@ -6,7 +6,7 @@ export class GridListComponent extends Component {
     }
 
     getClass() {
-        const { tileAspect } = this.props;
+        const { tileAspect, headerCaption } = this.props;
 
         let className = 'mdc-grid-list';
 
@@ -21,6 +21,10 @@ export class GridListComponent extends Component {
 
         if (aspects.some(a => a === tileAspect)) {
             className += ` mdc-grid-list--tile-aspect-${tileAspect}`;
+        }
+
+        if (headerCaption) {
+            className += ' mdc-grid-list--header-caption';
         }
 
         return className;
