@@ -43,7 +43,7 @@ export class FilmGridListComponent extends Component {
 
     render() {
         return (
-            <GridList>
+            <GridList tileAspect='1x1'>
                 {this.getTiles()}
             </GridList>
         );
