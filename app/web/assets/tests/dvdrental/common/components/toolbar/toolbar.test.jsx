@@ -12,11 +12,11 @@ describe('Toolbar', () => {
     test('should have mdc-toolbar class', () => {
         const wrapper = shallow(<Toolbar />);
 
-        expect(wrapper.first().hasClass("mdc-toolbar")).toBe(true);
+        expect(wrapper.first().hasClass('mdc-toolbar')).toBe(true);
     });
 
     test('should render children', () => {
-        var text = "Hello World";
+        var text = 'Hello World';
         const wrapper = shallow(<Toolbar>{text}</Toolbar>);
 
         expect(wrapper.contains(text)).toBe(true);
@@ -26,7 +26,7 @@ describe('Toolbar', () => {
         test('should have mdc-toolbar--fixed class', () => {
             const wrapper = shallow(<Toolbar fixed />);
 
-            expect(wrapper.find("header").hasClass("mdc-toolbar--fixed")).toBe(true);
+            expect(wrapper.find('header').hasClass('mdc-toolbar--fixed')).toBe(true);
         });
     });
 });

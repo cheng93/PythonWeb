@@ -12,11 +12,11 @@ describe('ToolbarSection', () => {
     test('should have mdc-toolbar__section class', () => {
         const wrapper = shallow(<ToolbarSection />);
 
-        expect(wrapper.first().hasClass("mdc-toolbar__section")).toBe(true);
+        expect(wrapper.first().hasClass('mdc-toolbar__section')).toBe(true);
     });
 
     test('should render children', () => {
-        var text = "Hello World";
+        var text = 'Hello World';
         const wrapper = shallow(<ToolbarSection>{text}</ToolbarSection>);
 
         expect(wrapper.contains(text)).toBe(true);
@@ -26,19 +26,19 @@ describe('ToolbarSection', () => {
         test('should have mdc-toolbar__section--align-start class', () => {
             const wrapper = shallow(<ToolbarSection align='start' />);
     
-            expect(wrapper.first().hasClass("mdc-toolbar__section--align-start")).toBe(true);
+            expect(wrapper.first().hasClass('mdc-toolbar__section--align-start')).toBe(true);
         });
 
         test('should have mdc-toolbar__section--align-end class', () => {
             const wrapper = shallow(<ToolbarSection align='end' />);
     
-            expect(wrapper.first().hasClass("mdc-toolbar__section--align-end")).toBe(true);
+            expect(wrapper.first().hasClass('mdc-toolbar__section--align-end')).toBe(true);
         });
         
         test('should not have mdc-toolbar__section--align-* class', () => {
             const wrapper = shallow(<ToolbarSection align='invalid' />);
     
-            expect(wrapper.first().hasClass("mdc-toolbar__section--align-invalid")).toBe(false);
+            expect(wrapper.first().hasClass('mdc-toolbar__section--align-invalid')).toBe(false);
         });
     });
 });

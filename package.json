@@ -53,6 +53,9 @@
     "test": "jest"
   },
   "jest": {
+    "moduleNameMapper": {
+      "\\.scss$": "<rootDir>/mocks/styleMock.js"
+    },
     "rootDir": "app/web/assets/tests",
     "setupFiles": [
       "<rootDir>/setup.jsx"

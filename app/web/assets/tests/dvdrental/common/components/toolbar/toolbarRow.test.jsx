@@ -12,11 +12,11 @@ describe('ToolbarRow', () => {
     test('should have mdc-toolbar__row class', () => {
         const wrapper = shallow(<ToolbarRow />);
 
-        expect(wrapper.first().hasClass("mdc-toolbar__row")).toBe(true);
+        expect(wrapper.first().hasClass('mdc-toolbar__row')).toBe(true);
     });
 
     test('should render children', () => {
-        var text = "Hello World";
+        var text = 'Hello World';
         const wrapper = shallow(<ToolbarRow>{text}</ToolbarRow>);
 
         expect(wrapper.contains(text)).toBe(true);

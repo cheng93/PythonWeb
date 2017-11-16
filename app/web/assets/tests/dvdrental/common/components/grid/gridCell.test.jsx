@@ -12,11 +12,11 @@ describe('GridCell', () => {
     test('should have mdc-layout-grid__cell class', () => {
         const wrapper = shallow(<GridCell />);
 
-        expect(wrapper.first().hasClass("mdc-layout-grid__cell")).toBe(true);
+        expect(wrapper.first().hasClass('mdc-layout-grid__cell')).toBe(true);
     });
 
     test('should render children', () => {
-        var text = "Hello World";
+        var text = 'Hello World';
         const wrapper = shallow(<GridCell>{text}</GridCell>);
 
         expect(wrapper.contains(text)).toBe(true);
