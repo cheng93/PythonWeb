@@ -241,6 +241,102 @@ def schema_upgrades():
 
 def schema_downgrades():
     """schema downgrade migrations go here."""
+    op.execute("""
+                ALTER TABLE staff_history
+        DROP CONSTRAINT staff_history_staff_id_fkey,
+        DROP CONSTRAINT staff_history_year_fkey,
+        DROP CONSTRAINT staff_history_team_id_fkey,
+        DROP CONSTRAINT staff_history_staff_role_fkey,
+        DROP CONSTRAINT staff_history_playoff_round_fkey
+        ;
+
+        DROP TABLE staff_history
+        ;
+
+        DROP TABLE staff_role
+        ;
+
+        DROP TABLE playoff_round
+        ;
+
+        ALTER TABLE staff
+        DROP CONSTRAINT staff_staff_group_fkey
+        ;
+
+        DROP TABLE staff
+        ;
+
+        DROP SEQUENCE staff_staff_id_seq
+        ;
+
+        DROP TABLE staff_group
+        ;
+
+        ALTER TABLE position_history
+        DROP CONSTRAINT position_history_player_id_fkey,
+        DROP CONSTRAINT position_history_year_fkey,
+        DROP CONSTRAINT position_history_stage_id_fkey,
+        DROP CONSTRAINT position_history_old_position,
+        DROP CONSTRAINT position_history_new_position,
+        DROP CONSTRAINT position_history_old_position_new_position_check
+        ;
+
+        DROP TABLE position_history
+        ;
+
+        DROP SEQUENCE position_history_position_history_id_seq
+        ;
+
+        ALTER TABLE draft
+        DROP CONSTRAINT draft_year_fkey,
+        DROP CONSTRAINT draft_player_id_fkey,
+        DROP CONSTRAINT draft_team_id_fkey
+        ;
+
+        DROP TABLE draft
+        ;
+
+        ALTER TABLE player
+        DROP CONSTRAINT player_position_fkey
+        ;
+
+        DROP TABLE player
+        ;
+
+        ALTER TABLE game
+        DROP CONSTRAINT game_home_team_id_fkey,
+        DROP CONSTRAINT game_visitor_team_id_fkey,
+        DROP CONSTRAINT game_home_team_id_visitor_team_id_check
+        ;
+
+        DROP TABLE game
+        ;
+
+        DROP SEQUENCE game_game_id_seq
+        ;
+
+        DROP TABLE position
+        ;
+
+        ALTER TABLE stage
+        DROP CONSTRAINT stage_stage_type_fkey
+        ;
+
+        DROP TABLE stage
+        ;
+
+        DROP SEQUENCE stage_stage_id_seq
+        ;
+
+        DROP TABLE stage_type
+        ;
+
+        DROP TABLE year
+        ;
+
+        DROP TABLE team
+        ;
+    """)
     pass
 
 
