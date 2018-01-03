@@ -61,7 +61,7 @@ def schema_upgrades():
 
         CREATE TABLE stage
         (
-            stage_id SMALLINT DEFAULT NEXTVAL('stage_stage_id_seq::regClass') NOT NULL
+            stage_id SMALLINT DEFAULT NEXTVAL('stage_stage_id_seq'::regClass) NOT NULL
                 CONSTRAINT stage_pkey
                     PRIMARY KEY,
             stage_name VARCHAR(50) NOT NULL,
@@ -85,7 +85,7 @@ def schema_upgrades():
 
         CREATE TABLE game
         (
-            game_id INTEGER DEFAULT NEXTVAL('game_game_id_seq::regClass') NOT NULL
+            game_id INTEGER DEFAULT NEXTVAL('game_game_id_seq'::regClass) NOT NULL
                 CONSTRAINT game_pkey
                     PRIMARY KEY,
             home_team_id SMALLINT NOT NULL
@@ -96,14 +96,14 @@ def schema_upgrades():
             visitor_team_id SMALLINT NOT NULL
                 CONSTRAINT game_visitor_team_id_fkey
                     REFERENCES team
-                        ON UPDATE CASCADE;
+                        ON UPDATE CASCADE,
             visitor_score SMALLINT NOT NULL,
             attendance INTEGER,
             weather VARCHAR(50),
             wind REAL,
             temperature REAL,
             CONSTRAINT game_home_team_id_visitor_team_id_check
-                CHECK home_team_id != visitor_team_id
+                CHECK (home_team_id != visitor_team_id)
         )
         ;
 
@@ -117,7 +117,7 @@ def schema_upgrades():
             position VARCHAR(4) NOT NULL
                 CONSTRAINT player_position_fkey
                     REFERENCES position
-                        ON UPDATE CASCADE
+                        ON UPDATE CASCADE,
             height SMALLINT NOT NULL,
             weight SMALLINT NOT NULL,
             birth_date DATE NOT NULL
@@ -134,7 +134,7 @@ def schema_upgrades():
             player_id INTEGER NOT NULL
                 CONSTRAINT draft_player_id_fkey
                     REFERENCES player,
-            team_id SMALLINT NOT NULL,
+            team_id SMALLINT NOT NULL
                 CONSTRAINT draft_team_id_fkey
                     REFERENCES team,
             CONSTRAINT draft_pkey
@@ -142,12 +142,12 @@ def schema_upgrades():
         )
         ;
 
-        CREATE SEQUENCE position_history_positiion_history_id_seq
+        CREATE SEQUENCE position_history_position_history_id_seq
         ;
 
         CREATE TABLE position_history
         (
-            position_history_id INTEGER DEFAULT NEXTVAL('position_history_positiion_history_id_seq::regClass') NOT NULL
+            position_history_id INTEGER DEFAULT NEXTVAL('position_history_position_history_id_seq'::regClass) NOT NULL
                 CONSTRAINT position_history_pkey
                     PRIMARY KEY,
             player_id INTEGER NOT NULL
@@ -158,11 +158,11 @@ def schema_upgrades():
                     REFERENCES year,
             stage_id SMALLINT NOT NULL
                 CONSTRAINT position_history_stage_id_fkey
-                    REFERENCES stage
+                    REFERENCES stage,
             old_position VARCHAR(4) NOT NULL
                 CONSTRAINT position_history_old_position
                     REFERENCES position,
-            new_position VARCHAR(4) NOT NULL,
+            new_position VARCHAR(4) NOT NULL
                 CONSTRAINT position_history_new_position
                     REFERENCES position,
             CONSTRAINT position_history_old_position_new_position_check
@@ -183,7 +183,7 @@ def schema_upgrades():
 
         CREATE TABLE staff
         (
-            staff_id INTEGER DEFAULT NEXTVAL('staff_staff_id_seq::regClass') NOT NULL
+            staff_id INTEGER DEFAULT NEXTVAL('staff_staff_id_seq'::regClass) NOT NULL
                 CONSTRAINT staff_pkey
                     PRIMARY KEY,
             last_name VARCHAR(126) NOT NULL,
@@ -216,7 +216,7 @@ def schema_upgrades():
             staff_id INTEGER NOT NULL
                 CONSTRAINT staff_history_staff_id_fkey
                     REFERENCES staff,
-            year SMALLINT NOT NULL,
+            year SMALLINT NOT NULL
                 CONSTRAINT staff_history_year_fkey
                     REFERENCES year,
             team_id SMALLINT NOT NULL
