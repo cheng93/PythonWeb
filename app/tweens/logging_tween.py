@@ -2,6 +2,7 @@ import sys
 
 from timeit import default_timer
 
+
 MESSAGE_TEMPLATE = 'HTTP {request_method} {request_path} responded {status_code} in {elapsed} ms'
 
 class logging_tween_factory(object):

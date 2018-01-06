@@ -1,6 +1,4 @@
-from app.setup import database, logging
-import app.request_id
-import app.tweens
+from app.setup import database, logging, request_id, tweens
 import app.web
 
 import os
@@ -21,10 +19,10 @@ def main(global_config, **settings):
 
     config.include(pyramid_chameleon)
 
-    config.include(app.request_id)
+    config.include(request_id)
     config.include(logging)
     config.include(database)
     config.include(app.web)
-    config.include(app.tweens)
+    config.include(tweens)
 
     return config.make_wsgi_app()
