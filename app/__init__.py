@@ -1,5 +1,5 @@
+from app.setup import logging
 import app.data
-import app.logging
 import app.request_id
 import app.tweens
 import app.web
@@ -25,7 +25,7 @@ def main(global_config, **settings):
     config.include(pyramid_chameleon)
 
     config.include(app.request_id)
-    config.include(app.logging)
+    config.include(logging)
     config.include(app.data)
     config.include(app.web)
     config.include(app.tweens)

@@ -6,7 +6,7 @@ from structlog import get_logger, wrap_logger
 from structlog.processors import JSONRenderer, TimeStamper, format_exc_info
 from structlog.stdlib import add_log_level
 
-from .http_logger import HttpLogger
+from app.logging.loggers import HttpLogger
 
 class __SafeDict(dict):
     def __missing__(self, key):
@@ -33,13 +33,3 @@ def logger_factory(request, host, port):
     )
     logger = logger.bind(request_id=str(request.id))
     return logger
-
-
-def includeme(config):
-    host = config.get_settings()['logging.host']
-    port = config.get_settings()['logging.port']
-
-    config.add_request_method(
-        lambda r: logger_factory(r, host, port),
-        'logger',
-        reify=True)
