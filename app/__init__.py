@@ -1,5 +1,4 @@
-from app.setup import logging
-import app.data
+from app.setup import database, logging
 import app.request_id
 import app.tweens
 import app.web
@@ -20,13 +19,11 @@ def main(global_config, **settings):
     settings = expandvars_dict(settings)
     config = Configurator(settings=settings)
 
-    config.scan(app.data)
-
     config.include(pyramid_chameleon)
 
     config.include(app.request_id)
     config.include(logging)
-    config.include(app.data)
+    config.include(database)
     config.include(app.web)
     config.include(app.tweens)
 
