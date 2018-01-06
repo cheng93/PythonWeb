@@ -1,6 +1,8 @@
 import app.data
+import app.vault
 
-from sqlalchemy import engine_from_config
+from sqlalchemy import create_engine
+from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
 
 import pyramid_tm
@@ -18,6 +20,16 @@ def get_tm_session(session_factory, transaction_manager):
     zope.sqlalchemy.register(session, transaction_manager=transaction_manager)
     return session
 
+def get_db_secrets(settings):
+    url = settings['vault.url']
+    token = settings['vault.token']
+    vault = app.vault.vault_factory(url, token)
+    return vault.read('secret/postgres/dvdrental')
+
+def get_database_dict(settings, prefix):
+    return dict((key[len(prefix):], settings[key])
+                    for key in settings
+                    if key.startswith(prefix))
 
 def includeme(config):
     config.scan(app.data)
@@ -26,7 +38,12 @@ def includeme(config):
 
     config.include(pyramid_tm)
 
-    engine = engine_from_config(settings, 'dvdrental.')
+    secrets = get_db_secrets(settings)
+    database_dict = get_database_dict(settings, 'dvdrental.')
+    database_dict['username'] = secrets['username']
+    database_dict['password'] = secrets['password']
+
+    engine = create_engine(URL(**database_dict))
     session_factory = get_session_factory(engine)
 
     config.registry['session_factory'] = session_factory

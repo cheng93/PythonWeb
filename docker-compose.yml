@@ -55,5 +55,15 @@ services:
       ELASTICSEARCH_URL: "elasticsearch:9200"
       ELASTICSEARCH_USER: "elastic"
       ELASTICSEARCH_PASSWORD: "changeme"
+  vault:
+    image: vault:0.9.1
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json
+    ports:
+      - "8200:8200"
+    volumes: 
+      - "./.data/vault:/vault/file"
+      - "./vault.json:/vault/config/vault.json"
 networks:
   webnet:

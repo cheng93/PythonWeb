@@ -10,7 +10,8 @@ requires = [
     'psycopg2',
     'structlog',
     'alembic',
-    'requests'
+    'requests',
+    'hvac[parser]'
 ]
 
 setup(name='app',
