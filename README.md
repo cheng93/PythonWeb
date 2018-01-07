@@ -10,10 +10,10 @@ This will start up the following services in docker
 * logstash
 
 Create a virtualenv by running
-`python -m venv python_modules`
+`python -m venv venv`
 
 Activate your virtualenv
-`source python_modules/bin/activate`
+`source venv/bin/activate`
 
 Install your app and dependencies
 `pip install -e .`
