@@ -15,8 +15,11 @@ app/web/assets
 
 .babelrc
 alembic.ini
-Jenkinsfile
 jsconfig.json
 logstash.conf
 package.json
+package-lock.json
+README.md
+travis.yml
+vault.sh
 webpack.config.js
