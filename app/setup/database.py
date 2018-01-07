@@ -1,13 +1,16 @@
 import app.data
 import app.vault
 
+import os
+
+import pyramid_tm
+
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
 
-import pyramid_tm
-
 import zope.sqlalchemy
+
 
 def get_session_factory(engine):
     factory = sessionmaker()
@@ -22,7 +25,7 @@ def get_tm_session(session_factory, transaction_manager):
 
 def get_db_secrets(settings):
     url = settings['vault.url']
-    token = settings['vault.token']
+    token = os.environ.get('VAULT_TOKEN', settings['vault.token'])
     vault = app.vault.vault_factory(url, token)
     return vault.read('secret/postgres/dvdrental')
 
