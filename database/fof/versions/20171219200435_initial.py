@@ -235,6 +235,228 @@ def schema_upgrades():
                 PRIMARY KEY (staff_id, year)
         )
         ;
+
+        CREATE SEQUENCE player_history_player_history_id_seq
+        ;
+
+        CREATE TABLE player_history
+        (
+            player_history_id INTEGER DEFAULT NEXTVAL('player_history_player_history_id_seq'::regClass) NOT NULL
+                CONSTRAINT player_history_pkey
+                    PRIMARY KEY,
+            player_id INTEGER NOT NULL
+                CONSTRAINT player_history_player_id_fkey
+                    REFERENCES player,
+            year SMALLINT NOT NULL
+                CONSTRAINT player_history_year_fkey
+                    REFERENCES year,
+            stage_id SMALLINT NOT NULL
+                CONSTRAINT player_history_stage_id_fkey
+                    REFERENCES stage,
+            old_team_id SMALLINT NOT NULL
+                CONSTRAINT player_history_old_team_id_fkey
+                    REFERENCES team,
+            new_team_id SMALLINT NOT NULL
+                CONSTRAINT player_history_new_team_id_fkey
+                    REFERENCES team
+        )
+        ;
+
+        CREATE SCHEMA stats
+        ;
+
+        CREATE TABLE stats.passing
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_passing_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_passing_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_passing_team_id_fkey
+                    REFERENCES public.team,
+            attempts SMALLINT NOT NULL,
+            completions SMALLINT NOT NULL,
+            yards INTEGER NOT NULL,
+            longest SMALLINT NOT NULL,
+            touchdowns SMALLINT NOT NULL,
+            interceptions SMALLINT NOT NULL,
+            CONSTRAINT stats_passing_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.rushing
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_rushing_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_rushing_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_rushing_team_id_fkey
+                    REFERENCES public.team,
+            attempts SMALLINT NOT NULL,
+            yards INTEGER NOT NULL,
+            longest SMALLINT NOT NULL,
+            touchdowns SMALLINT NOT NULL,
+            CONSTRAINT stats_rushing_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.receiving
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_receiving_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_receiving_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_receiving_team_id_fkey
+                    REFERENCES public.team,
+            targets SMALLINT NOT NULL,
+            catches SMALLINT NOT NULL,
+            drops SMALLINT NOT NULL,
+            yards INTEGER NOT NULL,
+            longest SMALLINT NOT NULL,
+            touchdowns SMALLINT NOT NULL,
+            yards_after_catch INTEGER NOT NULL,
+            CONSTRAINT stats_receiving_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.returning
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_returning_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_returning_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_returning_team_id_fkey
+                    REFERENCES public.team,
+            punt_returns SMALLINT NOT NULL,
+            punt_return_yards INTEGER NOT NULL,
+            punt_return_touchdowns SMALLINT NOT NULL,
+            kick_returns SMALLINT NOT NULL,
+            kick_return_yards INTEGER NOT NULL,
+            kick_return_touchdowns SMALLINT NOT NULL,
+            CONSTRAINT stats_punt_return_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.fumbles
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_fumbles_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_fumbles_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_fumbles_team_id_fkey
+                    REFERENCES public.team,
+            lost SMALLINT NOT NULL,
+            recovered SMALLINT NOT NULL,
+            forced SMALLINT NOT NULL,
+            CONSTRAINT stats_fumbles_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.blocking
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_blocking_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_blocking_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_blocking_team_id_fkey
+                    REFERENCES public.team,
+            key SMALLINT NOT NULL,
+            opportunities SMALLINT NOT NULL,
+            sacks_allowed SMALLINT NOT NULL,
+            CONSTRAINT stats_blocking_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.defending
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_defending_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_defending_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_defending_team_id_fkey
+                    REFERENCES public.team,
+            tackles SMALLINT NOT NULL,
+            assists SMALLINT NOT NULL,
+            sacks float NOT NULL,
+            interception SMALLINT NOT NULL,
+            interception_yards INTEGER NOT NULL,
+            interception_touchdowns SMALLINT NOT NULL,
+            passes_defended SMALLINT NOT NULL,
+            passes_blocked SMALLINT NOT NULL,
+            caught_against SMALLINT NOT NULL,
+            pass_plays SMALLINT NOT NULL,
+            run_plays SMALLINT NOT NULL,
+            CONSTRAINT stats_defending_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.kicking
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_kicking_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_kicking_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_kicking_team_id_fkey
+                    REFERENCES public.team,
+            field_goals SMALLINT NOT NULL,
+            field_goals_attempts SMALLINT NOT NULL,
+            longest_field_goal SMALLINT NOT NULL,
+            pats SMALLINT NOT NULL,
+            pats_attempts SMALLINT NOT NULL,
+            CONSTRAINT stats_kicking_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
+
+        CREATE TABLE stats.punting
+        (
+            player_id INTEGER NOT NULL
+                CONSTRAINT stats_punting_player_id_fkey
+                    REFERENCES public.player,
+            game_id INTEGER NOT NULL
+                CONSTRAINT stats_punting_game_id_fkey
+                    REFERENCES public.game,
+            team_id SMALLINT NOT NULL
+                CONSTRAINT stats_punting_team_id_fkey
+                    REFERENCES public.team,
+            attempts SMALLINT NOT NULL,
+            yards INTEGER NOT NULL,
+            longest SMALLINT NOT NULL,
+            inside_twenty SMALLINT NOT NULL,
+            CONSTRAINT stats_punting_pkey
+                PRIMARY KEY (player_id, game_id)
+        )
+        ;
     """)
     pass
 
@@ -242,12 +464,40 @@ def schema_upgrades():
 def schema_downgrades():
     """schema downgrade migrations go here."""
     op.execute("""
-                ALTER TABLE staff_history
-        DROP CONSTRAINT staff_history_staff_id_fkey,
-        DROP CONSTRAINT staff_history_year_fkey,
-        DROP CONSTRAINT staff_history_team_id_fkey,
-        DROP CONSTRAINT staff_history_staff_role_fkey,
-        DROP CONSTRAINT staff_history_playoff_round_fkey
+        DROP TABLE stats.punting
+        ;
+
+        DROP TABLE stats.kicking
+        ;
+
+        DROP TABLE stats.defending
+        ;
+
+        DROP TABLE stats.blocking
+        ;
+
+        DROP TABLE stats.fumbles
+        ;
+
+        DROP TABLE stats.returning
+        ;
+
+        DROP TABLE stats.receiving
+        ;
+
+        DROP TABLE stats.rushing
+        ;
+
+        DROP TABLE stats.passing
+        ;
+
+        DROP SCHEMA stats
+        ;
+
+        DROP TABLE player_history
+        ;
+
+        DROP SEQUENCE player_history_player_history_id_seq
         ;
 
         DROP TABLE staff_history
@@ -259,10 +509,6 @@ def schema_downgrades():
         DROP TABLE playoff_round
         ;
 
-        ALTER TABLE staff
-        DROP CONSTRAINT staff_staff_group_fkey
-        ;
-
         DROP TABLE staff
         ;
 
@@ -272,41 +518,16 @@ def schema_downgrades():
         DROP TABLE staff_group
         ;
 
-        ALTER TABLE position_history
-        DROP CONSTRAINT position_history_player_id_fkey,
-        DROP CONSTRAINT position_history_year_fkey,
-        DROP CONSTRAINT position_history_stage_id_fkey,
-        DROP CONSTRAINT position_history_old_position,
-        DROP CONSTRAINT position_history_new_position,
-        DROP CONSTRAINT position_history_old_position_new_position_check
-        ;
-
         DROP TABLE position_history
         ;
 
         DROP SEQUENCE position_history_position_history_id_seq
         ;
 
-        ALTER TABLE draft
-        DROP CONSTRAINT draft_year_fkey,
-        DROP CONSTRAINT draft_player_id_fkey,
-        DROP CONSTRAINT draft_team_id_fkey
-        ;
-
         DROP TABLE draft
         ;
 
-        ALTER TABLE player
-        DROP CONSTRAINT player_position_fkey
-        ;
-
         DROP TABLE player
-        ;
-
-        ALTER TABLE game
-        DROP CONSTRAINT game_home_team_id_fkey,
-        DROP CONSTRAINT game_visitor_team_id_fkey,
-        DROP CONSTRAINT game_home_team_id_visitor_team_id_check
         ;
 
         DROP TABLE game
@@ -316,10 +537,6 @@ def schema_downgrades():
         ;
 
         DROP TABLE position
-        ;
-
-        ALTER TABLE stage
-        DROP CONSTRAINT stage_stage_type_fkey
         ;
 
         DROP TABLE stage
