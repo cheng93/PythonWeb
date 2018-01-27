@@ -4,6 +4,7 @@ import draft
 import game
 import player
 import staff
+import staff_history
 import year
 
 parser = argparse.ArgumentParser(description='Convert fof csvs to sql.')
@@ -17,3 +18,4 @@ player.execute_drop(args.year)
 draft.execute(args.year)
 staff.execute(args.year)
 staff.execute_drop(args.year)
+staff_history.execute(args.year)
