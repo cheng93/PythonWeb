@@ -1,5 +1,6 @@
 import argparse
 
+import draft
 import game
 import player
 import year
@@ -12,3 +13,4 @@ year.execute(args.year)
 game.execute(args.year)
 player.execute(args.year)
 player.execute_drop(args.year)
+draft.execute(args.year)
