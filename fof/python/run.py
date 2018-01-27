@@ -1,6 +1,7 @@
 import argparse
 
 import game
+import player
 import year
 
 parser = argparse.ArgumentParser(description='Convert fof csvs to sql.')
@@ -9,3 +10,5 @@ args = parser.parse_args()
 
 year.execute(args.year)
 game.execute(args.year)
+player.execute(args.year)
+player.execute_drop(args.year)
