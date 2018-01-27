@@ -148,34 +148,6 @@ def schema_upgrades():
         )
         ;
 
-        CREATE SEQUENCE position_history_position_history_id_seq
-        ;
-
-        CREATE TABLE position_history
-        (
-            position_history_id INTEGER DEFAULT NEXTVAL('position_history_position_history_id_seq'::regClass) NOT NULL
-                CONSTRAINT position_history_pkey
-                    PRIMARY KEY,
-            player_id INTEGER NOT NULL
-                CONSTRAINT position_history_player_id_fkey
-                    REFERENCES player,
-            year SMALLINT NOT NULL
-                CONSTRAINT position_history_year_fkey
-                    REFERENCES year,
-            stage_id SMALLINT NOT NULL
-                CONSTRAINT position_history_stage_id_fkey
-                    REFERENCES stage,
-            old_position VARCHAR(4) NOT NULL
-                CONSTRAINT position_history_old_position
-                    REFERENCES position,
-            new_position VARCHAR(4) NOT NULL
-                CONSTRAINT position_history_new_position
-                    REFERENCES position,
-            CONSTRAINT position_history_old_position_new_position_check
-                CHECK (old_position != new_position)
-        )
-        ;
-
         CREATE TABLE staff_group
         (
             staff_group VARCHAR(50) NOT NULL
@@ -511,12 +483,6 @@ def schema_downgrades():
         ;
 
         DROP TABLE staff_group
-        ;
-
-        DROP TABLE position_history
-        ;
-
-        DROP SEQUENCE position_history_position_history_id_seq
         ;
 
         DROP TABLE draft
