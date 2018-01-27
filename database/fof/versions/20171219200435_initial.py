@@ -217,10 +217,10 @@ def schema_upgrades():
             stage_id SMALLINT NOT NULL
                 CONSTRAINT player_history_stage_id_fkey
                     REFERENCES stage,
-            old_team_id SMALLINT NOT NULL
+            old_team_id SMALLINT NULL
                 CONSTRAINT player_history_old_team_id_fkey
                     REFERENCES team,
-            new_team_id SMALLINT NOT NULL
+            new_team_id SMALLINT NULL
                 CONSTRAINT player_history_new_team_id_fkey
                     REFERENCES team
         )
