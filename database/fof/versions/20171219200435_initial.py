@@ -192,9 +192,6 @@ def schema_upgrades():
             staff_role VARCHAR(50) NOT NULL
                 CONSTRAINT staff_history_staff_role_fkey
                     REFERENCES staff_role,
-            playoff_round SMALLINT NULL
-                CONSTRAINT staff_history_playoff_round_fkey
-                    REFERENCES stage,
             wins SMALLINT NOT NULL,
             losses SMALLINT NOT NULL,
             ties SMALLINT NOT NULL,
