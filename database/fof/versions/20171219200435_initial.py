@@ -88,6 +88,12 @@ def schema_upgrades():
             game_id INTEGER DEFAULT NEXTVAL('game_game_id_seq'::regClass) NOT NULL
                 CONSTRAINT game_pkey
                     PRIMARY KEY,
+            year SMALLINT NOT NULL
+                CONSTRAINT game_year_fkey
+                    REFERENCES year,
+            stage_id SMALLINT NOT NULL
+                CONSTRAINT game_stage_id_fkey
+                    REFERENCES stage,
             home_team_id SMALLINT NOT NULL
                 CONSTRAINT game_home_team_id_fkey
                     REFERENCES team
