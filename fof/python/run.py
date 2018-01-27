@@ -3,6 +3,7 @@ import argparse
 import draft
 import game
 import player
+import player_history
 import staff
 import staff_history
 import year
@@ -19,3 +20,4 @@ draft.execute(args.year)
 staff.execute(args.year)
 staff.execute_drop(args.year)
 staff_history.execute(args.year)
+player_history.execute(args.year)
