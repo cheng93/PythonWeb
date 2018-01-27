@@ -195,14 +195,6 @@ def schema_upgrades():
         )
         ;
 
-        CREATE TABLE playoff_round
-        (
-            playoff_round VARCHAR(50) NOT NULL
-                CONSTRAINT playoff_round_pkey
-                    PRIMARY KEY
-        )
-        ;
-
         CREATE TABLE staff_role
         (
             staff_role VARCHAR(50) NOT NULL
@@ -225,9 +217,9 @@ def schema_upgrades():
             staff_role VARCHAR(50) NOT NULL
                 CONSTRAINT staff_history_staff_role_fkey
                     REFERENCES staff_role,
-            playoff_round VARCHAR(50) NULL
+            playoff_round SMALLINT NULL
                 CONSTRAINT staff_history_playoff_round_fkey
-                    REFERENCES playoff_round,
+                    REFERENCES stage,
             wins SMALLINT NOT NULL,
             losses SMALLINT NOT NULL,
             ties SMALLINT NOT NULL,
@@ -506,9 +498,6 @@ def schema_downgrades():
         DROP TABLE staff_role
         ;
 
-        DROP TABLE playoff_round
-        ;
-
         DROP TABLE staff
         ;
 
@@ -559,9 +548,379 @@ def schema_downgrades():
 
 def data_upgrades():
     """Add any optional data upgrade migrations here!"""
+    op.execute("""
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (0, 'Arizona', 'Cardinals')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (1, 'Atlanta', 'Falcons')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (2, 'Baltimore', 'Ravens')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (3, 'Buffalo', 'Bills')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (4, 'Carolina', 'Panthers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (5, 'Chicago', 'Bears')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (6, 'Cincinnati', 'Bengals')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (7, 'Dallas', 'Cowboys')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (8, 'Denver', 'Broncos')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (9, 'Detroit', 'Lions')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (10, 'Green Bay', 'Packers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (11, 'Indianapolis', 'Colts')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (12, 'Jacksonville', 'Jaguars')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (13, 'Kansas City', 'Chiefs')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (14, 'Miami', 'Dolphins')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (15, 'Minnesota', 'Vikings')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (16, 'New England', 'Patriots')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (17, 'New Orleans', 'Saints')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (18, 'New York', 'Giants')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (19, 'New Jersey', 'Jets')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (20, 'Oakland', 'Raiders')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (21, 'Philadelphia', 'Eagles')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (22, 'Pittsburgh', 'Steelers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (23, 'San Diego', 'Chargers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (24, 'Seattle', 'Seahawks')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (25, 'San Francisco', '49ers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (26, 'St. Louis', 'Rams')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (27, 'Tampa Bay', 'Buccaneers')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (28, 'Tennessee', 'Titans')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (29, 'Washington', 'Redskins')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (30, 'Cleveland', 'Browns')
+        ;
+
+        INSERT INTO team (team_id, city, team_name)
+        VALUES (31, 'Houston', 'Texans')
+        ;
+
+        INSERT INTO stage_type (stage_type)
+        VALUES ('Exhibition')
+        ;
+
+        INSERT INTO stage_type (stage_type)
+        VALUES ('Regular')
+        ;
+
+        INSERT INTO stage_type (stage_type)
+        VALUES ('Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 1', 'Exhibition')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 2', 'Exhibition')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 3', 'Exhibition')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 4', 'Exhibition')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 5', 'Exhibition')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 1', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 2', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 3', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 4', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 5', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 6', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 7', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 8', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 9', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 10', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 11', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 12', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 13', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 14', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 15', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 16', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Week 17', 'Regular')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Wildcard', 'Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Divisional', 'Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Conference', 'Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Superbowl', 'Playoffs')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('C')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('FB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('FL')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('FS')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('K')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LCB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LDE')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LDT')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LG')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LS')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('LT')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('MLB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('NT')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('P')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('QB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RCB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RDE')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RDT')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RG')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('RT')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('SE')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('SILB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('SLB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('SS')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('TE')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('WILB')
+        ;
+
+        INSERT INTO position (position)
+        VALUES ('WLB')
+        ;
+    """)
     pass
 
 
 def data_downgrades():
     """Add any optional data downgrade migrations here!"""
+    op.execute("""
+        DELETE FROM position
+        ;
+
+        DELETE FROM stage
+        ;
+
+        DELETE FROM stage_type
+        ;
+
+        DELETE FROM team
+        ;
+    """)
     pass
