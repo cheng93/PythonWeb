@@ -876,6 +876,43 @@ def data_upgrades():
         INSERT INTO position (position)
         VALUES ('WLB')
         ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Defensive Linemen')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Linebackers')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Offensive Linemen')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Quarterbacks')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Running Backs')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Secondary')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Strength')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Tight Ends')
+        ;
+
+        INSERT INTO staff_group(staff_group)
+        VALUES ('Wide Receivers')
+        ;
+
     """)
     pass
 
@@ -883,6 +920,9 @@ def data_upgrades():
 def data_downgrades():
     """Add any optional data downgrade migrations here!"""
     op.execute("""
+        DELETE FROM staff_group
+        ;
+
         DELETE FROM position
         ;
 
