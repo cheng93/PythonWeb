@@ -913,6 +913,26 @@ def data_upgrades():
         VALUES ('Wide Receivers')
         ;
 
+        INSERT INTO staff_role(staff_role)
+        VALUES ('Assistant Coach')
+        ;
+
+        INSERT INTO staff_role(staff_role)
+        VALUES ('Defensive Coordinator')
+        ;
+
+        INSERT INTO staff_role(staff_role)
+        VALUES ('Head Coach')
+        ;
+
+        INSERT INTO staff_role(staff_role)
+        VALUES ('Offensive Coordinator')
+        ;
+
+        INSERT INTO staff_role(staff_role)
+        VALUES ('Strength Coordinator')
+        ;
+
     """)
     pass
 
@@ -920,6 +940,9 @@ def data_upgrades():
 def data_downgrades():
     """Add any optional data downgrade migrations here!"""
     op.execute("""
+        DELETE FROM staff_role
+        ;
+
         DELETE FROM staff_group
         ;
 
