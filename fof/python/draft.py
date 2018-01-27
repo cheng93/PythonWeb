@@ -20,7 +20,6 @@ def execute(year):
                     int(row['Drafted_Position'])))
             for row in sorted_reader:
                 if (int(row['Draft_Year']) == int(year) -1):
-                    print(row['Draft_Round'], row['Drafted_Position'])
                     sql = f'''
                         INSERT INTO draft
                         (
