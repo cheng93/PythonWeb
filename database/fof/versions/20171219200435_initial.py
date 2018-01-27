@@ -156,12 +156,9 @@ def schema_upgrades():
         )
         ;
 
-        CREATE SEQUENCE staff_staff_id_seq
-        ;
-
         CREATE TABLE staff
         (
-            staff_id INTEGER DEFAULT NEXTVAL('staff_staff_id_seq'::regClass) NOT NULL
+            staff_id INTEGER NOT NULL
                 CONSTRAINT staff_pkey
                     PRIMARY KEY,
             last_name VARCHAR(126) NOT NULL,
@@ -477,9 +474,6 @@ def schema_downgrades():
         ;
 
         DROP TABLE staff
-        ;
-
-        DROP SEQUENCE staff_staff_id_seq
         ;
 
         DROP TABLE staff_group
