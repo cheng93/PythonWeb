@@ -7,6 +7,7 @@ import player_history
 import staff
 import staff_history
 import stats_passing
+import stats_rushing
 import year
 
 parser = argparse.ArgumentParser(description='Convert fof csvs to sql.')
@@ -23,3 +24,4 @@ staff.execute_drop(args.year)
 staff_history.execute(args.year)
 player_history.execute(args.year)
 stats_passing.execute(args.year)
+stats_rushing.execute(args.year)
