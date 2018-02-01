@@ -1,6 +1,7 @@
 .git
 *.egg-info/
 database/
+fof/
 node_modules/
 python_modules/
 webpack/

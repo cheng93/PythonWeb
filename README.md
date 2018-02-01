@@ -26,7 +26,7 @@ you can exist psql by typing `\q`
 
 Run the db migration
 
-`alembic  -c ./alembic.ini -n dvdrental -x seed=true upgrade head`
+`alembic -c alembic.ini -n dvdrental -x seed=true upgrade head`
 
 Install required javascript modules
 `npm install`

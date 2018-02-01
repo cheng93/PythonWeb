@@ -96,3 +96,5 @@ ENV/
 
 # data stores
 .data
+
+.~lock.*
