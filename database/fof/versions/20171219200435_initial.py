@@ -330,6 +330,7 @@ def schema_upgrades():
             lost SMALLINT NOT NULL,
             recovered SMALLINT NOT NULL,
             forced SMALLINT NOT NULL,
+            touchdowns SMALLINT NOT NULL,
             CONSTRAINT stats_fumbles_pkey
                 PRIMARY KEY (player_id, game_id)
         )
