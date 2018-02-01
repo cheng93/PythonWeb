@@ -11,6 +11,7 @@ import stats_defending
 import stats_fumbles
 import stats_kicking
 import stats_passing
+import stats_punting
 import stats_receiving
 import stats_returning
 import stats_rushing
@@ -37,3 +38,4 @@ stats_fumbles.execute(args.year)
 stats_blocking.execute(args.year)
 stats_defending.execute(args.year)
 stats_kicking.execute(args.year)
+stats_punting.execute(args.year)
