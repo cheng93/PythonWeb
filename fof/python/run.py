@@ -6,7 +6,8 @@ import player
 import player_history
 import staff
 import staff_history
-import  stats_blocking
+import stats_blocking
+import stats_defending
 import stats_fumbles
 import stats_passing
 import stats_receiving
@@ -33,3 +34,4 @@ stats_receiving.execute(args.year)
 stats_returning.execute(args.year)
 stats_fumbles.execute(args.year)
 stats_blocking.execute(args.year)
+stats_defending.execute(args.year)
