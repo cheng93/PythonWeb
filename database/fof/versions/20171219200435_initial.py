@@ -374,6 +374,7 @@ def schema_upgrades():
             interception_touchdowns SMALLINT NOT NULL,
             passes_defended SMALLINT NOT NULL,
             passes_blocked SMALLINT NOT NULL,
+            hurries SMALLINT NOT NULL,
             caught_against SMALLINT NOT NULL,
             pass_plays SMALLINT NOT NULL,
             run_plays SMALLINT NOT NULL,
