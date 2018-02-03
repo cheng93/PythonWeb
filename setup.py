@@ -10,7 +10,8 @@ requires = [
     'psycopg2',
     'structlog',
     'alembic',
-    'requests'
+    'requests',
+    'sqlacodegen'
 ]
 
 setup(name='app',
