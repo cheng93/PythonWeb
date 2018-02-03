@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import grid from '../grid/grid.vue';
-import gridCell from '../grid/gridCell.vue';
+import grid from '../grid/grid.vue'
+import gridCell from '../grid/gridCell.vue'
 
-import toolbar from '../toolbar/toolbar.vue';
-import toolbarRow from '../toolbar/toolbarRow.vue';
-import toolbarSection from '../toolbar/toolbarSection.vue';
-import toolbarTitle from '../toolbar/toolbarTitle.vue';
+import toolbar from '../toolbar/toolbar.vue'
+import toolbarRow from '../toolbar/toolbarRow.vue'
+import toolbarSection from '../toolbar/toolbarSection.vue'
+import toolbarTitle from '../toolbar/toolbarTitle.vue'
 
 export default {
     props: {

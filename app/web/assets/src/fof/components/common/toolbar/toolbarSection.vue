@@ -13,9 +13,9 @@ export default {
                 let aligns = [
                     'start',
                     'end'
-                ];
+                ]
 
-                return aligns.includes(value);
+                return aligns.includes(value)
             }
         }
     },
@@ -24,7 +24,7 @@ export default {
             return {
                 'mdc-toolbar__section': true,
                 [`mdc-toolbar__section--align-${this.align}`]: this.align
-            };
+            }
         }
     }
 }

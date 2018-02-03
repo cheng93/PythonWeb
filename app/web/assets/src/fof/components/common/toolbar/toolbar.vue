@@ -14,7 +14,7 @@ export default {
             return {
                 'mdc-toolbar': true,
                 'mdc-toolbar--fixed': this.fixed
-            };
+            }
         }
     }
 }

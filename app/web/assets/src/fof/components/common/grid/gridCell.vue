@@ -6,8 +6,8 @@
 
 <script>
 let validator = (value) => {
-    return value >= 1 && value <= 12;
-};
+    return value >= 1 && value <= 12
+}
 
 export default {
     props: {
@@ -36,7 +36,7 @@ export default {
                 [`mdc-layout-grid__cell--span-${this.desktop}-desktop`]: this.desktop,
                 [`mdc-layout-grid__cell--span-${this.tablet}-tablet`]: this.tablet,
                 [`mdc-layout-grid__cell--span-${this.mobile}-mobile`]: this.mobile,
-            };
+            }
         }
     }
 }
