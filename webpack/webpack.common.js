@@ -7,6 +7,7 @@ var assets = root + './assets/src/';
 var static = root + './static/';
 
 var dvdrental = assets + './dvdrental/';
+var fof = assets + './fof/'
 
 var exclusionRegex = [/node_modules/];
 
@@ -15,6 +16,8 @@ module.exports = {
     'dvdrental.polyfill': dvdrental + 'polyfill.js',
     'dvdrental.vendor': dvdrental + 'vendor.js',
     'dvdrental.app': dvdrental + 'main.jsx',
+    'fof.vendor': fof + 'vendor.js',
+    'fof.app': fof + 'main.js',
     'vendor': assets + 'vendor.scss',
     'app': assets + 'app.scss'
   },
@@ -65,6 +68,11 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       names: ['dvdrental.vendor'],
       chunks: ['dvdrental.app', 'dvdrental.vendor'],
+      minChunks: Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['fof.vendor'],
+      chunks: ['fof.app', 'fof.vendor'],
       minChunks: Infinity
     }),
     new ExtractTextPlugin({
