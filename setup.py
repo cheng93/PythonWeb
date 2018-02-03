@@ -12,7 +12,8 @@ requires = [
     'alembic',
     'requests',
     'sqlacodegen',
-    'graphene-sqlalchemy'
+    'graphene-sqlalchemy',
+    'webob-graphql'
 ]
 
 setup(name='app',
