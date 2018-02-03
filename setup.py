@@ -11,7 +11,8 @@ requires = [
     'structlog',
     'alembic',
     'requests',
-    'sqlacodegen'
+    'sqlacodegen',
+    'graphene-sqlalchemy'
 ]
 
 setup(name='app',
