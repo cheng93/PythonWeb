@@ -28,7 +28,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.css', '.vue']
   },
 
   module: {
@@ -37,6 +37,10 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
         exclude: exclusionRegex
+      },
+      {
+        test: /\.vue?$/,
+        loaders: ['vue-loader']
       },
       {
         test: /\.css$/,
