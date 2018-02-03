@@ -21,7 +21,8 @@
     "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^8.0.52",
