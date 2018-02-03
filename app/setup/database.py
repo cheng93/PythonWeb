@@ -24,8 +24,8 @@ def add_db(config, db_name):
     engine = engine_from_config(settings, f'{db_name}.')
     session_factory = get_session_factory(engine)
 
-    config.registry['session_factory'] = session_factory
-    config.registry['get_tm_session'] = get_tm_session
+    # config.registry['session_factory'] = session_factory
+    # config.registry['get_tm_session'] = get_tm_session
 
     config.add_request_method(
         lambda r: get_tm_session(session_factory, r.tm),
