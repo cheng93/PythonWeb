@@ -16,6 +16,6 @@ class StaffHistory(Base):
     ties = Column(SmallInteger, nullable=False)
 
     staff = relationship('Staff')
-    staff_role1 = relationship('StaffRole')
+    #staff_role1 = relationship('StaffRole')
     team = relationship('Team')
     #year1 = relationship('Year')
