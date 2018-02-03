@@ -1,12 +1,20 @@
 <template>
-    <div>
-        <router-view></router-view>
+    <div id='app'>
+        <page title='Front Office Football'>
+            <router-view></router-view>
+        </page>
     </div>
 </template>
 
 <script>
+import page from '../common/components/page/page.vue';
+
+
 export default {
-    name: 'app'
+    name: 'app',
+    components: {
+        page
+    }
 }
 </script>
 
