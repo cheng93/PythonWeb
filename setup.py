@@ -10,7 +10,10 @@ requires = [
     'psycopg2',
     'structlog',
     'alembic',
-    'requests'
+    'requests',
+    'sqlacodegen',
+    'graphene-sqlalchemy',
+    'webob-graphql'
 ]
 
 setup(name='app',
