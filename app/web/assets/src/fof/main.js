@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import router from './router'
 import store from './store'
-import app from './components/app.vue'
+import app from './components/app'
 
 new Vue({
     router,

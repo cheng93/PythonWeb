@@ -1,13 +1,13 @@
 <template>
-    <div id='app'>
-        <page title='Front Office Football'>
+    <div id="app">
+        <page title="Front Office Football">
             <router-view></router-view>
         </page>
     </div>
 </template>
 
 <script>
-import page from './common/page/page.vue'
+import page from './common/page'
 
 
 export default {

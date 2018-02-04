@@ -1,9 +1,6 @@
 <template>
     <div>
-        <section>
-            <h2 class='mdc-typography--title'>Teams</h2>
-            <home-teams />
-        </section>
+        <home-teams />
     </div>
 </template>
 
