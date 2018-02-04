@@ -1,0 +1,11 @@
+query {
+  teams {
+    edges {
+      node {
+        teamId,
+        city,
+        teamName
+      }
+    }
+  }
+}
