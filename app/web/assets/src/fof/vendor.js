@@ -4,5 +4,4 @@ import 'apollo-link-http'
 
 import 'vue'
 import 'vuex'
-import 'vue-apollo'
 import 'vue-router'
