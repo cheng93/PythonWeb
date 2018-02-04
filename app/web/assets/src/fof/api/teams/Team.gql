@@ -1,0 +1,7 @@
+query Team($id: Int!) {
+    team(teamId: $id) {
+        teamId
+        city
+        teamName
+    }
+}

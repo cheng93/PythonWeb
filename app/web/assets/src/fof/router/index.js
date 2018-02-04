@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import home from '../components/home/home.vue'
-import players from '../components/players/player.vue'
+import home from '../components/home/home'
+import players from '../components/players/player'
+import team from '../components/teams/team'
 
 Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: home },
+    { path: '/teams/:id', component: team },
     { path: '/players', component: players }
 ]
 
