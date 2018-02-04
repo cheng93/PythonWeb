@@ -16,6 +16,7 @@ module.exports = {
     'dvdrental.polyfill': dvdrental + 'polyfill.js',
     'dvdrental.vendor': dvdrental + 'vendor.js',
     'dvdrental.app': dvdrental + 'main.jsx',
+    'fof.polyfill': fof + 'polyfill.js',
     'fof.vendor': fof + 'vendor.js',
     'fof.app': fof + 'main.js',
     'vendor': assets + 'vendor.scss',
@@ -39,7 +40,7 @@ module.exports = {
         exclude: exclusionRegex
       },
       {
-        test: /\.vue?$/,
+        test: /\.vue$/,
         loaders: ['vue-loader']
       },
       {
@@ -64,7 +65,12 @@ module.exports = {
               }
             ]
         })
-      }
+      },
+      {
+        test: /\.gql$/,
+        loaders: ['graphql-tag/loader'],
+        exclude: exclusionRegex
+      },
     ]
   },
 
