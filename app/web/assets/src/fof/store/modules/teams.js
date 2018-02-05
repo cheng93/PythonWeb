@@ -12,7 +12,11 @@ const state = {
 }
 
 const getters = {
-    getTeams: state => state.teams
+    getTeams: state => state.teams,
+    getTeamStandings: state => (state.team.finalStandings 
+                            && state.team.finalStandings.edges
+                            && state.team.finalStandings.edges.map(edge => edge.node))
+                            || []
 }
 
 const mutations = {
