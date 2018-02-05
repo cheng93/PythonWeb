@@ -3,5 +3,14 @@ query Team($id: Int!) {
         teamId
         city
         teamName
+        finalStandings {
+            edges {
+                node {
+                teamId
+                year
+                standing
+                }
+            }
+        }
     }
 }
