@@ -2,16 +2,16 @@
     <section class="mdc-layout-grid">
         <h2 class='mdc-typography--title'>Teams</h2>
         <ul class="mdc-list mdc-layout-grid__inner">
-            <li v-for='team in teams' :key='team.teamId'
+            <router-link v-for='team in teams' :key='team.teamId' 
+                :to="'/teams/' + team.teamId" tag="li"
                 class="mdc-list-item mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
-                {{team.teamName}}
-            </li>
+                    {{team.teamName}}
+            </router-link>
         </ul>
     </section>
 </template>
 
 <script>
-
 export default {
     computed: { 
         teams() { 
