@@ -7,6 +7,7 @@ var assets = root + './assets/src/';
 var static = root + './static/';
 
 var dvdrental = assets + './dvdrental/';
+var fof = assets + './fof/'
 
 var exclusionRegex = [/node_modules/];
 
@@ -15,6 +16,9 @@ module.exports = {
     'dvdrental.polyfill': dvdrental + 'polyfill.js',
     'dvdrental.vendor': dvdrental + 'vendor.js',
     'dvdrental.app': dvdrental + 'main.jsx',
+    'fof.polyfill': fof + 'polyfill.js',
+    'fof.vendor': fof + 'vendor.js',
+    'fof.app': fof + 'main.js',
     'vendor': assets + 'vendor.scss',
     'app': assets + 'app.scss'
   },
@@ -25,7 +29,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.css', '.vue']
   },
 
   module: {
@@ -34,6 +38,10 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
         exclude: exclusionRegex
+      },
+      {
+        test: /\.vue$/,
+        loaders: ['vue-loader']
       },
       {
         test: /\.css$/,
@@ -57,7 +65,12 @@ module.exports = {
               }
             ]
         })
-      }
+      },
+      {
+        test: /\.gql$/,
+        loaders: ['graphql-tag/loader'],
+        exclude: exclusionRegex
+      },
     ]
   },
 
@@ -65,6 +78,11 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       names: ['dvdrental.vendor'],
       chunks: ['dvdrental.app', 'dvdrental.vendor'],
+      minChunks: Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['fof.vendor'],
+      chunks: ['fof.app', 'fof.vendor'],
       minChunks: Infinity
     }),
     new ExtractTextPlugin({
