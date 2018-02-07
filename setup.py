@@ -3,6 +3,7 @@ from setuptools import setup
 
 requires = [
     'pyramid',
+    'waitress',
     'pyramid_chameleon',
     'sqlalchemy',
     'pyramid_tm',
