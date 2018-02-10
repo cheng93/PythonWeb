@@ -643,6 +643,10 @@ def data_upgrades():
         ;
 
         INSERT INTO stage_type (stage_type)
+        VALUES ('Pre Season')
+        ;
+
+        INSERT INTO stage_type (stage_type)
         VALUES ('Exhibition')
         ;
 
@@ -756,6 +760,10 @@ def data_upgrades():
 
         INSERT INTO stage (stage_name, stage_type)
         VALUES ('Superbowl', 'Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Draft', 'Pre Season')
         ;
 
         INSERT INTO position (position)
