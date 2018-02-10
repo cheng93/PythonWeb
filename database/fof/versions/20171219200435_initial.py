@@ -643,6 +643,10 @@ def data_upgrades():
         ;
 
         INSERT INTO stage_type (stage_type)
+        VALUES ('Pre Season')
+        ;
+
+        INSERT INTO stage_type (stage_type)
         VALUES ('Exhibition')
         ;
 
@@ -756,6 +760,10 @@ def data_upgrades():
 
         INSERT INTO stage (stage_name, stage_type)
         VALUES ('Superbowl', 'Playoffs')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Draft', 'Pre Season')
         ;
 
         INSERT INTO position (position)
@@ -932,23 +940,4 @@ def data_upgrades():
 
 def data_downgrades():
     """Add any optional data downgrade migrations here!"""
-    op.execute("""
-        DELETE FROM staff_role
-        ;
-
-        DELETE FROM staff_group
-        ;
-
-        DELETE FROM position
-        ;
-
-        DELETE FROM stage
-        ;
-
-        DELETE FROM stage_type
-        ;
-
-        DELETE FROM team
-        ;
-    """)
     pass
