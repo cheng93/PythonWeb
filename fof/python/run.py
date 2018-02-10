@@ -23,25 +23,46 @@ parser.add_argument("-y", dest="year", required=True)
 parser.add_argument("-s",dest="staff_id", required=True)
 parser.add_argument("-d",dest="db", required=True)
 parser.add_argument("-ho",dest="host", required=True)
+parser.add_argument("-p",dest="port", required=True)
 parser.add_argument("-u",dest="user", required=True)
-parser.add_argument("-p",dest="password")
+parser.add_argument("-pa",dest="password")
 args = parser.parse_args()
 
-sql = ""
+try:
+    conn = psycopg2.connect(
+            dbname=args.db,
+            user=args.user,
+            host=args.host,
+            port=args.port,
+            password=args.password)
+except:
+    print("Couldn't connect")
+cur = conn.cursor()
+try:
+    cur.execute("SELECT VERSION();")
+except:
+    print("Couldn't execute")
 
-sql += year.execute(args.year)
-sql += game.execute(args.year)
-sql += player.execute(args.year)
-sql += draft.execute(args.year)
-sql += staff.execute(args.year, args.staff_id)
-sql += staff_history.execute(args.year)
-sql += player_history.execute(args.year)
-sql += stats_passing.execute(args.year)
-sql += stats_rushing.execute(args.year)
-sql += stats_receiving.execute(args.year)
-sql += stats_returning.execute(args.year)
-sql += stats_fumbles.execute(args.year)
-sql += stats_blocking.execute(args.year)
-sql += stats_defending.execute(args.year)
-sql += stats_kicking.execute(args.year)
-sql += stats_punting.execute(args.year)
+rows = cur.fetchall()
+print(rows[0])
+
+cur.execute(year.execute(args.year))
+cur.execute(game.execute(args.year))
+cur.execute(player.execute(args.year))
+cur.execute(draft.execute(args.year))
+cur.execute(staff.execute(args.year, args.staff_id))
+cur.execute(staff_history.execute(args.year))
+cur.execute(player_history.execute(args.year))
+cur.execute(stats_passing.execute(args.year))
+cur.execute(stats_rushing.execute(args.year))
+cur.execute(stats_receiving.execute(args.year))
+cur.execute(stats_returning.execute(args.year))
+cur.execute(stats_fumbles.execute(args.year))
+cur.execute(stats_blocking.execute(args.year))
+cur.execute(stats_defending.execute(args.year))
+cur.execute(stats_kicking.execute(args.year))
+cur.execute(stats_punting.execute(args.year))
+
+conn.commit()
+cur.close()
+conn.close()
