@@ -763,7 +763,23 @@ def data_upgrades():
         ;
 
         INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Pre Free Agency', 'Pre Season')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Free Agency', 'Pre Season')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
         VALUES ('Draft', 'Pre Season')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Late Free Agency', 'Pre Season')
+        ;
+
+        INSERT INTO stage (stage_name, stage_type)
+        VALUES ('Training Camp', 'Pre Season')
         ;
 
         INSERT INTO position (position)
