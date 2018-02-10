@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${request.static_url('app.web:static/vendor.css')}" />
     <link rel="stylesheet" href="${request.static_url('app.web:static/fof.vendor.css')}" />
     <link rel="stylesheet" href="${request.static_url('app.web:static/app.css')}" />
-    <title>DvdRental</title>
+    <title>Front Office Football</title>
 </head>
 <body>
     <div class="container body-content">
