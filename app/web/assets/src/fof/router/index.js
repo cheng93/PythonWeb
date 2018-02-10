@@ -16,5 +16,8 @@ const routes = [
 export default new VueRouter({
     base: '/fof/',
     mode: 'history',
-    routes: routes
+    routes: routes,
+    scrollBehavior (to, from, savedPosition) {
+        return savedPosition ? savedPosition : { x: .0, y: .0 }
+    }
 })
