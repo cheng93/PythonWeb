@@ -38,30 +38,73 @@ try:
 except:
     print("Couldn't connect")
 cur = conn.cursor()
-try:
-    cur.execute("SELECT VERSION();")
-except:
-    print("Couldn't execute")
 
-rows = cur.fetchall()
-print(rows[0])
+print(args.year)
 
-cur.execute(year.execute(args.year))
-cur.execute(game.execute(args.year))
-cur.execute(player.execute(args.year))
-cur.execute(draft.execute(args.year))
-cur.execute(staff.execute(args.year, args.staff_id))
-cur.execute(staff_history.execute(args.year))
-cur.execute(player_history.execute(args.year))
-cur.execute(stats_passing.execute(args.year))
-cur.execute(stats_rushing.execute(args.year))
-cur.execute(stats_receiving.execute(args.year))
-cur.execute(stats_returning.execute(args.year))
-cur.execute(stats_fumbles.execute(args.year))
-cur.execute(stats_blocking.execute(args.year))
-cur.execute(stats_defending.execute(args.year))
-cur.execute(stats_kicking.execute(args.year))
-cur.execute(stats_punting.execute(args.year))
+sql = year.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = game.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = player.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = draft.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = staff.execute(args.year, args.staff_id)
+if sql != "":
+	cur.execute(sql)
+
+sql = staff_history.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = player_history.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_passing.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_rushing.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_receiving.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_returning.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_fumbles.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_blocking.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_defending.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_kicking.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
+sql = stats_punting.execute(args.year)
+if sql != "":
+	cur.execute(sql)
+
 
 conn.commit()
 cur.close()

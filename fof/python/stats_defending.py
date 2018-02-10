@@ -76,6 +76,7 @@ def execute(year):
                             g.home_team_id = {row["Team"]}
                             OR g.visitor_team_id = {row["Team"]}
                         )
+                        AND g.year = {year}
                     ;
                 """
     return sql
