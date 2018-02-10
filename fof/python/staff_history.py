@@ -6,7 +6,7 @@ def execute(year):
     dir = os.path.dirname(__file__)
     csvname = os.path.join(dir, f"../{year}/staff_history.csv")
     sql = ""
-    with open(csvname, "r") as csv_file:
+    with open(csvname, "r", encoding="Windows-1252") as csv_file:
         reader = csv.DictReader(csv_file)
         for row in reader:
             if int(row["Year"])+1 == int(year):

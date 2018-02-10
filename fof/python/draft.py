@@ -7,7 +7,7 @@ def execute(year):
     dir = os.path.dirname(__file__)
     csvname = os.path.join(dir, f"../{year}/player_information.csv")
     sql = ""
-    with open(csvname, "r") as csv_file:
+    with open(csvname, "r", encoding="Windows-1252") as csv_file:
         reader = csv.DictReader(csv_file)
         sorted_reader = sorted(
             reader, 
