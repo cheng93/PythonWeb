@@ -1,6 +1,6 @@
 from app.data.fof import Base
 
-from sqlalchemy import Column, String
+from sqlalchemy import Column, SmallInteger, String
 
 
 class StageType(Base):
