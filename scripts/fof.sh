@@ -1,5 +1,5 @@
 #!/bin/bash
-while getopts :u:n:p:w:d:s: option
+while getopts :u:n:p:w:d:y: option
 do
     case $option
     in
@@ -8,7 +8,7 @@ do
         p) port=$OPTARG;;
         w) password=$OPTARG;;
         d) db=$OPTARG;;
-        s) skip=$OPTARG;;
+        y) year=$OPTARG;;
     esac
 done
 
@@ -34,9 +34,9 @@ dir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
 for i in ${!seasons[@]}
 do
-    if [ -v skip ]
+    if [ -v year ]
     then
-        if [ $i -lt $skip ]
+        if [ $((i+2015)) -ne $year ]
         then
             continue
         fi

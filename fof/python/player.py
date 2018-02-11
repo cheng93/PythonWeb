@@ -32,7 +32,7 @@ def execute(year):
                         '{birth_date}'
                     ;
                     """
-                if row["Drafted_By"] != "0":
+                if row["Draft_Year"] != "0":
                     sql += f"""
                         INSERT INTO player_history
                         (

@@ -52,7 +52,9 @@ def schema_upgrades():
         (
             stage_type VARCHAR(50) NOT NULL
                 CONSTRAINT stage_type_pkey
-                    PRIMARY KEY
+                    PRIMARY KEY,
+            rank SMALLINT NOT NULL
+                CONSTRAINT stage_type_rank_unq UNIQUE
         )
         ;
 
@@ -68,7 +70,10 @@ def schema_upgrades():
             stage_type VARCHAR(50) NOT NULL
                 CONSTRAINT stage_stage_type_fkey
                     REFERENCES stage_type
-                        ON UPDATE CASCADE
+                        ON UPDATE CASCADE,
+            rank SMALLINT NOT NULL,
+            CONSTRAINT stage_stage_type_rank_uq
+                UNIQUE(stage_type, rank)
         )
         ;
 
@@ -108,7 +113,7 @@ def schema_upgrades():
             weather VARCHAR(50),
             wind REAL,
             temperature REAL,
-            CONSTRAINT game_home_team_id_visitor_team_id_check
+            CONSTRAINT game_home_team_id_visitor_team_id_chk
                 CHECK (home_team_id != visitor_team_id)
         )
         ;
@@ -642,128 +647,144 @@ def data_upgrades():
         VALUES (31, 'Houston', 'Texans')
         ;
 
-        INSERT INTO stage_type (stage_type)
-        VALUES ('Pre Season')
+        INSERT INTO stage_type (stage_type, rank)
+        VALUES ('Pre Season', 0)
         ;
 
-        INSERT INTO stage_type (stage_type)
-        VALUES ('Exhibition')
+        INSERT INTO stage_type (stage_type, rank)
+        VALUES ('Exhibition', 10)
         ;
 
-        INSERT INTO stage_type (stage_type)
-        VALUES ('Regular')
+        INSERT INTO stage_type (stage_type, rank)
+        VALUES ('Regular', 20)
         ;
 
-        INSERT INTO stage_type (stage_type)
-        VALUES ('Playoffs')
+        INSERT INTO stage_type (stage_type, rank)
+        VALUES ('Playoffs', 30)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 1', 'Exhibition')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 1', 'Exhibition', 0)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 2', 'Exhibition')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 2', 'Exhibition', 10)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 3', 'Exhibition')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 3', 'Exhibition', 20)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 4', 'Exhibition')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 4', 'Exhibition', 30)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 5', 'Exhibition')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 5', 'Exhibition', 40)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 1', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 1', 'Regular', 0)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 2', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 2', 'Regular', 10)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 3', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 3', 'Regular', 20)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 4', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 4', 'Regular', 30)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 5', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 5', 'Regular', 40)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 6', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 6', 'Regular', 50)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 7', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 7', 'Regular', 60)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 8', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 8', 'Regular', 70)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 9', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 9', 'Regular', 80)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 10', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 10', 'Regular', 90)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 11', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 11', 'Regular', 100)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 12', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 12', 'Regular', 110)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 13', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 13', 'Regular', 120)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 14', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 14', 'Regular', 130)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 15', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 15', 'Regular', 140)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 16', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 16', 'Regular', 150)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Week 17', 'Regular')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Week 17', 'Regular', 160)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Wildcard', 'Playoffs')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Wildcard', 'Playoffs', 0)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Divisional', 'Playoffs')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Divisional', 'Playoffs', 10)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Conference', 'Playoffs')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Conference', 'Playoffs', 20)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Superbowl', 'Playoffs')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Superbowl', 'Playoffs', 30)
         ;
 
-        INSERT INTO stage (stage_name, stage_type)
-        VALUES ('Draft', 'Pre Season')
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Pre Free Agency', 'Pre Season', 0)
+        ;
+
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Free Agency', 'Pre Season', 10)
+        ;
+
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Draft', 'Pre Season', 20)
+        ;
+
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Late Free Agency', 'Pre Season', 30)
+        ;
+
+        INSERT INTO stage (stage_name, stage_type, rank)
+        VALUES ('Training Camp', 'Pre Season', 40)
         ;
 
         INSERT INTO position (position)
