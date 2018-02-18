@@ -1,21 +1,21 @@
 import argparse
 import psycopg2
 
-import draft
-import game
-import player
-import player_history
-import staff
-import staff_history
-import stats_blocking
-import stats_defending
-import stats_fumbles
-import stats_kicking
-import stats_passing
-import stats_punting
-import stats_receiving
-import stats_returning
-import stats_rushing
+from draft import Draft
+from game import Game
+from player import Player
+from player_history import PlayerHistory
+from staff import Staff
+from staff_history import StaffHistory
+from stats_blocking import StatsBlocking
+from stats_defending import StatsDefending
+from stats_fumbles import StatsFumbles
+from stats_kicking import StatsKicking
+from stats_passing import StatsPassing
+from stats_punting import StatsPunting
+from stats_receiving import StatsReceiving
+from stats_returning import StatsReturning
+from stats_rushing import StatsRushing
 import year
 
 parser = argparse.ArgumentParser(description="Convert fof csvs to sql.")
@@ -41,70 +41,52 @@ cur = conn.cursor()
 
 print(args.year)
 
-sql = year.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+cur.execute(year.execute(args.year))
 
-sql = game.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+game_import = Game()
+game_import.execute(cur, args.year)
 
-sql = player.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+player_import = Player()
+player_import.execute(cur, args.year)
 
-sql = draft.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+draft_import = Draft()
+draft_import.execute(cur, args.year)
 
-sql = staff.execute(args.year, args.staff_id)
-if sql != "":
-	cur.execute(sql)
+staff_import = Staff()
+staff_import.execute(cur, args.year, args.staff_id)
 
-sql = staff_history.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+staff_history_import = StaffHistory()
+staff_history_import.execute(cur, args.year)
 
-sql = player_history.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+player_history_import = PlayerHistory()
+player_history_import.execute(cur, args.year)
 
-sql = stats_passing.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_passing_import = StatsPassing()
+stats_passing_import.execute(cur, args.year)
 
-sql = stats_rushing.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_rushing_import = StatsRushing()
+stats_rushing_import.execute(cur, args.year)
 
-sql = stats_receiving.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_receiving_import = StatsReceiving()
+stats_receiving_import.execute(cur, args.year)
 
-sql = stats_returning.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_returning_import = StatsReturning()
+stats_returning_import.execute(cur, args.year)
 
-sql = stats_fumbles.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_fumbles_import = StatsFumbles()
+stats_fumbles_import.execute(cur, args.year)
 
-sql = stats_blocking.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_blocking_import = StatsBlocking()
+stats_blocking_import.execute(cur, args.year)
 
-sql = stats_defending.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_defending_import = StatsDefending()
+stats_defending_import.execute(cur, args.year)
 
-sql = stats_kicking.execute(args.year)
-if sql != "":
-	cur.execute(sql)
+stats_kicking_import = StatsKicking()
+stats_kicking_import.execute(cur, args.year)
 
-sql = stats_punting.execute(args.year)
-if sql != "":
-	cur.execute(sql)
-
+stats_punting_import = StatsPunting()
+stats_punting_import.execute(cur, args.year)
 
 conn.commit()
 cur.close()

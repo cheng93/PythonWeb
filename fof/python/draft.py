@@ -1,37 +1,61 @@
+from base_fof import BaseFof
 import csv
 import operator
 import os
 
 
-def execute(year):
-    dir = os.path.dirname(__file__)
-    csvname = os.path.join(dir, f"../{year}/player_information.csv")
-    sql = ""
-    with open(csvname, "r", encoding="Windows-1252") as csv_file:
-        reader = csv.DictReader(csv_file)
-        sorted_reader = sorted(
-            reader, 
-            key=lambda row:(
-                int(row["Draft_Year"]),
-                int(row["Draft_Round"]),
-                int(row["Drafted_Position"])))
-        for row in sorted_reader:
-            if (int(row["Draft_Year"]) == int(year) -1):
-                sql += f"""
-                    INSERT INTO draft
-                    (
-                        year,
-                        round,
-                        pick,
-                        player_id,
-                        team_id
-                    )
-                    SELECT 
-                        {year},
-                        {row["Draft_Round"]},
-                        {row["Drafted_Position"]},
-                        {row["Player_ID"]},
-                        {row["Drafted_By"]}
-                    ;
-                """
-    return sql
+class Draft(BaseFof):
+    def execute(self, cursor, year):
+        def manipulate_df(df, **kwargs):
+            year = kwargs["year"]
+            df["Year"] = int(year)
+            df = df.query(f"Draft_Year == {int(year)-1}")
+            df = df.sort_values(["Draft_Year", "Draft_Round", "Drafted_Position"], ascending=[1, 1, 1])
+            return df
+
+        file_name="player_information.csv"
+       
+        table_name = "temp_draft"
+        table_definition = """
+            temp_draft_id SERIAL PRIMARY KEY,
+            player_id INTEGER,
+            year SMALLINT,
+            draft_round SMALLINT,
+            drafted_position SMALLINT,
+            drafted_by SMALLINT
+        """
+        columns=[
+            "Player_ID",
+            "Year",
+            "Draft_Round",
+            "Drafted_Position",
+            "Drafted_By"
+        ]
+
+        migrate_sql = f"""
+            INSERT INTO draft
+            (
+                year,
+                round,
+                pick,
+                player_id,
+                team_id
+            )
+            SELECT
+                t.year,
+                t.draft_round,
+                t.drafted_position,
+                t.player_id,
+                t.drafted_by
+            FROM {table_name} t
+        """
+
+        super().execute(
+            cursor=cursor,
+            year=year,
+            file_name=file_name,
+            manipulate_df=manipulate_df,
+            table_name=table_name,
+            table_definition=table_definition,
+            columns=columns,
+            migrate_sql=migrate_sql)
