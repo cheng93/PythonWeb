@@ -1,6 +1,6 @@
 from app.data.fof import Base
 
-from sqlalchemy import Column, ForeignKey, SmallInteger, String, text
+from sqlalchemy import Column, ForeignKey, SmallInteger, String, text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 
