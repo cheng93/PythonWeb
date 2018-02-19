@@ -19,4 +19,4 @@ script:
 
 after_success:
   - docker build -t python-web .
-  - ./scripts/travis_docker.sh
+  - bash ./scripts/travis_docker.sh
