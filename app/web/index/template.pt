@@ -23,20 +23,7 @@
                     <div class="mdc-layout-grid__inner">
                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet"></div>
                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-mobile">
-                            <h1 class="mdc-typography--title">Cheng93</h1>
-                            <p class="mdc-typography--body1">Welcome to my website.</p>
-                            <p class="mdc-typography--body1">This site is for me to experiment with various stacks and technologies.</p>
-                            <p class="mdc-typography--body1">Currently this site is powered by <span class="mdc-typography--body2">Python</span> with a <span class="mdc-typography--body2">Pyramid</span> web framework and it tries to respect Google's <span class="mdc-typography--body2">Material Design.</span></p>
-
-                            <h2 class="mdc-typography--title">
-                                <a href='/dvdrental/'>DvdRental</a>
-                            </h2>
-                            <p class="mdc-typography--body1">This is a subsection of my website.</p>
-                            <p class="mdc-typography--body1">It is powered by: </p>
-                            <ul>
-                                <li class="mdc-typography--body1">React</li>
-                                <li class="mdc-typography--body1">PostgreSQL</li>
-                            </ul>
+                            <h1 class="mdc-typography--title">Work in progress</h1>
                         </div>
                     </div>
                 </div>
