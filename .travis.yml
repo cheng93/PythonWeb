@@ -1,0 +1,22 @@
+language: python
+python:
+  - "3.6"
+
+notifications:
+  email: false
+
+sudo: required
+
+services:
+  - docker
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - npm test
+
+after_success:
+  - docker build -t python-web .
+  - bash ./scripts/travis_docker.sh

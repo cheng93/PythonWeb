@@ -1,0 +1,11 @@
+query Teams($showCity: Boolean = true){
+  teams {
+    edges {
+      node {
+        teamId
+        city @include(if: $showCity)
+        teamName
+      }
+    }
+  }
+}

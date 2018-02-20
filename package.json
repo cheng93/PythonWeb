@@ -1,0 +1,89 @@
+{
+  "name": "pythonweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@material/card": "^0.29.0",
+    "@material/grid-list": "^0.29.0",
+    "@material/layout-grid": "latest",
+    "@material/list": "^0.29.0",
+    "@material/toolbar": "^0.29.0",
+    "@material/typography": "^0.28.0",
+    "apollo-cache-inmemory": "^1.1.7",
+    "apollo-client": "^2.2.2",
+    "apollo-link-http": "^1.3.2",
+    "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
+    "graphql": "^0.12.3",
+    "history": "^4.7.2",
+    "material-design-lite": "^1.3.0",
+    "normalize.css": "^7.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.0",
+    "babel-core": "^6.24.1",
+    "babel-jest": "^22.1.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "graphql-tag": "^2.6.1",
+    "jest": "^22.1.4",
+    "node-sass": "^4.7.2",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
+  },
+  "scripts": {
+    "clean": "rimraf ./app/web/static/*",
+    "build": "npm run clean && webpack --env=prod",
+    "build:dev": "npm run clean && webpack --env=dev",
+    "watch": "webpack --watch --progress --env=dev",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.scss$": "<rootDir>/mocks/styleMock.js"
+    },
+    "rootDir": "app/web/assets/tests",
+    "setupFiles": [
+      "<rootDir>/setup.jsx"
+    ],
+    "testMatch": [
+      "<rootDir>/**/*.test.jsx"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheng93/PythonWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheng93/PythonWeb/issues"
+  },
+  "homepage": "https://github.com/cheng93/PythonWeb#readme"
+}

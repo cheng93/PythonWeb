@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "es6"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

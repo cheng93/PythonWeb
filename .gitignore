@@ -21,6 +21,8 @@ parts/
 sdist/
 var/
 *.egg-info/
+node_modules/
+**/static/
 .installed.cfg
 *.egg
 
@@ -87,3 +89,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# editors
+.vscode
+.idea
+
+# data stores
+.data
+
+.~lock.*
