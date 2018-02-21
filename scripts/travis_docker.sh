@@ -15,4 +15,9 @@ then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY;
     docker tag python-web $DOCKER_REPO/python-web:${TRAVIS_BRANCH:8};
     docker push $DOCKER_REPO/python-web:${TRAVIS_BRANCH:8};
+elif [[ "$TRAVIS_BRANCH" == hotfix/* ]]
+then 
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY;
+    docker tag python-web $DOCKER_REPO/python-web:${TRAVIS_BRANCH:7};
+    docker push $DOCKER_REPO/python-web:${TRAVIS_BRANCH:7};
 fi
