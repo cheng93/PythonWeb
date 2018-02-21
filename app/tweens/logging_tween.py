@@ -14,8 +14,8 @@ class logging_tween_factory(object):
         logger = request.logger
 
         logger = logger.bind(
-            http_user_agent=request.headers.environ['HTTP_USER_AGENT'],
-            server_protocol=request.environ['SERVER_PROTOCOL'],
+            http_user_agent=request.headers.environ.get('HTTP_USER_AGENT', ''),
+            server_protocol=request.environ.get('SERVER_PROTOCOL',''),
             request_method=request.method,
             request_url=request.url,
             request_host=request.host,
