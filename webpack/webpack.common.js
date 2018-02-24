@@ -8,6 +8,7 @@ var static = root + './static/';
 
 var dvdrental = assets + './dvdrental/';
 var fof = assets + './fof/'
+var index = assets + './index/'
 
 var exclusionRegex = [/node_modules/];
 
@@ -19,6 +20,8 @@ module.exports = {
     'fof.polyfill': fof + 'polyfill.js',
     'fof.vendor': fof + 'vendor.js',
     'fof.app': fof + 'main.js',
+    'index.app': index + 'main.js',
+    'index.vendor': index + 'vendor.js',
     'vendor': assets + 'vendor.scss',
     'app': assets + 'app.scss'
   },

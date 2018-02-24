@@ -1,0 +1,29 @@
+@import '~@material/theme/variables';
+
+.jumbotron-background {
+    background: linear-gradient(to right top, $mdc-theme-primary-dark, $mdc-theme-primary-light);
+}
+
+.button-container {
+    .button {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+        display: inline-block;
+        padding: 0;
+        background-color: $mdc-theme-background;
+        vertical-align: middle;
+    }
+
+    .button-icon {
+        border-radius: 50%;
+    }
+
+    .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        height: inherit;
+    }
+}
