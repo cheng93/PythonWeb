@@ -1,7 +1,11 @@
 @import '~@material/theme/variables';
 
-.jumbotron-background {
+.background-primary {
     background: linear-gradient(to right top, $mdc-theme-primary-dark, $mdc-theme-primary-light);
+}
+
+.background-secondary {
+    background: linear-gradient(to right top, $mdc-theme-secondary-dark, $mdc-theme-secondary-light);
 }
 
 .button-container {
@@ -26,4 +30,17 @@
         width: inherit;
         height: inherit;
     }
+}
+
+.skill-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 3px;
+    border-color: $mdc-theme-primary-light;
+}
+
+.image {
+    height: 70px;
 }
