@@ -19,3 +19,23 @@ $margins: (
         }
     }
 }
+
+$paddings: (
+    pa: (padding),
+    px: (padding-left, padding-right),
+    py: (padding-top, padding-bottom),
+    pl: (padding-left),
+    pr: (padding-right),
+    pt: (padding-top),
+    pb: (padding-bottom));
+
+@for $i from 1 through length($spacer-multipliers) {
+    $multiplier: nth($spacer-multipliers, $i);
+    @each $name, $properties in $paddings {
+        .#{$name}-#{$i} {
+            @each $property in $properties {
+                #{$property}: $spacer * $multiplier;
+            }
+        }
+    }
+}
