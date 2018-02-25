@@ -6,15 +6,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="${request.static_url('app.web:static/vendor.css')}" />
     <link rel="stylesheet" href="${request.static_url('app.web:static/index.app.css')}" />
-    <title>Home</title>
+    <title>Derek Cheng</title>
 </head>
 <body class="mdc-typography">
     <div class="container body-content">
         <div id="app">
-            <header class="jumbotron-background">
+            <header class="background-primary">
                 <div class="mdc-layout-grid">
                     <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--align-middle text-center mdc-theme--text-primary-on-primary">
+                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 text-center mdc-theme--text-primary-on-primary">
                             <h1 class="mdc-typography--display2 mt-3 mb-1">Derek Cheng</h1>
                             <div class="mdc-typography--headline mb-3">
                                 Software Developer
@@ -36,14 +36,86 @@
                 </div>
             </header>
             <main>
-                <div class="mdc-layout-grid">
-                    <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet"></div>
-                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-mobile">
-                            <h1 class="mdc-typography--title">Work in progress</h1>
+                <section>
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone grid-start-4-desktop grid-start-2-tablet">
+                                <h1 class="mdc-typography--display1 mb-3">About me</h1>
+                                <p class="my-3 mdc-typography--body1">
+                                    Hello, my name is Derek Cheng and I am a software developer, predominantly on the back-end. I am currently based in Reading, UK.
+                                </p>
+                                <p class="my-3 mdc-typography--body1">
+                                    This website is playground for me to experiment with new technologies. As well as that, it also serves as my portfolio.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                <section>
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone grid-start-4-desktop grid-start-2-tablet">
+                                <h1 class="mdc-typography--display1 mb-3">Skills</h1>
+                                <div class="mdc-layout-grid__inner">
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://docs.microsoft.com/dotnet/csharp/" target="_blank" rel="noopener noreferrer" >
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/ea18151090f1a6e0a52566d50840c672.svg')}" alt="C# logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">C#</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://www.microsoft.com/sql-server/sql-server-2017/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/54d7bddcd3019ec3c3b23db00160ccef.svg')}" alt="Sql Server logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">T-Sql</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://azure.microsoft.com/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/0f94c25a6940fdbb6b9a582a5e97598b.svg')}" alt="Azure logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Azure</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://angular.io/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/48ae79d99d69739a8022593da1ece32f.svg')}" alt="Angular logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Angular</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/60dfaadbbd65a730821eb0e7b5974020.svg')}" alt="Vue logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Vue</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/1190a19ce3cc940741a60137a1e074cb.svg')}" alt="Git logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Git</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://www.ansible.com/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/301f99cea28438f3aa3ade2d31e844fb.svg')}" alt="Ansible logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Ansible</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
+                                        <a href="https://www.elastic.co/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/d0109b299ad21029d9405bb59a54fdae.svg')}" alt="ElasticSearch logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">ElasticSearch</p>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2 grid-start-3-tablet grid-start-2-phone">
+                                        <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
+                                            <img class="image mb-2" src="${request.static_url('app.web:static/img/2e0fcd7b793e8353f3e272dc38492020.svg')}" alt="Docker logo" />
+                                        </a>
+                                        <p class="text-center mdc-typography--body1">Docker</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
     </div>
