@@ -79,6 +79,18 @@ module.exports = {
         loaders: ['graphql-tag/loader'],
         exclude: exclusionRegex
       },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loaders: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: "img/[hash].[ext]"
+            }
+          }
+        ],
+        exclude: exclusionRegex
+      }
     ]
   },
 
