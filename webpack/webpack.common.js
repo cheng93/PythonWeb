@@ -71,7 +71,8 @@ module.exports = {
                   ]
                 }
               }
-            ]
+            ],
+          publicPath: '/static/'
         })
       },
       {
