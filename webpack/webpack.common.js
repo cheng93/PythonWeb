@@ -28,7 +28,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../' + static),
-    filename: './[name].js'
+    filename: './js/[name].js'
   },
 
   resolve: {
@@ -106,7 +106,7 @@ module.exports = {
       minChunks: Infinity
     }),
     new ExtractTextPlugin({
-      filename: '[name].css'
+      filename: './styles/[name].css'
     })
   ]
 };

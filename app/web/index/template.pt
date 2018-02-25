@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link rel="stylesheet" href="${request.static_url('app.web:static/vendor.css')}" />
-    <link rel="stylesheet" href="${request.static_url('app.web:static/index.app.css')}" />
+    <link rel="stylesheet" href="${request.static_url('app.web:static/styles/vendor.css')}" />
+    <link rel="stylesheet" href="${request.static_url('app.web:static/styles/index.app.css')}" />
     <title>Derek Cheng</title>
 </head>
 <body class="mdc-typography">
@@ -116,9 +116,24 @@
                         </div>
                     </div>
                 </section>
+                <section>
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone grid-start-4-desktop grid-start-2-tablet">
+                                <h1 class="mdc-typography--display1 mb-3">About me</h1>
+                                <p class="my-3 mdc-typography--body1">
+                                    Hello, my name is Derek Cheng and I am a software developer, predominantly on the back-end. I am currently based in Reading, UK.
+                                </p>
+                                <p class="my-3 mdc-typography--body1">
+                                    This website is playground for me to experiment with new technologies. As well as that, it also serves as my portfolio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
     </div>
-    <script src="${request.static_url('app.web:static/index.vendor.js')}"></script>
+    <script src="${request.static_url('app.web:static/js/index.vendor.js')}"></script>
 </body>
 </html>
