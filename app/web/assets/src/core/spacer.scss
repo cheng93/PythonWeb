@@ -1,5 +1,5 @@
 $spacer: 16px;
-$spacer-multipliers: .25, .5, 1, 1.5, 3;
+$spacer-multipliers: 0, .25, .5, 1, 1.5, 3;
 $margins: (
     ma: (margin),
     mx: (margin-left, margin-right),
@@ -12,7 +12,7 @@ $margins: (
 @for $i from 1 through length($spacer-multipliers) {
     $multiplier: nth($spacer-multipliers, $i);
     @each $name, $properties in $margins {
-        .#{$name}-#{$i} {
+        .#{$name}-#{($i)-1} {
             @each $property in $properties {
                 #{$property}: $spacer * $multiplier;
             }
