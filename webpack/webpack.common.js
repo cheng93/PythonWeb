@@ -8,6 +8,7 @@ var static = root + './static/';
 
 var dvdrental = assets + './dvdrental/';
 var fof = assets + './fof/'
+var index = assets + './index/'
 
 var exclusionRegex = [/node_modules/];
 
@@ -19,13 +20,15 @@ module.exports = {
     'fof.polyfill': fof + 'polyfill.js',
     'fof.vendor': fof + 'vendor.js',
     'fof.app': fof + 'main.js',
+    'index.app': index + 'main.js',
+    'index.vendor': index + 'vendor.js',
     'vendor': assets + 'vendor.scss',
     'app': assets + 'app.scss'
   },
 
   output: {
     path: path.resolve(__dirname, '../' + static),
-    filename: './[name].js'
+    filename: './js/[name].js'
   },
 
   resolve: {
@@ -61,9 +64,15 @@ module.exports = {
                 loader: 'css-loader'
               },
               {
-                loader: 'sass-loader'
+                loader: 'sass-loader',
+                options: {
+                  includePaths: [
+                    path.resolve(__dirname, '../node_modules')
+                  ]
+                }
               }
-            ]
+            ],
+          publicPath: '/static/'
         })
       },
       {
@@ -71,6 +80,18 @@ module.exports = {
         loaders: ['graphql-tag/loader'],
         exclude: exclusionRegex
       },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loaders: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: "img/[hash].[ext]"
+            }
+          }
+        ],
+        exclude: exclusionRegex
+      }
     ]
   },
 
@@ -86,7 +107,7 @@ module.exports = {
       minChunks: Infinity
     }),
     new ExtractTextPlugin({
-      filename: '[name].css'
+      filename: './styles/[name].css'
     })
   ]
 };

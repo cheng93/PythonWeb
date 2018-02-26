@@ -1,0 +1,16 @@
+$alignments: left, center, right;
+$text-alignments: $alignments;
+
+@each $alignment in $text-alignments {
+    .text-#{$alignment} {
+        text-align: #{$alignment};
+    }
+}
+
+$justify-alignments: $alignments;
+
+@each $alignment in $justify-alignments {
+    .justify-#{$alignment} {
+        justify-self: #{$alignment};
+    }
+}

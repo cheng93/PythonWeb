@@ -1,0 +1,41 @@
+$spacer: 16px;
+$spacer-multipliers: 0, .25, .5, 1, 1.5, 3;
+$margins: (
+    ma: (margin),
+    mx: (margin-left, margin-right),
+    my: (margin-top, margin-bottom),
+    ml: (margin-left),
+    mr: (margin-right),
+    mt: (margin-top),
+    mb: (margin-bottom));
+
+@for $i from 1 through length($spacer-multipliers) {
+    $multiplier: nth($spacer-multipliers, $i);
+    @each $name, $properties in $margins {
+        .#{$name}-#{($i)-1} {
+            @each $property in $properties {
+                #{$property}: $spacer * $multiplier;
+            }
+        }
+    }
+}
+
+$paddings: (
+    pa: (padding),
+    px: (padding-left, padding-right),
+    py: (padding-top, padding-bottom),
+    pl: (padding-left),
+    pr: (padding-right),
+    pt: (padding-top),
+    pb: (padding-bottom));
+
+@for $i from 1 through length($spacer-multipliers) {
+    $multiplier: nth($spacer-multipliers, $i);
+    @each $name, $properties in $paddings {
+        .#{$name}-#{$i} {
+            @each $property in $properties {
+                #{$property}: $spacer * $multiplier;
+            }
+        }
+    }
+}
