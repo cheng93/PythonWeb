@@ -1,0 +1,12 @@
+@import '~@material/layout-grid/variables';
+@import '~@material/layout-grid/mixins';
+
+@each $device in map-keys($mdc-layout-grid-columns) {
+    @include mdc-layout-grid-media-query_($device) {
+        @for $column from 1 through map-get($mdc-layout-grid-columns, $device) {
+            .grid-start-#{$column}-#{$device} {
+                grid-column-start: $column;
+            }
+        }
+    }
+}
