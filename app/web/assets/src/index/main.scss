@@ -4,8 +4,8 @@
     background: linear-gradient(0deg, $mdc-theme-primary-light, $mdc-theme-primary-dark);
 }
 
-.background-secondary {
-    background: linear-gradient(to right top, $mdc-theme-secondary-dark, $mdc-theme-secondary-light);
+.background-footer {
+    background: $mdc-theme-secondary-dark;
 }
 
 .button-container {
@@ -62,4 +62,17 @@
 .webstack-image {
     max-width: 36px;
     height: 36px;
+    object-fit: contain;
+}
+
+.footer-connect-item {
+    a {
+        color: map-get($mdc-theme-property-values, 'text-primary-on-secondary');
+        &:hover {
+            color: map-get($mdc-theme-property-values, 'text-hint-on-secondary');
+        }
+    }
+    .icon {
+        width: 20px;
+    }
 }

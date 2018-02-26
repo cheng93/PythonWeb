@@ -20,7 +20,7 @@
                                 Software Developer
                             </div>
                             <div class="mb-4 button-container">
-                                <a href="https://github.com/cheng93" target="_blank" rel="noopener noreferrer" class="mdc-theme--background mdc-button button button-icon mx-3">
+                                <a href="https://github.com/cheng93/" target="_blank" rel="noopener noreferrer" class="mdc-theme--background mdc-button button button-icon mx-3">
                                     <div class="button-content mdc-typography--headline">
                                         <span class="button-image fab fa-github"/>
                                     </div>
@@ -113,10 +113,10 @@
                                             <p class="text-center mdc-typography--body1">ElasticSearch</p>
                                         </div>
                                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2 grid-start-3-tablet grid-start-2-phone">
-                                            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/2e0fcd7b793e8353f3e272dc38492020.svg')}" alt="Docker logo" />
+                                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">
+                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/146716bdf1a351db5705ec1e6a25ed08.svg')}" alt="Python logo" />
                                             </a>
-                                            <p class="text-center mdc-typography--body1">Docker</p>
+                                            <p class="text-center mdc-typography--body1">Python</p>
                                         </div>
                                     </div>
                                 </div>
@@ -284,6 +284,29 @@
                     </div>
                 </section>
             </main>
+            <footer class="background-footer">
+                <div class="mdc-layout-grid">
+                    <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell grid-start-4-desktop grid-start-2-tablet mdc-theme--text-primary-on-secondary ml-5 my-3">
+                            <div class="mdc-typography--headline mb-2">
+                                Connect
+                            </div>
+                            <div class="mdc-typography--subheading1 footer-connect-item">
+                                <a href="https://github.com/cheng93/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github icon mr-2"></i>
+                                    <span class="">Github</span>
+                                </a>
+                            </div>
+                            <div class="mdc-typography--body1 footer-connect-item">
+                                <a href="https://www.linkedin.com/in/cheng93/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin-in icon mr-2"></i>
+                                    <span class="">LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
     <script src="${request.static_url('app.web:static/js/index.vendor.js')}"></script>
