@@ -64,59 +64,58 @@
                                 <h1 class="mdc-typography--display1 mb-3 mdc-theme--primary ml-5 mt-5">Skills</h1>
                                 <div class="mdc-layout-grid mx-5 mb-4">
                                     <div class="mdc-layout-grid__inner">
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://docs.microsoft.com/dotnet/csharp/" target="_blank" rel="noopener noreferrer" >
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/ea18151090f1a6e0a52566d50840c672.svg')}" alt="C# logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">C#</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">C#</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>ASP.NET MVC</li>
+                                                <li>ASP.NET Core</li>
+                                                <li>Entity Framework</li>
+                                            </ul>
                                         </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://www.microsoft.com/sql-server/sql-server-2017/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/54d7bddcd3019ec3c3b23db00160ccef.svg')}" alt="Sql Server logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">T-Sql</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">Databases</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>Microsoft Sql Server</li>
+                                                <li>ElasticSearch</li>
+                                                <li>Azure Cosmos Db</li>
+                                                <li>PostgreSQL</li>
+                                            </ul>
                                         </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://azure.microsoft.com/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/0f94c25a6940fdbb6b9a582a5e97598b.svg')}" alt="Azure logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Azure</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">Javascript</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>Typescript</li>
+                                                <li>AngularJS</li>
+                                                <li>Kendo UI</li>
+                                                <li>Webpack</li>
+                                            </ul>
                                         </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://angular.io/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/48ae79d99d69739a8022593da1ece32f.svg')}" alt="Angular logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Angular</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">CI</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>VSTS</li>
+                                                <li>TeamCity</li>
+                                                <li>Jenkins</li>
+                                                <li>Travis CI</li>
+                                            </ul>
                                         </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/60dfaadbbd65a730821eb0e7b5974020.svg')}" alt="Vue logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Vue</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">Unit Testing</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>xUnit (c#)</li>
+                                                <li>MSpecs (c#)</li>
+                                                <li>Jest (JS)</li>
+                                            </ul>
                                         </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/1190a19ce3cc940741a60137a1e074cb.svg')}" alt="Git logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Git</p>
-                                        </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://www.ansible.com/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/301f99cea28438f3aa3ade2d31e844fb.svg')}" alt="Ansible logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Ansible</p>
-                                        </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2">
-                                            <a href="https://www.elastic.co/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/d0109b299ad21029d9405bb59a54fdae.svg')}" alt="ElasticSearch logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">ElasticSearch</p>
-                                        </div>
-                                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone skill-container pa-2 grid-start-3-tablet grid-start-2-phone">
-                                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">
-                                                <img class="skill-image mb-2" src="${request.static_url('app.web:static/img/146716bdf1a351db5705ec1e6a25ed08.svg')}" alt="Python logo" />
-                                            </a>
-                                            <p class="text-center mdc-typography--body1">Python</p>
+                                        <div class="mdc-layout-grid__cell">
+                                            <span class="mdc-typography--headline">Misc</span>
+                                            <ul class="mdc-typography--body1">
+                                                <li>Python</li>
+                                                <li>Git</li>
+                                                <li>Azure</li>
+                                                <li>Ansible</li>
+                                                <li>Docker</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

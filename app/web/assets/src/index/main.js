@@ -2,8 +2,7 @@ import '../app.scss';
 import './main.scss';
 
 import '../img/angular.svg';
-import '../img/ansible.svg';
-import '../img/csharp.svg';
+import '../img/ansible.svg'
 import '../img/docker.svg';
 import '../img/elasticsearch.svg';
 import '../img/git.svg';
@@ -11,7 +10,6 @@ import '../img/github.svg';
 import '../img/graphql.svg';
 import '../img/javascript.svg';
 import '../img/microsoft-azure.svg';
-import '../img/microsoft-sql-server.svg';
 import '../img/nginx.svg';
 import '../img/postgresql.svg';
 import '../img/pyramid.svg';
