@@ -4,6 +4,7 @@ database/
 fof/
 node_modules/
 python_modules/
+scripts/
 webpack/
 
 app/web/assets
@@ -16,8 +17,10 @@ app/web/assets
 
 .babelrc
 alembic.ini
-Jenkinsfile
+docker-compose.yml
 jsconfig.json
 logstash.conf
 package.json
+README.md
 webpack.config.js
+yarn.lock
