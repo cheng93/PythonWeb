@@ -94,18 +94,30 @@ module.exports = {
       }
     ]
   },
-
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        fof: {
+          test: /fof\.(vendor|app)/,
+          minChunks: 2,
+          chunks: "all",
+          name: "fof.vendor"
+        },
+        dvdrental: {
+          test: /dvdrental\.(vendor|app)/,
+          minChunks: 2,
+          chunks: "all",
+          name: "dvdrental.vendor"
+        },
+        default: false,
+        vendors: false
+      }
+    },
+    namedChunks: true,
+    namedModules: true
+  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['dvdrental.vendor'],
-      chunks: ['dvdrental.app', 'dvdrental.vendor'],
-      minChunks: Infinity
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['fof.vendor'],
-      chunks: ['fof.app', 'fof.vendor'],
-      minChunks: Infinity
-    }),
     new ExtractTextPlugin({
       filename: './styles/[name].css'
     })
