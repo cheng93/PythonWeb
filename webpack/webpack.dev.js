@@ -5,13 +5,6 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
-    })
-  ],
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -25,6 +18,7 @@ module.exports = webpackMerge(commonConfig, {
               }
           },
       }),
-    ]
+    ],
+    nodeEnv: "development"
   }
 });

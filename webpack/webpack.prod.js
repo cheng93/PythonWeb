@@ -6,11 +6,6 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
     new OptimizeCssAssetsPlugin()
   ],
   optimization: {
@@ -18,13 +13,14 @@ module.exports = webpackMerge(commonConfig, {
       new UglifyJsPlugin({
           uglifyOptions: {
             mangle: {
-              keep_fname: true
+              keep_fnames: true
             },
             output: {
               beautify: false
             }
           },
       }),
-    ]
+    ],
+    nodeEnv: "production"
   }
 });
