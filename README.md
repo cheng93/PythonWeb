@@ -16,20 +16,24 @@ Activate your virtualenv
 `source venv/bin/activate`
 
 Install your app and dependencies
-`pip install -e .`
+`pip install -r requirements.txt`
 
 Create the dvdrental database
 `psql "host=localhost user=postgres"`
 then run
-`CREATE DATABASE dvdrental;`
+```sql
+CREATE DATABASE dvdrental;
+CREATE DATABASE fof;
+```
 you can exist psql by typing `\q`
 
 Run the db migration
 
 `alembic -c alembic.ini -n dvdrental -x seed=true upgrade head`
+`alembic -c alembic.ini -n fof -x seed=true upgrade head`
 
 Install required javascript modules
-`npm install`
+`yarn install`
 
 Create a folder for elasticsearch volume
 
@@ -47,9 +51,9 @@ Run the docker services with
 
 Then build or watch
 
-`npm run build:dev`
+`yarn run build:dev`
 or
-`npm run watch`
+`yarn run watch`
 
 Run your app
 `pserve development.ini --reload`
