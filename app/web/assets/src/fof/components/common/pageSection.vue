@@ -6,7 +6,10 @@
                     <h1 class="mdc-typography--display1 mb-3 mdc-theme--primary ml-5 mt-5"
                         v-if="header">{{header}}</h1>
                     <div class="mdc-layout-grid mx-5 mb-4">
-                        <slot />
+                        <div class="mdc-layout-grid__inner" v-if=!excludeInner>
+                            <slot />
+                        </div>
+                        <slot v-if=excludeInner />
                     </div>
                 </div>
             </div>
@@ -17,7 +20,8 @@
 <script>
 export default {
     props: {
-        header: String
+        header: String,
+        excludeInner: Boolean
     }
 }
 </script>
