@@ -6,8 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="${request.static_url('app.web:static/styles/vendor.css')}" />
     <link rel="stylesheet" href="${request.static_url('app.web:static/styles/fof.vendor.css')}" />
-    <link rel="stylesheet" href="${request.static_url('app.web:static/styles/app.css')}" />
-    <title>Front Office Football</title>
+    <link rel="stylesheet" href="${request.static_url('app.web:static/styles/fof.app.css')}" />
+    <title>Derek Cheng: Front Office Football</title>
 </head>
 <body>
     <div class="container body-content">
