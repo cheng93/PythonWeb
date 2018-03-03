@@ -1,4 +1,3 @@
-import '../app.scss';
 import './main.scss';
 
 import '../img/angular.svg';

@@ -14,16 +14,26 @@ var exclusionRegex = [/node_modules/];
 
 module.exports = {
   entry: {
-    'dvdrental.polyfill': dvdrental + 'polyfill.js',
-    'dvdrental.vendor': dvdrental + 'vendor.js',
-    'dvdrental.app': dvdrental + 'main.jsx',
-    'fof.polyfill': fof + 'polyfill.js',
-    'fof.vendor': fof + 'vendor.js',
-    'fof.app': fof + 'main.js',
-    'index.app': index + 'main.js',
-    'index.vendor': index + 'vendor.js',
-    'vendor': assets + 'vendor.scss',
-    'app': assets + 'app.scss'
+    'dvdrental': [
+      dvdrental + 'polyfill.js',
+      assets + 'vendor.scss',
+      dvdrental + 'vendor.js',
+      assets + 'app.scss',
+      dvdrental + 'main.jsx'
+    ],
+    'fof': [
+      fof + 'polyfill.js',
+      assets + 'vendor.scss',
+      fof + 'vendor.js',
+      assets + 'app.scss',
+      fof + 'main.js'
+    ],
+    'index': [
+      assets + 'vendor.scss',
+      index + 'vendor.js',
+      assets + 'app.scss',
+      index + 'main.js'
+    ]
   },
 
   output: {
@@ -86,7 +96,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: "img/[hash].[ext]"
+              name: 'img/[hash].[ext]'
             }
           }
         ],
@@ -96,23 +106,11 @@ module.exports = {
   },
   optimization: {
     minimize: true,
+    removeEmptyChunks: true,
     splitChunks: {
-      chunks: "all",
+      chunks: 'initial',
       cacheGroups: {
-        fof: {
-          test: /fof\.(vendor|app)/,
-          minChunks: 2,
-          chunks: "all",
-          name: "fof.vendor"
-        },
-        dvdrental: {
-          test: /dvdrental\.(vendor|app)/,
-          minChunks: 2,
-          chunks: "all",
-          name: "dvdrental.vendor"
-        },
-        default: false,
-        vendors: false
+        default: false
       }
     },
     namedChunks: true,

@@ -1,5 +1,3 @@
-import '../app.scss';
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

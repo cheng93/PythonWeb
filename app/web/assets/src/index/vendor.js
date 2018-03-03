@@ -6,5 +6,3 @@ fontawesome.library.add([
     faGithub,
     faLinkedinIn
 ]);
-
-import '../vendor.scss';
