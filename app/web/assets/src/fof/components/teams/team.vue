@@ -1,13 +1,15 @@
 <template>
     <div>
         <page-subheader :header=header />
-        <team-standings :standings="standings"/>
+        <team-standings :standings=standings />
+        <team-players :players=players />
     </div>
 </template>
 
 <script>
 import { mapGetters, mapState } from 'vuex'
 
+import teamPlayers from './teamPlayers'
 import teamStandings from './teamStandings'
 import pageSubheader from '../common/pageSubheader'
 
@@ -17,6 +19,7 @@ export default {
             team: state => state.teams.team
         }),
         ...mapGetters({
+            players: 'getTeamPlayers',
             standings: 'getTeamStandings'
         }),
         header() {
@@ -30,6 +33,7 @@ export default {
     },
     components: {
         pageSubheader,
+        teamPlayers,
         teamStandings
     }
 }

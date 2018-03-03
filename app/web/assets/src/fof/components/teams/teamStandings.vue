@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 import pageSection from '../common/pageSection'
 
 export default {
