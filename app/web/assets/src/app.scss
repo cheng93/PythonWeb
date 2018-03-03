@@ -16,15 +16,3 @@ a {
 li {
     list-style-type: none;
 }
-
-main {
-    padding-top: 36px;
-    @media screen and (max-width: 800px) {
-        padding-top: 14px;
-    }
-
-    a {
-        color:inherit;
-        text-decoration: inherit;
-    }
-}
