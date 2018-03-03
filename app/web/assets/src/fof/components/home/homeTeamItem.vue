@@ -2,7 +2,7 @@
     <router-link tag="li" :to=url
         class="pl-0 link mdc-list-item mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
         <span class="mdc-list-item__graphic mdc-theme--secondary-bg mdc-theme--text-primary-on-secondary">{{initials}}</span>
-        {{team.teamName}}
+        <span class="mdc-typography--body1">{{team.teamName}}</span>
     </router-link>
 </template>
 <script>
