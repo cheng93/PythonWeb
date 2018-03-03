@@ -1,3 +1,4 @@
+from app.web.api.fof.graphql.division import Division
 from app.web.api.fof.graphql.player import Player
 from app.web.api.fof.graphql.team import Team
 
@@ -15,6 +16,7 @@ class Query(graphene.ObjectType):
 schema = graphene.Schema(
     query=Query,
     types=[
+        Division,
         Player,
         Team
     ])
