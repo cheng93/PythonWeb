@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h1 class="mdc-typography--display1">
-            {{team.city}} {{team.teamName}}
-        </h1>
+        <page-subheader :header=header />
         <team-standings :standings="standings"/>
     </div>
 </template>
@@ -11,6 +9,7 @@
 import { mapGetters, mapState } from 'vuex'
 
 import teamStandings from './teamStandings'
+import pageSubheader from '../common/pageSubheader'
 
 export default {
     computed: {
@@ -19,7 +18,10 @@ export default {
         }),
         ...mapGetters({
             standings: 'getTeamStandings'
-        })
+        }),
+        header() {
+            return `${this.team.city} ${this.team.teamName}`
+        }
     },
     beforeCreate() {
         this.$store.dispatch('getTeam', {
@@ -27,6 +29,7 @@ export default {
         })
     },
     components: {
+        pageSubheader,
         teamStandings
     }
 }

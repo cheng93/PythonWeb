@@ -1,8 +1,5 @@
 <template>
-    <section>
-        <h2 class="mdc-typography--title">
-            Standings
-        </h2>
+    <page-section :header=header>
         <table class="mdl-data-table mdl-js-data-table">
             <thead>
                 <tr>
@@ -19,15 +16,25 @@
                 </tr>
             </tbody>
         </table>
-    </section>
+    </page-section>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
+import pageSection from '../common/pageSection'
+
 export default {
     props: {
         standings: Array
+    },
+    computed: {
+        header() {
+            return 'Standings'
+        }
+    },
+    components: {
+        pageSection
     }
 }
 </script>
