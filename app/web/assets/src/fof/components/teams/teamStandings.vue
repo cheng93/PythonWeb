@@ -8,7 +8,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for='standing in standings' :key='standing.year'>
+                <tr v-for='standing in ordered' :key='standing.year'>
                     <td>{{standing.year}}</td>
                     <td class="mdl-data-table__cell--non-numeric">
                         {{standing.standing}}
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import lodash from 'lodash'
 import pageSection from '../common/pageSection'
 
 export default {
@@ -29,6 +30,9 @@ export default {
     computed: {
         header() {
             return 'Standings'
+        },
+        ordered() {
+            return lodash.orderBy(this.standings, ['year'])
         }
     },
     components: {
