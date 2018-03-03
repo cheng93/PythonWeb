@@ -20,10 +20,18 @@ export default {
         }),
         ...mapGetters({
             players: 'getTeamPlayers',
-            standings: 'getTeamStandings'
+            storeStandings: 'getTeamStandings'
         }),
         header() {
             return `${this.team.city} ${this.team.teamName}`
+        },
+        standings() {
+            return this.storeStandings
+                .map(x => {
+                    let copy = Object.assign({}, x)
+                    copy['url'] = `/teams/${this.team.teamId}/${x.year}`
+                    return copy
+                })
         }
     },
     beforeCreate() {
