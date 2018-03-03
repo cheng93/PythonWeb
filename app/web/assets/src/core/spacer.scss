@@ -32,7 +32,7 @@ $paddings: (
 @for $i from 1 through length($spacer-multipliers) {
     $multiplier: nth($spacer-multipliers, $i);
     @each $name, $properties in $paddings {
-        .#{$name}-#{$i} {
+        .#{$name}-#{($i)-1} {
             @each $property in $properties {
                 #{$property}: $spacer * $multiplier;
             }
