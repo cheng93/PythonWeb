@@ -1,5 +1,5 @@
 <template>
-    <page-section :header=header>
+    <page-section :header=header :excludeInner=true>
         <ul class="mdc-list mdc-list--avatar-list mdc-layout-grid__inner">
             <home-team-item v-for='team in teams' :key='team.teamId' 
                 :team=team tag="li" />
