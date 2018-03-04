@@ -1,6 +1,6 @@
 <template>
     <div>
-        <page-subheader :header=header />
+        <page-subheader :header=header :subheader=subheader />
         <team-standings :standings=standings />
         <team-players :players=players />
     </div>
@@ -24,6 +24,9 @@ export default {
         }),
         header() {
             return `${this.team.city} ${this.team.teamName}`
+        },
+        subheader() {
+            return this.team.division && this.team.division.name;
         },
         standings() {
             return this.storeStandings

@@ -5,6 +5,9 @@
                 <h1 class="mdc-typography--display2 mt-3 mb-1">
                     {{header}}
                 </h1>
+                <h2 v-if=subheader class="mdc-typography--display1 mt-3 mb-1">
+                    {{subheader}}
+                </h2>
             </div>
         </div>
     </div>
@@ -16,7 +19,8 @@ export default {
         header: {
             type: String,
             required: true
-        }
+        },
+        subheader: String
     }
 }
 </script>

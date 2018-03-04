@@ -21,6 +21,9 @@ query Team($id: Int!) {
                     position
                 }
             }
+        },
+        division {
+            name
         }
     }
 }
