@@ -13,6 +13,10 @@ const state = {
 
 const getters = {
     getTeams: state => state.teams,
+    getTeamPlayers: state => (state.team.currentPlayers
+                            && state.team.currentPlayers.edges
+                            && state.team.currentPlayers.edges.map(edge => edge.node))
+                            || [],
     getTeamStandings: state => (state.team.finalStandings 
                             && state.team.finalStandings.edges
                             && state.team.finalStandings.edges.map(edge => edge.node))

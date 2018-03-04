@@ -1,25 +1,31 @@
 <template>
-    <section class="mdc-layout-grid">
-        <h2 class='mdc-typography--title'>Teams</h2>
-        <ul class="mdc-list mdc-layout-grid__inner">
-            <router-link v-for='team in teams' :key='team.teamId' 
-                :to="'/teams/' + team.teamId" tag="li"
-                class="mdc-list-item mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
-                    {{team.teamName}}
-            </router-link>
+    <page-section :header=header :excludeInner=true>
+        <ul class="mdc-list mdc-list--avatar-list mdc-layout-grid__inner">
+            <home-team-item v-for='team in teams' :key='team.teamId' 
+                :team=team tag="li" />
         </ul>
-    </section>
+    </page-section>
 </template>
 
 <script>
+import homeTeamItem from './homeTeamItem'
+import pageSection from '../common/pageSection'
+
 export default {
-    computed: { 
+    computed: {
+        header() {
+            return 'Teams'
+        },
         teams() { 
             return this.$store.getters.getTeams.sort((x,y) => x.teamName.localeCompare(y.teamName))
         }
     },
     beforeCreate() {
         this.$store.dispatch('getTeams')
+    },
+    components: {
+        homeTeamItem,
+        pageSection
     }
 }
 </script>

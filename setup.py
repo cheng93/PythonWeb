@@ -10,9 +10,7 @@ requires = [
     'zope.sqlalchemy',
     'psycopg2',
     'structlog',
-    'alembic',
     'requests',
-    'sqlacodegen',
     'graphene-sqlalchemy',
     'webob-graphql'
 ]

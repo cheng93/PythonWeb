@@ -6,11 +6,24 @@ query Team($id: Int!) {
         finalStandings {
             edges {
                 node {
-                teamId
-                year
-                standing
+                    teamId
+                    year
+                    standing
                 }
             }
+        }
+        currentPlayers {
+            edges {
+                node {
+                    playerId
+                    lastName
+                    firstName
+                    position
+                }
+            }
+        },
+        division {
+            name
         }
     }
 }

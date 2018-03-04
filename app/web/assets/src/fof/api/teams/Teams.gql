@@ -1,9 +1,9 @@
-query Teams($showCity: Boolean = true){
+query Teams {
   teams {
     edges {
       node {
         teamId
-        city @include(if: $showCity)
+        city
         teamName
       }
     }

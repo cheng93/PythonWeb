@@ -1,16 +1,17 @@
 <template>
     <div>
-        <h1 class="mdc-typography--display1">
-            {{team.city}} {{team.teamName}}
-        </h1>
-        <team-standings :standings="standings"/>
+        <page-subheader :header=header :subheader=subheader />
+        <team-standings :standings=standings />
+        <team-players :players=players />
     </div>
 </template>
 
 <script>
 import { mapGetters, mapState } from 'vuex'
 
+import teamPlayers from './teamPlayers'
 import teamStandings from './teamStandings'
+import pageSubheader from '../common/pageSubheader'
 
 export default {
     computed: {
@@ -18,8 +19,23 @@ export default {
             team: state => state.teams.team
         }),
         ...mapGetters({
-            standings: 'getTeamStandings'
-        })
+            players: 'getTeamPlayers',
+            storeStandings: 'getTeamStandings'
+        }),
+        header() {
+            return `${this.team.city} ${this.team.teamName}`
+        },
+        subheader() {
+            return this.team.division && this.team.division.name;
+        },
+        standings() {
+            return this.storeStandings
+                .map(x => {
+                    let copy = Object.assign({}, x)
+                    copy['url'] = `/teams/${this.team.teamId}/${x.year}`
+                    return copy
+                })
+        }
     },
     beforeCreate() {
         this.$store.dispatch('getTeam', {
@@ -27,6 +43,8 @@ export default {
         })
     },
     components: {
+        pageSubheader,
+        teamPlayers,
         teamStandings
     }
 }

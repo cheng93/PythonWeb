@@ -3,7 +3,9 @@
         <div class="mdc-toolbar__row">
             <div class="mdc-toolbar__section mdc-toolbar__section--align-start">
                 <span class="mdc-toolbar__title">
-                    {{title}}
+                    <router-link class="link mdc-theme--text-primary-on-primary" :to=url>
+                        {{title}}
+                    </router-link>
                 </span>
             </div>
         </div>
@@ -16,6 +18,11 @@ export default {
         title: {
             type: String,
             required: true
+        }
+    },
+    computed: {
+        url() {
+            return '/'
         }
     }
 }
